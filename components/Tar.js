@@ -241,6 +241,26 @@ export default function Tar() {
     "It is always the question that involves the listener, it's never the answer.",
     "Unfortunately, the architect of your soul appears to be social media.",
     "Hope dies last.",
+    "There's no glory for a robot, Eliot. Do your own thing!",
+    " Time is the thing.",
+    <span>
+      "It's my score! You fucking,{" "}
+      <motion.span
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.7 }}
+        className="bg-red-500 text-white opacity"
+      >
+        little
+      </motion.span>{" "}
+      nothing!"
+    </span>,
+    " Pets are best for some people",
+    "I'm Petra's Father.",
+    " For a start, this happened in a no-tech zone.",
+    "How's the writing?",
+    "I don't see it like that, too physical.",
+    "She was fixated on me. She sent me weird gifts, she vandalized my Wikipedia page...",
   ];
 
   return (
@@ -265,7 +285,7 @@ export default function Tar() {
       </div>
       <div className="w-full h-screen flex items-start justify-center r overflow-hidden hidden sm:flex text-red-500 bg-black z-30">
         <TarWave></TarWave>
-        <div className="a bottom-10 text-red-500 font-Neue">
+        <div className="a bottom-10 text-red-500 font-mono">
           A film by Tod Fields
         </div>
       </div>
@@ -335,8 +355,8 @@ export default function Tar() {
           initial={{ rotate: -20 }}
           transition={{ duration: 0.6 }}
           whileInView={{ rotate: -30 }}
-          viewport={{ amount: 0.5, once: true }}
-          className="otherTar px-8 border-2 border-black font-Climate z-20 shadow-lg rounded-full text-white bg-red-600  flex items-center justify-center"
+          viewport={{ amount: 0.5, margin: "0px" }}
+          className="otherTar px-8 border-2 border-black font-Climate z-20 shadow-lg rounded-full text-black bg-white  flex items-center justify-center"
         >
           Máestro
         </motion.div>
@@ -358,7 +378,7 @@ export default function Tar() {
           <motion.div
             whileInView={{ y: 0 }}
             viewport={{ amount: 0.5, margin: "100px" }}
-            initial={{ y: "-10%" }}
+            initial={{ y: "-15%" }}
             transition={{ duration: 0.6 }}
             className="flex flex-col -space-y-4"
           >
@@ -386,11 +406,11 @@ export default function Tar() {
             onMouseOver={() => {
               setSyn(true);
             }}
-            className="a bottom-[10%] right-4 r hover:bg-red-500 hover:text-white duration-300 z-10 rounded-3xl text-left TarSyn text-red-500 font-Climate border-2 p-8 border-black"
+            className="a bottom-[10%] right-4 r bg-transparent  hover:bg-black hover:text-red-500 duration-300 z-10 rounded-3xl text-left TarSyn text-black font-Climate border-2 p-8 border-black"
           >
             <div
               className={`w-[14%] rounded-full h-[30%] a duration-300 right-2 top-2 overflow-hidden flex items-center justify-center ${
-                syn ? "bg-white" : "bg-white"
+                syn ? "bg-white" : ""
               }`}
             >
               <motion.div
@@ -409,11 +429,13 @@ export default function Tar() {
           <div className="a z-0 TarQ r">
             {TarQuotes.map((item) => {
               return (
-                <div className="text-gray-200 font-Neue" key={item}>
-                  <span className="">Tar:</span>
-                  <span className="opacity-[0.5]">
+                <div
+                  className="text-black font-mono border-y border-gray-200"
+                  key={item}
+                >
+                  <span className="text-neutral-200 ">
                     {" "}
-                    <span>"</span> {item} <span>"</span>
+                    Tar <span>"</span> {item} <span>"</span>
                   </span>
                 </div>
               );
