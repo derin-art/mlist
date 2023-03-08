@@ -7,6 +7,7 @@ import Title8 from "../public/Data/Tar/Images/Title8.jpg";
 import Title2 from "../public/Data/Tar/Images/Title2.jpg";
 import Title7 from "../public/Data/Tar/Images/Title7.jpg";
 import Title9 from "../public/Data/Tar/Images/Title9.jpg";
+import TarCross from "./TarComp/TarCross";
 import RepeatAnim from "./TarComp/RepeatAnim";
 import Aud from "../public/Data/Tar/Images/Aud.png";
 import { AppearX } from "./TarComp/RepeatAnim";
@@ -18,6 +19,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import TarMobileSlide from "./TarMobileSlide";
 import TarCastList from "./TarComp/TarCastList";
+import RedSvg from "../public/red.svg";
 import RightArr from "../public/Icons/RightArr";
 
 export default function Tar() {
@@ -26,6 +28,36 @@ export default function Tar() {
   const [syn, setSyn] = useState(false);
   const [bgChange, setBgChange] = useState(false);
   const [v, setV] = useState(false);
+
+  const whiteSvg = () => {
+    return (
+      <svg
+        id="10015.io"
+        viewBox="0 0 480 480"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill="#ffffff"
+          d="M386.5,306Q316,372,238.5,374.5Q161,377,95.5,308.5Q30,240,82,148.5Q134,57,238,60Q342,63,399.5,151.5Q457,240,386.5,306Z"
+        />
+      </svg>
+    );
+  };
+
+  const redSvg = () => {
+    return (
+      <svg
+        id="10015.io"
+        viewBox="0 0 480 480"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill="#ff4747"
+          d="M391,304.5Q315,369,233,382Q151,395,100.5,317.5Q50,240,99.5,161Q149,82,241.5,79Q334,76,400.5,158Q467,240,391,304.5Z"
+        />
+      </svg>
+    );
+  };
 
   const firstSVg = () => {
     return (
@@ -152,7 +184,7 @@ export default function Tar() {
             ry="136"
             cx="528.724854778098"
             cy="571.8267659079204"
-            fill="#110e0e"
+            fill="#FFFFFF"
           ></ellipse>
         </g>
       </svg>
@@ -263,6 +295,32 @@ export default function Tar() {
     "She was fixated on me. She sent me weird gifts, she vandalized my Wikipedia page...",
   ];
 
+  const TarData = [
+    <p>
+      Title: <span className="bg-white text-black">Tar</span>
+    </p>,
+    <p>Written by: Todd Fields</p>,
+    <p>
+      Cinematography:{" "}
+      <span className="bg-white text-black">Florian Hoffmeister </span>
+    </p>,
+    <p>Music by: Hildur</p>,
+    <p>
+      Running time: <span className="bg-white text-black">158 minutes</span>
+    </p>,
+    <p>Languages: English, German, French, Tagalog</p>,
+    <p>Edited by: Monnica Willi</p>,
+  ];
+
+  const TarData1 = [
+    <p className="bg-white text-black">Cate Blanchet</p>,
+    <p>Nina Hoss</p>,
+    <p className="bg-white text-black">Noémie Merlant</p>,
+    <p>Allan Corduner</p>,
+    <p>Julian Glover</p>,
+    <p className="bg-white text-black">Allan Corduner</p>,
+  ];
+
   return (
     <div className="w-full overflow-auto h-fit">
       <div className="w-full r h-screen flex items-center justify-center overflow-hidden sm:hidden">
@@ -285,15 +343,30 @@ export default function Tar() {
       </div>
       <div className="w-full h-screen flex items-start justify-center r overflow-hidden hidden sm:flex text-red-500 bg-black z-30">
         <TarWave></TarWave>
-        <div className="a bottom-10 text-red-500 font-mono">
+        <div className="a top-10 text-black font-Climate bg-white">
           A film by Tod Fields
+        </div>
+        <div className="a top-10 left-10 text-white font-Climate  ">
+          7/10/22
+        </div>
+        <div className="a top-10 right-10 text-white font-Climate ">Tár</div>
+        <div className="font-Climate a bottom-20 h-40   w-40  flex  justify-center  flex-col rounded-full right-10 text-white text-3xl">
+          <div className="font-WagonI">Scroll</div>
+          <div className="font-Climate ">Down</div>
         </div>
       </div>
 
       <TarMobileSlide></TarMobileSlide>
 
       <motion.div
-        className={`w-full h-screen r duration-[1000ms] delay-[300ms]  overflow-hidden flex items-center  justify-center `}
+        onViewportEnter={() => {
+          setSpand(true);
+        }}
+        onViewportLeave={() => {
+          setSpand(false);
+        }}
+        viewport={{ amount: 0.5 }}
+        className={`w-full h-screen r duration-[1000ms] delay-[300ms] hidden  overflow-hidden flex items-center  justify-center `}
       >
         <div className="a top-[2%] left-[2%] w-[20%] r z-10">
           <motion.div
@@ -354,8 +427,7 @@ export default function Tar() {
         <motion.div
           initial={{ rotate: -20 }}
           transition={{ duration: 0.6 }}
-          whileInView={{ rotate: -30 }}
-          viewport={{ amount: 0.5, margin: "0px" }}
+          animate={spand ? { rotate: -30 } : { rotate: -20 }}
           className="otherTar px-8 border-2 border-black font-Climate z-20 shadow-lg rounded-full text-black bg-white  flex items-center justify-center"
         >
           Máestro
@@ -372,29 +444,44 @@ export default function Tar() {
         onViewportLeave={() => {
           setV(false);
         }}
-        className={`h-screen w-full  r border-t border-black overflow-hidden flex `}
+        className={`h-screen w-full hidden  r border-t border-black overflow-hidden flex items-center justify-center `}
       >
-        <div className="w-1/5 flex flex-col left-0 -space-y-4 border-r border-black p-2 bg-red-500 overflow-hidden">
-          <motion.div
-            whileInView={{ y: 0 }}
-            viewport={{ amount: 0.5, margin: "100px" }}
-            initial={{ y: "-15%" }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col -space-y-4"
-          >
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => {
+        <span className="skew-x-[20deg] text-7xl z-30 font-Climate">
+          Written
+        </span>
+        <div className="font-Climate text-7xl z-30">by Todd Fields</div>
+        <div className="a flex">
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18].map(
+            (item) => {
               return (
                 <div
-                  className={` font-Climate TarR text-red-200 -skew-x-[20deg] flex items-center justify-cente`}
                   key={item}
+                  className="w-3/5 flex flex-col   p-2 bg-white overflow-hidden "
                 >
-                  tár
+                  <motion.div
+                    whileInView={{ y: 0 }}
+                    viewport={{ amount: 0.5, margin: "100px" }}
+                    initial={{ y: "-15%" }}
+                    transition={{ duration: 0.6 }}
+                    className="flex flex-col -space-y-4"
+                  >
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => {
+                      return (
+                        <div
+                          className={` font-Climate TarR text-gray-100 -skew-x-[20deg] flex items-center justify-cente border rounded-full`}
+                          key={item}
+                        >
+                          tár
+                        </div>
+                      );
+                    })}
+                  </motion.div>
                 </div>
               );
-            })}
-          </motion.div>
+            }
+          )}
         </div>
-        <div className="r w-4/5">
+        <div className="w-full">
           <div className="left-[2%] top-[6%] a font-Neue p-6 px-8 z-10 bg-black hover:bg-transparent hover:text-black duration-[400ms] text-white border-black  border-2 rounded-lg">
             <div className="text-3xl">Written</div> by{" "}
             <span className="">Tod Fields</span>
@@ -426,11 +513,11 @@ export default function Tar() {
               <div className="-mt-7">Synopsis</div>
             </div>
           </button>
-          <div className="a z-0 TarQ r">
+          <div className="a z-0 TarQ r hidden">
             {TarQuotes.map((item) => {
               return (
                 <div
-                  className="text-black font-mono border-y border-gray-200"
+                  className="text-black font-mono border-b border-gray-200"
                   key={item}
                 >
                   <span className="text-neutral-200 ">
@@ -448,7 +535,7 @@ export default function Tar() {
         initial={{ opacity: 0, y: 100 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
-        className="h-fit w-full r  oveflow-hidden bg-black"
+        className="h-fit w-full r  oveflow-hidden bg-black hidden"
       >
         <div className="a dotW h-4/5 w-11/12 left-16 flex items-center justify-center ">
           <span className="text-red-500">"</span>
@@ -465,7 +552,7 @@ export default function Tar() {
         ></Image>
       </motion.div>
       <motion.div
-        className={`bg-black h-screen w-full flex items-center r justify-center overflow-hidden text-white allSize font-Neue`}
+        className={`bg-black h-screen w-full flex hidden items-center r justify-center overflow-hidden text-white allSize font-Neue`}
       >
         <div className="r">
           <div className="flex">
@@ -489,7 +576,138 @@ export default function Tar() {
           </motion.span>{" "}
         </div>{" "}
       </motion.div>
-      <TarCastList></TarCastList>
+
+      <div className="hTar w-full bg-black flex items-center justify-center  r overflow-hidden">
+        <div className="w-1/4 h-1/4 a blur-[50px] right-[26%] top-[10%] hidden">
+          {redSvg()}
+        </div>
+        <div className="left-[3%] top-[15%] flex flex-col text-white font-Neue text-sm a r">
+          {TarData.map((item, index) => {
+            return <div key={index}>{item}</div>;
+          })}
+        </div>
+        <TarCross></TarCross>
+        <div className="right-[3%] bottom-[20%] flex flex-col text-white font-Neue text-sm a">
+          Staring:
+          {TarData1.map((item, index) => {
+            return (
+              <div className="" key={index}>
+                {item}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="h-screen w-full bg-black flex items-center justify-center font-Climate text-3xl r">
+        <div className="a w-1/4 h-1/4 blur-[100px] top-40 left-40">
+          {whiteSvg()}
+        </div>
+        <div className="a w-1/4 h-1/4 blur-[100px] top-40 right-40">
+          {whiteSvg()}
+        </div>
+        <div className="a bottom-10 right-10 text-white border-2 p-2 rounded-full p-8 font-WagonI px-16 ">
+          Explore
+          <div className="font-Climate text-2xl">Synopsis</div>
+        </div>
+        <div className="grid grid-cols-4 gap-4 text-black">
+          <div className="border-2 border-white rounded-full col-span-3 flex items-center px-2 bg-white">
+            " How dare you call
+          </div>
+          <div className="border-2 border-white rounded-full flex items-center px-2  justify-end bg-white">
+            "the only
+          </div>
+          <div className="border-2 border-white rounded-full col-span-2 flex items-center px-2 bg-white">
+            our relationship
+          </div>
+          <div className="border-2 border-white rounded-full col-span-2 flex items-center bg-white px-2 justify-end">
+            person who is
+          </div>
+          <div className="border-2 border-white rounded-full flex items-center px-2 bg-white">
+            transactional"
+          </div>
+          <div className="border-2 border-white rounded-full col-span-3 flex items-center px-2 bg-white justify-end">
+            real is your daughter"
+          </div>
+        </div>
+      </div>
+      <div className="mH w-full flex items-center justify-center bg-black r overflow-hidden">
+        <div className="a top-[2%] left-[2%] w-[20%] r z-10">
+          <motion.div
+            style={{
+              display: "inline-block",
+              overflow: "hidden",
+            }}
+          >
+            <motion.div
+              initial={{ x: "100%", width: 300 }}
+              whileInView={{ x: 0, width: 200 }}
+              viewport={{ once: false }}
+              className=""
+              transition={{ duration: 0.7 }}
+            >
+              <Image
+                src={Tar11.src}
+                className="rounded-sm z-30 w-full shadow-lg"
+                alt="Tar"
+                width={200}
+                height={200}
+                unoptimized={true}
+              ></Image>
+            </motion.div>
+          </motion.div>
+          <div className="a top-1 right-2 font-Neue text-white">14:12</div>
+        </div>
+
+        <div className="a bottom-[2%] right-[2%] w-[20%] r z-10">
+          <motion.div
+            style={{
+              display: "inline-block",
+              overflow: "hidden",
+            }}
+          >
+            {" "}
+            <motion.div
+              initial={{ x: "100%", width: 200 }}
+              whileInView={{ x: 0, width: 300 }}
+              viewport={{ once: false }}
+              className=""
+              transition={{ duration: 0.7 }}
+            >
+              <Image
+                src={Title9.src}
+                className="rounded-sm z-30 w-full shadow-lg w-full"
+                alt="Tar"
+                width={300}
+                height={200}
+                unoptimized={true}
+              ></Image>
+            </motion.div>
+          </motion.div>
+
+          <div className="a top-1 right-2 font-Neue text-white">14:12</div>
+        </div>
+        <div className="a text-white font-Wagon text-9xl flex flex-col justify-center">
+          <div className="">Blanchet</div>
+          <div className="font-Climate">as</div>
+          <div className="font-WagonI">
+            M<span className="">áes</span>tro
+          </div>
+        </div>
+      </div>
+      <div className="h-screen  w-full overflow-hidden">
+        <Image
+          width={100}
+          className="w-full "
+          unoptimized={true}
+          height={400}
+          src={Aud.src}
+          alt="Aud Pic"
+        ></Image>
+        <div className="text-9xl font-Climate flex py-12 border-t-2 border-black a">
+          <div>About</div> <div>Music/Power </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -66,7 +66,12 @@ const Plane = () => {
   return (
     <mesh position={[0, 0, 0]}>
       <planeBufferGeometry args={[2.0, 3.0, 40, 40]} />
-      <waveShaderMateria uTexture={image} ref={ref22} uColor={"pink"} />
+      <waveShaderMateria
+        toneMapped={false}
+        uTexture={image}
+        ref={ref22}
+        uColor={"pink"}
+      />
     </mesh>
   );
 };

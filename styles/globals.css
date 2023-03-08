@@ -145,13 +145,13 @@ a {
 }
 
 .TarR {
-  font-size: 5vw;
+  font-size: 6vw;
 }
 .TarSyn {
   font-size: 4vw;
 }
 .TarQ {
-  font-size: 2vw;
+  font-size: 1.7vw;
 }
 
 .dotW {
@@ -174,4 +174,29 @@ a {
 
 .castH {
   height: 150vh;
+}
+
+.boxT {
+  height: 16vw;
+}
+
+.letterW {
+  font-size: 15vw;
+}
+.hTar {
+  height: 120vh;
+}
+
+.TarCross {
+  height: 50vw;
+  width: 50vw;
+}
+
+.mH {
+  height: 100vh;
+}
+
+.grit {
+  -webkit-mask-image: url("../public/grit.png");
+  mask-image: url("../public/grit.png");
 }
