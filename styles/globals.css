@@ -168,6 +168,11 @@ a {
   src: url("../public/fonts/babylon5hollow/babylon5hollow.ttf");
 }
 
+@font-face {
+  font-family: Domino;
+  src: url("../public/fonts/dominos-blast-font-1678348987-0/dominosblast-lg01y.ttf");
+}
+
 .castT {
   font-size: 2vw;
 }
@@ -188,8 +193,8 @@ a {
 }
 
 .TarCross {
-  height: 50vw;
-  width: 50vw;
+  height: 55vw;
+  width: 55vw;
 }
 
 .mH {
@@ -199,4 +204,189 @@ a {
 .grit {
   -webkit-mask-image: url("../public/grit.png");
   mask-image: url("../public/grit.png");
+}
+.dirt {
+  background-color: #000000;
+  background-image: url("https://www.transparenttextures.com/patterns/dirty-old-black-shirt.png");
+}
+
+.point-burst {
+  background: white;
+  width: 9vw;
+  height: 9vw;
+  position: relative;
+  text-align: center;
+  transform: rotate(20deg);
+  border-radius: 10px;
+}
+.point-burst:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 9vw;
+  width: 9vw;
+  background: white;
+  transform: rotate(135deg);
+  border-radius: 10px;
+}
+
+.SH {
+  height: 80vw;
+}
+
+.hS {
+  height: 10vw;
+  font-size: 10vw;
+}
+
+.hS1 {
+  width: 10vw;
+  font-size: 10vw;
+}
+
+.AboutT {
+  font-size: 14vw;
+}
+
+.AboutTSc {
+  transform: scaleY(1.3);
+  transform: scaleX(1.1);
+  transform: skewX(-10deg);
+}
+
+.gridF {
+  font-size: 1.2vw;
+}
+.gridF1 {
+  font-size: 4vw;
+}
+
+.isM {
+  font-size: 6vw;
+}
+.isM1 {
+  font-size: 10vw;
+  line-height: 70%;
+}
+
+.isMB {
+  font-size: 7vw;
+}
+
+.isMBB {
+  font-size: 10vw;
+}
+
+.isMBM {
+  font-size: 7vw;
+}
+
+.borin {
+  font-size: 8.6vw;
+}
+
+.oScale {
+  transform: scaleX(2);
+}
+.diff {
+  letter-spacing: 0.6vw;
+}
+
+@font-face {
+  font-family: Music;
+  src: url("../public/fonts/music-vibes-font-1678416291-0/musicvibes-bwwrn.otf");
+}
+
+@font-face {
+  font-family: Oddval;
+  src: url("../public/fonts/oddval-font-family-1678415886-0/Fontspring-DEMO-oddvalvariable-BF640a8b013ea54.ttf");
+}
+
+@font-face {
+  font-family: tOdd;
+  src: url("../public/fonts/oddval-font-family-1678415886-0/Fontspring-DEMO-oddval-extrabold-BF640a8b02c2e62.otf");
+}
+
+@font-face {
+  font-family: NeueI;
+  src: url("../public/fonts/neue-montreal-free-demo-pangram-pangram-030418/NeueMontreal-LightItalic.otf");
+}
+
+@font-face {
+  font-family: NeueLI;
+  src: url("../public/fonts/neue-montreal-free-demo-pangram-pangram-030418/NeueMontreal-Italic.otf");
+}
+@font-face {
+  font-family: NeueBI;
+  src: url("../public/fonts/neue-montreal-free-demo-pangram-pangram-030418/NeueMontreal-BoldItalic.otf");
+}
+
+@font-face {
+  font-family: OddL;
+  src: url("../public/fonts/oddval-font-family-1678415886-0/Fontspring-DEMO-oddval-light-BF640a8b028a7ac.otf");
+}
+
+@font-face {
+  font-family: OddT;
+  src: url("../public/fonts/oddval-font-family-1678415886-0/Fontspring-DEMO-oddval-thin-BF640a8b02a5623.otf");
+}
+
+@font-face {
+  font-family: OddM;
+  src: url("../public/fonts/oddval-font-family-1678415886-0/Fontspring-DEMO-oddval-medium-BF640a8b02b5791.otf");
+}
+
+.behindImage {
+  mix-blend-mode: luminosity;
+}
+
+.cold {
+  color: #0d06c4;
+}
+
+.exlS {
+  font-size: 1.2vw;
+}
+
+.musicP {
+  font-size: 5vw;
+  line-height: 90%;
+}
+
+.timeF {
+  font-size: 5vw;
+}
+
+.lH {
+  line-height: 68%;
+}
+
+.gridBg {
+  background-color: #000000;
+  background-image: url("https://www.transparenttextures.com/patterns/batthern.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+.otherGrid {
+  background-color: #000000;
+  background-image: url("https://www.transparenttextures.com/patterns/axiom-pattern.png");
+  /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+@font-face {
+  font-family: PvcB;
+  src: url("../public/fonts/pvc-font-family-1678532803-0/pvc-bannerultra-trial.otf");
+}
+@font-face {
+  font-family: PvcI;
+  src: url("../public/fonts/pvc-font-family-1678532803-0/pvc-dynastyitalic-trial.otf");
+}
+
+.lS {
+  line-height: 100%;
+}
+
+.wavy-text {
+  filter: url("#wavy");
 }
