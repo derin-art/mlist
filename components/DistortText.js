@@ -5,9 +5,9 @@ const Distortion = ({ text }) => {
     <>
       <DistortionText
         text={text}
-        fontSize={120}
+        fontSize={40}
         speed={1.5}
-        fill={"White"}
+        fill={"black"}
         rotation={45.0}
         fontFamily={"Climate"}
         distortX={0.9}

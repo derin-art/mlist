@@ -116,7 +116,7 @@ export default function Tar() {
         <div className="w-full h-screen flex items-start justify-center r overflow-hidden hidden sm:flex text-red-500 bg-black z-30">
           <TarWave></TarWave>
           <div className="a top-10 text-black font-Neue bg-white">
-            A film by Tod Fields
+            A film by Todd Fields
           </div>
           <div className="a top-10 left-10 text-white font-Neue  ">7/10/22</div>
           <div className="a top-10 right-10 text-white font-Neue ">Tár</div>

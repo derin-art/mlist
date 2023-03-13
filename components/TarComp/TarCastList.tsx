@@ -15,7 +15,7 @@ export default function TarCastList() {
     { as: "Olga Metkina", name: "Sophie Kauer", img: SophieK },
   ];
   return (
-    <div className="w-full h-screen r bg-black">
+    <div className="w-full h-screen r bg-white">
       <CastComponent
         img={cast[1].img}
         as={cast[1].as}
