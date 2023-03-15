@@ -1,4 +1,5 @@
 import WhiteSvg from "../../public/Svg/White.svg";
+import SplineObject from "./SplineObject";
 
 export default function TarAlternate() {
   const TarData = [
@@ -21,9 +22,10 @@ export default function TarAlternate() {
     <div className="w-full h-screen border-y bg-black border-white flex space-x-2">
       <div className="w-[28%] h-full border-r flex flex-col">
         <div className="w-full h-[52%] border-b flex items-center justify-center">
-          <div className=" tex letterW font-Climate border rounded-[10px] ">
+          <SplineObject></SplineObject>
+          {/* <div className=" tex letterW font-Climate border rounded-[10px] ">
             <div className="point-burst text-sm  "></div>
-          </div>
+          </div> */}
         </div>
         <div className="h-[5%] w-full border-b bg-white text-black flex font-Climate flex items-center justify-center space-x-6">
           <div>Tar</div>

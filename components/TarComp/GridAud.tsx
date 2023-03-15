@@ -5,7 +5,7 @@ export default function GridAud() {
   return (
     <div className="w-full h-screen otherGrid r">
       <div className="a font-PvcB text-white top-[5%] left-[5%] text-[3vw]">
-        <div className="font-Neue text-[1vw]">Shot at the</div>
+        <div className="font-Neue text-[1vw] ml-[1%]">Shot at the</div>
         <div>Dresden </div>
         <div className="font-PvcI">Philharmonic</div>
       </div>
