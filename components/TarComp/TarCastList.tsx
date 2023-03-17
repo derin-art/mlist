@@ -51,7 +51,7 @@ export default function TarCastList() {
   ];
   return (
     <div className="w-full h-fit r bg-black pb-[5%] flex-col flex items-center  text-white">
-      <div className="font-NeueT text-[7vw] ">Cast</div>
+      <div className="font-PvcI text-[7vw] ">Cast</div>
       {cast.map((item, index) => {
         return (
           <CastComponent

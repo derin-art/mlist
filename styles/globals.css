@@ -338,7 +338,7 @@ a {
 }
 
 .behindImage {
-  mix-blend-mode: luminosity;
+  mix-blend-mode: difference;
 }
 
 .cold {
@@ -393,4 +393,20 @@ a {
 
 .ActH {
   height: 400vh;
+}
+
+.AwardH {
+  height: 200vh;
+}
+
+.HorH {
+  height: 120vh;
+}
+
+.LET {
+  line-height: 90%;
+}
+
+.noneShade {
+  mix-blend-mode: initial;
 }

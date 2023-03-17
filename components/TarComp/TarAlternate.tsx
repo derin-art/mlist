@@ -42,7 +42,7 @@ export default function TarAlternate() {
         <div className="font-Neue text-white musicP flex-col ">
           <div className="font-NeueT">Music </div>
           <div className="font-NeueT">and</div>
-          <div>Power</div>
+          <div>power</div>
         </div>
       </div>
       <div className="w-[28%] h-full border-l flex flex-col">

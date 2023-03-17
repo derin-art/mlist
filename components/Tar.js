@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import Script from "next/script";
 import Image from "next/image";
 import Music from "./TarComp/Music";
+import Horizontal from "./TarComp/Horizontal";
 import TarAlternate from "./TarComp/TarAlternate";
 import TarWave from "./TarWave";
 const TarCastList = dynamic(() => import("./TarComp/TarCastList"));
@@ -16,6 +17,7 @@ import { AppearX } from "./TarComp/RepeatAnim";
 import GradientBlob from "../public/Svg/Gradient_blob.svg";
 import WhiteBlob from "../public/Svg/White.svg";
 import { motion } from "framer-motion";
+import Awards from "./TarComp/Awards";
 import { useState } from "react";
 import TarMobileSlide from "./TarMobileSlide";
 import CateB1 from "../public/Data/Tar/Images/CateB.jpg";
@@ -163,7 +165,7 @@ export default function Tar() {
               Music by Hildur Guðnadóttir
             </div>
           </div>
-          <div className="gridF1 font-Neue  p-2 text-white flex h-screen behindImage r w-full  justify-center items-center">
+          <div className="gridF1 font-Neue  p-2 text-white flex h-screen r w-full  justify-center items-center">
             <button className="text-sm text-white p-[1%] rounded-full border-2 a top-[25%] ">
               Explore Synopsis
             </button>
@@ -178,61 +180,6 @@ export default function Tar() {
           </div>
         </div>
         <div className="mH w-full flex items-center justify-center bg-black r overflow-hidden">
-          {/*    <div className="a top-[2%] left-[2%] w-[20%] r z-10">
-          <motion.div
-            style={{
-              display: "inline-block",
-              overflow: "hidden",
-            }}
-          >
-            <motion.div
-              initial={{ x: "100%", width: 300 }}
-              whileInView={{ x: 0, width: 200 }}
-              viewport={{ once: false }}
-              className=""
-              transition={{ duration: 0.7 }}
-            >
-              <Image
-                src={Tar11.src}
-                className="rounded-sm z-30 w-full shadow-lg"
-                alt="Tar"
-                width={200}
-                height={200}
-                unoptimized={true}
-              ></Image>
-            </motion.div>
-          </motion.div>
-          <div className="a top-1 right-2 font-Neue text-white">14:12</div>
-        </div>
-
-        <div className="a bottom-[2%] right-[2%] w-[20%] r z-10">
-          <motion.div
-            style={{
-              display: "inline-block",
-              overflow: "hidden",
-            }}
-          >
-            {" "}
-            <motion.div
-              initial={{ x: "100%", width: 200 }}
-              whileInView={{ x: 0, width: 300 }}
-              viewport={{ once: false }}
-              className=""
-              transition={{ duration: 0.7 }}
-            >
-              <Image
-                src={Title9.src}
-                className="rounded-sm z-30 w-full shadow-lg w-full"
-                alt="Tar"
-                width={300}
-                height={200}
-                unoptimized={true}
-              ></Image>
-            </motion.div>
-          </motion.div>
-
-          <div className="a top-1 right-2 font-Neue text-white">14:12</div>
-        </div> */}
           <div className="a w-full flex flex-col items-center justify-center text-white text-[3vw] lS">
             <div className="text-white font-PvcI ">
               Cate <span className="font-PvcB">Blanchet</span> is
@@ -247,6 +194,8 @@ export default function Tar() {
 
         <GridAud></GridAud>
         <TarCastList></TarCastList>
+        <Horizontal></Horizontal>
+        <Awards></Awards>
       </div>
     </div>
   );
