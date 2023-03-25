@@ -115,15 +115,25 @@ export default function Tar() {
             A film by Cate Blanchet, runtime: 120 -mins
           </div>
         </div>
-        <div className="w-full h-screen flex items-start justify-center r overflow-hidden hidden sm:flex text-red-500 bg-black z-30">
-          <TarWave></TarWave>
-          <div className="a top-10 text-black font-Neue bg-white">
-            A film by Todd Fields
+        <div className="w-full h-screen flex items-start justify-center r overflow-hidden hidden sm:flex text-red-500 bg-white z-30">
+          <div className="w-1/2 h-full bg-black a left-0">
+            <TarWave></TarWave>
           </div>
-          <div className="a top-10 left-10 text-white font-Neue  ">7/10/22</div>
-          <div className="a top-10 right-10 text-white font-Neue ">Tár</div>
-          <div className="font-Climate a bottom-20 h-40   w-40  flex  justify-center  flex-col rounded-full right-10 items-center text-white text-3xl">
-            {MouseIcon("30", "30", "fill-white")}
+          <div className="w-1/2 h-full a right-0 flex items-center r justify-center">
+            <div className="bottom-0 text-[13vw] font-Climate a text-black">
+              Tar
+            </div>
+            <div className="a top-10 text-black font-Neue bg-white">
+              A film by Todd Fields
+            </div>
+            <div className="a top-10 left-10 text-black font-Neue  ">
+              7/10/22
+            </div>
+            <div className="a top-10 right-10 text-black font-Neue ">Tár</div>
+          </div>
+
+          <div className="font-Climate a bottom-20 h-40  hidden w-40  flex  justify-center  flex-col rounded-full right-10 items-center text-white text-3xl">
+            {MouseIcon("30", "30", "fill-black")}
           </div>
         </div>
 
@@ -166,27 +176,30 @@ export default function Tar() {
             </div>
           </div>
           <div className="gridF1 font-Neue  p-2 text-white flex h-screen r w-full  justify-center items-center">
-            <button className="text-sm text-white p-[1%] rounded-full border-2 a top-[25%] ">
+            <button className="text-sm text-white p-[1%] rounded-full border-2 a top-[25%] font-Climate">
               Explore Synopsis
             </button>
-            <div className=" text-white a text-center bottom-[1%] text-[6vw] lH ">
-              "The narcissism <span className="font-Wagon">o</span>f the
-              smallest differences leads t<span className="font-Wagon">o</span>{" "}
-              the m<span className="font-Wagon">o</span>st b
-              <span className="font-Wagon">o</span>ring c
-              <span className="font-Wagon">o</span>nf
-              <span className="font-Wagon">o</span>rmity"
+            <div className=" text-white a text-center bottom-[4%] text-[6vw] lH w-full flex flex-col justify-center items-center">
+              <div className="z-20">
+                {" "}
+                "The <span className="font-NeueT">n</span>arcissism of the
+                smallest <span className="font-NeueT">differences</span> leads
+                to <span className="font-NeueT">most</span> boring{" "}
+              </div>
+              <div className=" z-0 rounded-full h-fit border-2 pb-[1.5%]  w-fit text-white font-PvcI pt-[1%] mt-4">
+                conformity
+              </div>
             </div>
           </div>
         </div>
         <div className="mH w-full flex items-center justify-center bg-black r overflow-hidden">
-          <div className="a w-full flex flex-col items-center justify-center text-white text-[3vw] lS">
+          <div className="a w-full flex flex-col items-center justify-center text-white text-[2vw] lS">
             <div className="text-white font-PvcI ">
               Cate <span className="font-PvcB">Blanchet</span> is
             </div>
 
-            <img className=" w-[22%] pos" src={CateB1.src}></img>
-            <div className="text-white font-PvcB text-[2vw]">
+            <img className=" w-[18%] pos" src={CateB1.src}></img>
+            <div className="text-white font-PvcB text-[1vw]">
               Lydia<span className="font-PvcI"> Tar</span>
             </div>
           </div>
