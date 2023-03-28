@@ -1,4 +1,5 @@
 import AwardsCont from "./AwardsCont";
+import SplineObjectAwards from "./SplineObjectAwards";
 
 export default function Awards() {
   const ObjAwards = [
@@ -165,8 +166,8 @@ export default function Awards() {
     },
   ];
   return (
-    <div className="w-full AwardH py-[4%] bg-black flex items-center justify-around flex-wrap">
-      {ObjAwards.map((item, index) => {
+    <div className="w-full AwardH py-[4%] bg-black  flex-wrap">
+      {/*   {ObjAwards.map((item, index) => {
         return (
           <AwardsCont
             award={item.award}
@@ -174,7 +175,13 @@ export default function Awards() {
             key={index}
           ></AwardsCont>
         );
-      })}
+      })} */}
+      <div className="w-4/5 flex text-white font-Neue ">
+        <div className="border-2 border-white  w-[25%] rounded-3xl overflow-hidden flex items-center justify-center">
+          <SplineObjectAwards></SplineObjectAwards>
+        </div>
+        <div>Explore Awards</div>
+      </div>
     </div>
   );
 }

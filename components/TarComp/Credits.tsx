@@ -22,7 +22,7 @@ export default function Credits() {
   ];
 
   return (
-    <div className="w-full HorH bg-white flex r items-center py-[10%] justify-center overflow-hidden">
+    <div className="w-full HorH bg-white flex r items-center justify-center overflow-hidden">
       <ReactPlayer
         width={"40%"}
         url={
@@ -33,20 +33,41 @@ export default function Credits() {
         go of that
       </div>
 
-      <div className="a font-Neue text-[8vw] text-center w-3/5 behindImage text-white">
-        You cant let{" "}
-        <span className="font-PvcI border-white rounded-full mx-[4vw] ">
-          go of that
-        </span>{" "}
-        horrible
-        <span className=""> place</span>
+      <div className="a font-Neue text-[8vw] text-center w-[80%]  text-white flex flex-col items-center">
+        <span className="behindImage "> "You cant let go of that "</span>
+        <div className="font-PvcI border-white rounded-full border-2 w-fit text-center text-white opacity-0">
+          {" "}
+          horrible"
+        </div>
+        <span className="behindImage font-PvcI border-white rounded-full ">
+          {" "}
+          place
+        </span>
       </div>
-
-      <div className=" tex a hidden letterW font-Climate border rounded-[10px] border-black ">
+      {/* 
+      <div className=" tex a top-[10%] left-[20%] letterW font-Climate border rounded-[10px] border-black ">
         <div className="point-burst text-sm  "></div>
       </div>
+      <div className=" tex a bottom-[10%] left-[20%] letterW font-Climate border rounded-[10px] border-black ">
+        <div className="point-burst text-sm  "></div>
+      </div> */}
 
-      <div className=" a right-[5%] top-[10%] font-Neue text-sm">
+      <div className=" a right-[5%] top-[5%] font-Neue text-sm  ">
+        {TarData.map((item, index) => {
+          return <div key={index}>{item}</div>;
+        })}
+      </div>
+      <div className=" a left-[5%] top-[5%] font-Neue text-sm  ">
+        {TarData.map((item, index) => {
+          return <div key={index}>{item}</div>;
+        })}
+      </div>
+      <div className=" a left-[5%] top-[5%] font-Neue text-sm w-[14vw] hidden h-[14vw] border-2 rounded-full text-center border-black flex flex-col justify-center items-center ">
+        {TarData.map((item, index) => {
+          return <div key={index}>{item}</div>;
+        })}
+      </div>
+      <div className=" a backdrop-blur-sm right-[2%] top-[2%] hidden font-Neue text-sm w-[14vw] h-[14vw] border-2 rounded-full text-center  flex flex-col justify-center items-center ">
         {TarData.map((item, index) => {
           return <div key={index}>{item}</div>;
         })}

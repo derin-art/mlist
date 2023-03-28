@@ -410,3 +410,7 @@ a {
 .noneShade {
   mix-blend-mode: initial;
 }
+
+.CreditsText {
+  line-height: 90%;
+}
