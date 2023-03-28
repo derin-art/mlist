@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 import Script from "next/script";
 import Image from "next/image";
 import Music from "./TarComp/Music";
-import Horizontal from "./TarComp/Horizontal";
+
 import TarAlternate from "./TarComp/TarAlternate";
 import TarWave from "./TarWave";
 const TarCastList = dynamic(() => import("./TarComp/TarCastList"));
@@ -32,6 +32,7 @@ import {
   FliesText,
   SplitColorChannelText,
 } from "react-text-fun";
+import Credits from "./TarComp/Credits";
 
 export default function Tar() {
   const [spand, setSpand] = useState(false);
@@ -207,7 +208,7 @@ export default function Tar() {
 
         <GridAud></GridAud>
         <TarCastList></TarCastList>
-        <Horizontal></Horizontal>
+        <Credits></Credits>
         <Awards></Awards>
       </div>
     </div>

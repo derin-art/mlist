@@ -6,7 +6,7 @@ import Cinema from "../../public/Data/Tar/Images/Hori/Cinema.jpg";
 import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 import ReactPlayer from "react-player";
 
-export default function Horizontal() {
+export default function Credits() {
   const TarData = [
     <p>
       Title: <span className="bg-white text-black">Tar</span>
@@ -24,12 +24,25 @@ export default function Horizontal() {
   return (
     <div className="w-full HorH bg-white flex r items-center py-[10%] justify-center overflow-hidden">
       <ReactPlayer
+        width={"40%"}
         url={
           "https://res.cloudinary.com/doaahozax/video/upload/v1677451409/vlc-record-2023-01-21-00h36m37s-TFPDL_-_Tar.2022.1080p.WEB-DL.DD5.1.x264-_nq7osn.mp4"
         }
       ></ReactPlayer>
+      <div className="a font-PvcI border-2 border-blue-700 text-blue-700 rounded-full text-[7vw] hidden">
+        go of that
+      </div>
 
-      <div className=" tex letterW font-Climate border rounded-[10px] border-black ">
+      <div className="a font-Neue text-[8vw] text-center w-3/5 behindImage text-white">
+        You cant let{" "}
+        <span className="font-PvcI border-white rounded-full mx-[4vw] ">
+          go of that
+        </span>{" "}
+        horrible
+        <span className=""> place</span>
+      </div>
+
+      <div className=" tex a hidden letterW font-Climate border rounded-[10px] border-black ">
         <div className="point-burst text-sm  "></div>
       </div>
 
