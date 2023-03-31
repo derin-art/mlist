@@ -5,7 +5,7 @@ import Title10 from "../public/Data/Tar/Images/Title10.jpg";
 import Title13 from "../public/Data/Tar/Images/Title13.jpg";
 import Title3 from "../public/Data/Tar/Images/Title3.jpg";
 
-export default function TarMobileSlide() {
+export default function TarMobileCollage() {
   const M = [
     { img: Title6, span: "col-span-2" },
     { img: Title8, span: "col-span-2" },

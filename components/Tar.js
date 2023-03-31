@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import Script from "next/script";
 import Image from "next/image";
 import Music from "./TarComp/Music";
+import MobileTitle from "./TarComp/MobileOnlyComponent/MobileTitle";
 
 import TarAlternate from "./TarComp/TarAlternate";
 import TarWave from "./TarWave";
@@ -19,7 +20,7 @@ import WhiteBlob from "../public/Svg/White.svg";
 import { motion } from "framer-motion";
 import Awards from "./TarComp/Awards";
 import { useState } from "react";
-import TarMobileSlide from "./TarMobileSlide";
+
 import CateB1 from "../public/Data/Tar/Images/CateB.jpg";
 import CateB from "../public/Data/Tar/Images/Cast/CateB.jpg";
 import ArrowR from "../public/Icons/ArrowR";
@@ -98,24 +99,7 @@ export default function Tar() {
   return (
     <div>
       <div className="w-full overflow-auto h-fit">
-        <div className="w-full r h-screen flex items-center justify-center overflow-hidden sm:hidden">
-          <div className="a -right-1/4 w-full">
-            <Image
-              src={Title11.src}
-              width={400}
-              height={400}
-              className="w-full "
-              alt="Image of Tar"
-            ></Image>
-            <div className="a  w-fit h-fit font-Wagon text-[200px] xsm:text-[250px] text-red-500 -bottom-20 -left-14">
-              tár
-            </div>
-          </div>
-
-          <div className=" a bottom-10 text-gray-300 text-xs xs:text-base font-Neue">
-            A film by Cate Blanchet, runtime: 120 -mins
-          </div>
-        </div>
+        <MobileTitle></MobileTitle>
         <div className="w-full h-screen flex items-start justify-center r overflow-hidden hidden sm:flex text-red-500 bg-white z-30">
           <div className="w-1/2 h-full bg-black a left-0">
             <TarWave></TarWave>
@@ -137,8 +121,6 @@ export default function Tar() {
             {MouseIcon("30", "30", "fill-black")}
           </div>
         </div>
-
-        <TarMobileSlide></TarMobileSlide>
 
         <div className="hTar w-full bg-black hidden flex items-center justify-center  r overflow-hidden border-t">
           <div className="left-[3%] top-[15%] flex flex-col text-white font-Neue text-sm a r">
@@ -162,45 +144,39 @@ export default function Tar() {
         <TarAlternate></TarAlternate>
 
         <div className="h-screen overflow-hidden border-y -mt-[1%] border-white w-full bg-black flex items-center justify-center font-Climate text-3xl r">
-          <div className="a w-2/5 h-1/4 blur-[80px] -top-[20%] -left-[15%] z-0">
+          <div className="a w-2/5 h-1/4 blur-[80px] md:-top-[20%] md:-left-[15%] z-0">
             <img src={WhiteBlob.src}></img>
           </div>
           <div className="a w-1/4 h-1/4 blur-[80px] top-[40%] right-[10%] z-0">
             <img src={WhiteBlob.src}></img>
           </div>
-          <div className="a bottom-0 w-full border-t  font-NeueT  border-white flex justify-around text-white hidden">
-            <div className="w-1/2 border-r border-white exlS pl-[6%] py-[2%]">
-              Written by todd fields
-            </div>
-            <div className="w-1/2 exlS py-[2%] pl-[6%] flex items-center r">
-              Music by Hildur Guðnadóttir
-            </div>
-          </div>
+
           <div className="gridF1 font-Neue  p-2 text-white flex h-screen r w-full  justify-center items-center">
             <button className="text-sm text-white p-[1%] rounded-full border-2 a top-[25%] font-Climate">
               Explore Synopsis
             </button>
-            <div className=" text-white a text-center bottom-[4%] text-[6vw] lH w-full flex flex-col justify-center items-center">
+            <div className=" text-white a text-center bottom-[4%] md:text-[6vw] text-[8.4vw] lH w-full flex flex-col justify-center items-center">
               <div className="z-20">
                 {" "}
                 "The <span className="font-NeueT">n</span>arcissism of the
                 smallest <span className="font-NeueT">differences</span> leads
                 to <span className="font-NeueT">most</span> boring{" "}
               </div>
-              <div className=" z-0 rounded-full h-fit border-2 pb-[1.5%]  w-fit text-white font-PvcI pt-[1%] mt-4">
+              <div className=" z-0 rounded-full h-fit border-2 pb-[1.5%]  w-fit text-white font-PvcI pt-[1%] md:mt-4 mt-1">
                 conformity
               </div>
             </div>
           </div>
         </div>
+
         <div className="mH w-full flex items-center justify-center bg-black r overflow-hidden">
-          <div className="a w-full flex flex-col items-center justify-center text-white text-[2vw] lS">
+          <div className="a w-full flex flex-col items-center justify-center text-white md:text-[2vw] text-[4vw] lS">
             <div className="text-white font-PvcI ">
               Cate <span className="font-PvcB">Blanchet</span> is
             </div>
 
-            <img className=" w-[18%] pos" src={CateB1.src}></img>
-            <div className="text-white font-PvcB text-[1vw]">
+            <img className=" md:w-[18%] w-[50%]  pos" src={CateB1.src}></img>
+            <div className="text-white font-PvcB md:text-[1vw] text-[3vw]">
               Lydia<span className="font-PvcI"> Tar</span>
             </div>
           </div>

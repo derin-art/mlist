@@ -359,9 +359,8 @@ a {
 }
 
 .lH {
-  line-height: 78%;
+  line-height: 87%;
 }
-
 .gridBg {
   background-color: #000000;
   background-image: url("https://www.transparenttextures.com/patterns/batthern.png");
@@ -413,4 +412,10 @@ a {
 
 .CreditsText {
   line-height: 90%;
+}
+
+@media screen and (min-width: 768px) {
+  .lH {
+    line-height: 78%;
+  }
 }
