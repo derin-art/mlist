@@ -3,7 +3,7 @@ import Aud2 from "../../public/Data/Tar/Images/Aud2.jpg";
 
 export default function GridAud() {
   return (
-    <div className="w-full h-screen otherGrid r">
+    <div className="w-full h-screen otherGrid r overflow-hidden">
       <div className="w-full h-full r md:hidden">
         <div className="a font-PvcB text-white top-[5%] right-[5%] text-[7vw]">
           <div className="font-NeueT text-[4vw] ml-[1%] mb-[4%] text-right">

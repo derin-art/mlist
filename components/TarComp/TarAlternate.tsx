@@ -1,7 +1,10 @@
 import WhiteSvg from "../../public/Svg/White.svg";
 import SplineObject from "./SplineObject";
+import ReactPlayer from "react-player";
 
 export default function TarAlternate() {
+  const trailerUrl =
+    "https://res.cloudinary.com/doaahozax/video/upload/v1680302090/y2mate.com_-_T%C3%81R_Official_Trailer_HD_In_Select_Theaters_October_7_1080p_hnzkdo.mp4";
   const TarData = [
     <p>
       Title: <span className="bg-white text-black">Tar</span>
@@ -38,11 +41,17 @@ export default function TarAlternate() {
           Tar
         </div>
       </div>
-      <div className="w-[44%] h-full flex   p-[2%]">
-        <div className="font-Neue text-white musicP flex-col ">
+      <div className="w-[44%] h-full flex flex-col justify-between ">
+        <div className="font-Neue text-white musicP flex-col  p-[2%] ">
           <div className="font-NeueT">Music </div>
           <div className="font-NeueT">and</div>
           <div>power</div>
+        </div>
+        <div className="r w-full flex items-center justify-center align-center">
+          <button className="border-2 rounded-full font-Neue p-2 text-white text-2vw a">
+            Play
+          </button>
+          <ReactPlayer url={trailerUrl} width={"100%"}></ReactPlayer>
         </div>
       </div>
       <div className="w-[28%] h-full border-l flex flex-col">

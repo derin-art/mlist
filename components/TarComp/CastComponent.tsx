@@ -20,14 +20,14 @@ export default function CastComponent(props: CastComp) {
     <div className={`flex items-center mt-[10%] justify-between `}>
       {" "}
       <div
-        className={`font-Music   text-[20vw] px-[6vw] ${
-          props.number % 2 ? "hidden" : ""
+        className={`font-Music   text-[20vw] px-[6vw] hidden md:block ${
+          props.number % 2 ? "md:hidden" : ""
         }`}
       >
         {props.number}.
       </div>
       <div
-        className={`w-[20vw] r  text-white font-Climate flex flex-col items-center  py-[4%]`}
+        className={`md:w-[20vw] w-[60vw]  r  text-white font-Climate flex flex-col items-center  py-[4%]`}
       >
         <div className="flex space-x-2 items-center mb-4">
           <span
@@ -36,7 +36,7 @@ export default function CastComponent(props: CastComp) {
           >
             <Distortion id={props.id} text={split[0]}></Distortion>
           </span>
-          <span className="font-PvcI text-[1.4vw]">{split[1]}</span>
+          <span className="font-PvcI md:text-[1.4vw] text-sm">{split[1]}</span>
         </div>
         <img className="w-full duration-300 " src={props.img.src}></img>
 
@@ -50,8 +50,8 @@ export default function CastComponent(props: CastComp) {
         <script src="https://unpkg.com/blotterjs-fork@0.1.0/build/blotter.min.js"></script>
       </div>
       <div
-        className={`font-Music text-[20vw] px-[6vw]  ${
-          props.number % 2 ? "" : "hidden"
+        className={`font-Music text-[20vw] px-[6vw] hidden md:block  ${
+          props.number % 2 ? "" : "md:hidden"
         }`}
       >
         {props.number}.

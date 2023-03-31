@@ -22,24 +22,27 @@ export default function Credits() {
   ];
 
   return (
-    <div className="w-full HorH bg-white flex r items-center justify-center overflow-hidden">
-      <ReactPlayer
-        width={"40%"}
-        url={
-          "https://res.cloudinary.com/doaahozax/video/upload/v1677451409/vlc-record-2023-01-21-00h36m37s-TFPDL_-_Tar.2022.1080p.WEB-DL.DD5.1.x264-_nq7osn.mp4"
-        }
-      ></ReactPlayer>
+    <div className="w-full HorH bg-black flex r items-center justify-center overflow-hidden">
+      <div className="w-full">
+        <ReactPlayer
+          width={"100%"}
+          height={"100%"}
+          url={
+            "https://res.cloudinary.com/doaahozax/video/upload/v1677451409/vlc-record-2023-01-21-00h36m37s-TFPDL_-_Tar.2022.1080p.WEB-DL.DD5.1.x264-_nq7osn.mp4"
+          }
+        ></ReactPlayer>
+      </div>
       <div className="a font-PvcI border-2 border-blue-700 text-blue-700 rounded-full text-[7vw] hidden">
         go of that
       </div>
-
-      <div className="a font-Neue text-[8vw] text-center w-[80%]  text-white flex flex-col items-center">
+      <button className="a text-white">Play</button>
+      <div className="a font-Neue text-[8vw] text-center w-[80%]  text-white flex flex-col items-center hidden">
         <span className="behindImage "> "You cant let go of that "</span>
         <div className="font-PvcI border-white rounded-full border-2 w-fit text-center text-white opacity-0">
           {" "}
           horrible"
         </div>
-        <span className="behindImage font-PvcI border-white rounded-full ">
+        <span className="behindImage font-PvcI border-white rounded-full text-[9vw]">
           {" "}
           place
         </span>
@@ -52,7 +55,7 @@ export default function Credits() {
         <div className="point-burst text-sm  "></div>
       </div> */}
 
-      <div className=" a right-[5%] top-[5%] font-Neue text-sm  ">
+      {/*      <div className=" a right-[5%] top-[5%] font-Neue text-sm  ">
         {TarData.map((item, index) => {
           return <div key={index}>{item}</div>;
         })}
@@ -71,7 +74,7 @@ export default function Credits() {
         {TarData.map((item, index) => {
           return <div key={index}>{item}</div>;
         })}
-      </div>
+      </div> */}
     </div>
   );
 }
