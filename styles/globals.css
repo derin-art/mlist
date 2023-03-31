@@ -78,6 +78,9 @@ a {
   .a {
     @apply absolute;
   }
+  .btn {
+    @apply font-Climate border-2 rounded-full text-sm w-fit p-3 text-white;
+  }
 }
 
 .ticky {

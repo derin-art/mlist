@@ -24,7 +24,7 @@ export default function CastComponent(props: CastComp) {
           props.number % 2 ? "md:hidden" : ""
         }`}
       >
-        {props.number}.
+        {props.number + 1}.
       </div>
       <div
         className={`md:w-[20vw] w-[60vw]  r  text-white font-Climate flex flex-col items-center  py-[4%]`}
@@ -54,7 +54,7 @@ export default function CastComponent(props: CastComp) {
           props.number % 2 ? "" : "md:hidden"
         }`}
       >
-        {props.number}.
+        {props.number + 1}.
       </div>
     </div>
   );

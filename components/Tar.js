@@ -152,7 +152,7 @@ export default function Tar() {
           </div>
 
           <div className="gridF1 font-Neue  p-2 text-white flex h-screen r w-full  justify-center items-center">
-            <button className="text-sm text-white p-[1%] rounded-full border-2 a top-[25%] font-Climate">
+            <button className="btn a top-[25%] font-Climate">
               Explore Synopsis
             </button>
             <div className=" text-white a text-center bottom-[4%] md:text-[6vw] text-[8.4vw] lH w-full flex flex-col justify-center items-center">

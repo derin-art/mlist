@@ -177,14 +177,12 @@ export default function Awards() {
         );
       })} */}
       <div className="w-4/5 flex text-white font-Neue h-fit justify-around">
-        <div className="border-2 border-white  w-[20%] rounded-3xl h-[44vh]  overflow-hidden flex items-center justify-center">
+        <div className="border-2 border-white  w-[25%] rounded-3xl h-[44vh]  overflow-hidden flex items-center justify-center">
           <SplineObjectAwards></SplineObjectAwards>
         </div>
         <div className=" text-[5vw] flex flex-col">
           It won Plenty.
-          <button className="font-Climate border-2 rounded-full text-sm w-fit p-3 self-end">
-            Explore Awards
-          </button>
+          <button className="btn self-end">Explore Awards</button>
         </div>
       </div>
     </div>

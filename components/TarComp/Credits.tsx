@@ -35,7 +35,7 @@ export default function Credits() {
       <div className="a font-PvcI border-2 border-blue-700 text-blue-700 rounded-full text-[7vw] hidden">
         go of that
       </div>
-      <button className="a text-white">Play</button>
+      <button className="a btn">Play</button>
       <div className="a font-Neue text-[8vw] text-center w-[80%]  text-white flex flex-col items-center hidden">
         <span className="behindImage "> "You cant let go of that "</span>
         <div className="font-PvcI border-white rounded-full border-2 w-fit text-center text-white opacity-0">

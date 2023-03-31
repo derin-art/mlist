@@ -48,9 +48,7 @@ export default function TarAlternate() {
           <div>power</div>
         </div>
         <div className="r w-full flex items-center justify-center align-center">
-          <button className="border-2 rounded-full font-Neue p-2 text-white text-2vw a">
-            Play
-          </button>
+          <button className="btn a">Play</button>
           <ReactPlayer url={trailerUrl} width={"100%"}></ReactPlayer>
         </div>
       </div>
