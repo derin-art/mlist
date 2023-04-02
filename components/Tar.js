@@ -106,7 +106,7 @@ export default function Tar() {
           </div>
           <div className="w-1/2 h-full a right-0 flex items-center r justify-center">
             <div className="bottom-0 text-[13vw] font-Climate a text-black">
-              Tar
+              Tár
             </div>
             <div className="a top-10 text-black font-Neue bg-white">
               A film by Todd Fields
