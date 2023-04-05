@@ -105,9 +105,30 @@ export default function Tar() {
             <TarWave></TarWave>
           </div>
           <div className="w-1/2 h-full a right-0 flex items-center r justify-center">
-            <div className="bottom-0 text-[13vw] font-Climate a text-black">
-              Tár
-            </div>
+            <motion.div className="a bottom-0 flex text-[13vw] font-Climate text-black">
+              {["T", "A", "R"].map((item, index) => {
+                return (
+                  <motion.span
+                    key={index}
+                    style={{
+                      display: "inline-block",
+                      overflow: "hidden",
+                    }}
+                    className="  "
+                  >
+                    <motion.span
+                      initial={{ opacity: 1, x: "100%" }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: false }}
+                      transition={{ duration: 0.7 }}
+                      className="flex items-center justify-center"
+                    >
+                      {item}
+                    </motion.span>{" "}
+                  </motion.span>
+                );
+              })}
+            </motion.div>
             <div className="a top-10 text-black font-Neue bg-white">
               A film by Todd Fields
             </div>
@@ -144,27 +165,45 @@ export default function Tar() {
         <TarAlternate></TarAlternate>
 
         <div className="h-screen overflow-hidden border-y -mt-[1%] border-white w-full bg-black flex items-center justify-center font-Climate text-3xl r">
-          <div className="a w-2/5 h-1/4 blur-[80px] md:-top-[20%] md:-left-[15%] z-0">
+          <motion.div className="a w-2/5 h-1/4 blur-[80px] md:-top-[20%] md:-left-[15%] z-0">
             <img src={WhiteBlob.src}></img>
-          </div>
-          <div className="a w-1/4 h-1/4 blur-[80px] top-[40%] right-[10%] z-0">
+          </motion.div>
+          <motion.div className="a w-1/4 h-1/4 blur-[80px] top-[40%] right-[10%] z-0">
             <img src={WhiteBlob.src}></img>
-          </div>
+          </motion.div>
 
           <div className="gridF1 font-Neue  p-2 text-white flex h-screen r w-full  justify-center items-center">
-            <button className="btn a top-[25%] font-Climate">
-              Explore Synopsis
-            </button>
+            <motion.button
+              style={{ display: "inline-block", overflow: "hidden" }}
+              className="btn a top-[25%] font-Climate"
+            >
+              <motion.div
+                initial={{ y: "120%" }}
+                whileInView={{ y: 0 }}
+                transition={{ duration: 0.3, type: "spring" }}
+              >
+                {" "}
+                Explore Synopsis
+              </motion.div>
+            </motion.button>
             <div className=" text-white a text-center bottom-[4%] md:text-[6vw] text-[8.4vw] lH w-full flex flex-col justify-center items-center">
-              <div className="z-20">
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.7 }}
+                className="z-20"
+              >
                 {" "}
                 "The <span className="font-NeueT">n</span>arcissism of the
                 smallest <span className="font-NeueT">differences</span> leads
                 to <span className="font-NeueT">most</span> boring{" "}
-              </div>
-              <div className=" z-0 rounded-full h-fit border-2 pb-[1.5%]  w-fit text-white font-PvcI pt-[1%] md:mt-4 mt-1">
+              </motion.div>
+              <motion.div
+                style={{ display: "inline-block" }}
+                className=" z-0 rounded-full h-fit border-2 pb-[1.5%]  w-fit text-white font-PvcI pt-[1%] md:mt-4 mt-1"
+              >
                 conformity
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -175,7 +214,16 @@ export default function Tar() {
               Cate <span className="font-PvcB">Blanchet</span> is
             </div>
 
-            <img className=" md:w-[18%] w-[50%]  pos" src={CateB1.src}></img>
+            <motion.div style={{ display: "inline-block", overflow: "hidden" }}>
+              {" "}
+              <motion.img
+                initial={{ x: "100%", width: 200 }}
+                whileInView={{ x: 0, width: 250 }}
+                transition={{ duration: 0.7 }}
+                className="pos "
+                src={CateB1.src}
+              ></motion.img>
+            </motion.div>
             <div className="text-white font-PvcB md:text-[1vw] text-[3vw]">
               Lydia<span className="font-PvcI"> Tar</span>
             </div>

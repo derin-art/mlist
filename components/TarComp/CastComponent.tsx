@@ -10,6 +10,7 @@ import Script from "next/script";
 import dynamic from "next/dynamic";
 import WaveText from "../TarComp/Wavetext";
 const Distortion = dynamic(() => import("../DistortText"));
+import { motion } from "framer-motion";
 
 export default function CastComponent(props: CastComp) {
   const split = props.name.split(" ");
@@ -17,7 +18,7 @@ export default function CastComponent(props: CastComp) {
   const characterNameSplit = props.as.split(" ");
 
   return (
-    <div className={`flex items-center mt-[10%] justify-between `}>
+    <motion.div className={`flex items-center mt-[10%] justify-between `}>
       {" "}
       <div
         className={`font-Music   text-[20vw] px-[6vw] hidden md:block ${
@@ -56,6 +57,6 @@ export default function CastComponent(props: CastComp) {
       >
         {props.number + 1}.
       </div>
-    </div>
+    </motion.div>
   );
 }

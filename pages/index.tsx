@@ -5,6 +5,7 @@ import styles from "@/styles/Home.module.css";
 import Tar from "../components/Tar";
 import Script from "next/script";
 
+import { useRef } from "react";
 /* const inter = Inter({ subsets: ["latin"] }); */
 
 export default function Home() {

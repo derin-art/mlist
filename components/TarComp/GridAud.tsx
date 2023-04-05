@@ -1,9 +1,20 @@
+import { useState } from "react";
 import Aud1 from "../../public/Data/Tar/Images/Aud1.jpg";
 import Aud2 from "../../public/Data/Tar/Images/Aud2.jpg";
+import { motion } from "framer-motion";
 
 export default function GridAud() {
+  const [inViewPort, setInViewPort] = useState(false);
   return (
-    <div className="w-full h-screen otherGrid r overflow-hidden">
+    <motion.div
+      onViewportLeave={() => {
+        setInViewPort(false);
+      }}
+      onViewportEnter={() => {
+        setInViewPort(true);
+      }}
+      className="w-full h-screen otherGrid r overflow-hidden"
+    >
       <div className="w-full h-full r md:hidden">
         <div className="a font-PvcB text-white top-[5%] right-[5%] text-[7vw]">
           <div className="font-NeueT text-[4vw] ml-[1%] mb-[4%] text-right">
@@ -36,18 +47,27 @@ export default function GridAud() {
           <div className="font-PvcI">Philharmonic</div>
         </div>
         <div className="a font-PvcB text-white bottom-[40%] z-30 right-[10%] text-[3vw]">
-          <div className="border-2 rounded-full px-[4%] backdrop-grayscale">
-            Berlin,{" "}
-          </div>
+          <motion.div
+            style={{ display: "inline-block", overflow: "hidden" }}
+            className="border-2 rounded-full px-[4%] backdrop-grayscale"
+          >
+            <motion.div
+              initial={{ y: "100%" }}
+              whileInView={{ y: 0 }}
+              transition={{ duration: 0.7 }}
+            >
+              Berlin,{" "}
+            </motion.div>
+          </motion.div>
           <div className="font-PvcI">Germany</div>
         </div>
         <div className="w-[26%] a right-[20%] top-[5%] rotate-[20deg]">
-          <img src={Aud1.src} className="w-full"></img>
+          <motion.img src={Aud1.src} className={`w-full `}></motion.img>
         </div>
         <div className="h-[40%] a bottom-[10%] left-[5%]">
-          <img src={Aud2.src} className="h-full"></img>
+          <motion.img src={Aud2.src} className={`h-full `}></motion.img>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
