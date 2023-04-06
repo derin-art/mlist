@@ -5,6 +5,7 @@ import Misoc from "../../public/Data/Tar/Images/Hori/Misoc1.jpg";
 import Cinema from "../../public/Data/Tar/Images/Hori/Cinema.jpg";
 import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 import ReactPlayer from "react-player";
+import { motion } from "framer-motion";
 
 export default function Credits() {
   const TarData = [
@@ -23,7 +24,18 @@ export default function Credits() {
 
   return (
     <div className="w-full HorH bg-black flex r items-center justify-center overflow-hidden">
-      <div className="w-full">
+      <motion.div
+        initial={{ width: "70%" }}
+        whileHover={{
+          x: 0,
+          width: "100%",
+        }}
+        transition={{
+          duration: 0.6,
+          delay: 0.2,
+        }}
+        className="w-full"
+      >
         <ReactPlayer
           width={"100%"}
           height={"100%"}
@@ -31,7 +43,7 @@ export default function Credits() {
             "https://res.cloudinary.com/doaahozax/video/upload/v1677451409/vlc-record-2023-01-21-00h36m37s-TFPDL_-_Tar.2022.1080p.WEB-DL.DD5.1.x264-_nq7osn.mp4"
           }
         ></ReactPlayer>
-      </div>
+      </motion.div>
       <div className="a font-PvcI border-2 border-blue-700 text-blue-700 rounded-full text-[7vw] hidden">
         go of that
       </div>

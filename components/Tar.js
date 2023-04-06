@@ -36,11 +36,7 @@ import {
 import Credits from "./TarComp/Credits";
 
 export default function Tar() {
-  const [spand, setSpand] = useState(false);
-  const [opand, setOpand] = useState(false);
-  const [syn, setSyn] = useState(false);
-  const [bgChange, setBgChange] = useState(false);
-  const [v, setV] = useState(false);
+  const [triggerLight, setTriggerLight] = useState(false);
 
   const TarQuotes = [
     "Don't be so eager to be offended. The narcissism of small differences leads to the most boring kind of conformity.",
@@ -106,7 +102,7 @@ export default function Tar() {
           </div>
           <div className="w-1/2 h-full a right-0 flex items-center r justify-center">
             <motion.div className="a bottom-0 flex text-[13vw] font-Climate text-black">
-              {["T", "A", "R"].map((item, index) => {
+              {["T", "Á", "R"].map((item, index) => {
                 return (
                   <motion.span
                     key={index}
@@ -165,10 +161,26 @@ export default function Tar() {
         <TarAlternate></TarAlternate>
 
         <div className="h-screen overflow-hidden border-y -mt-[1%] border-white w-full bg-black flex items-center justify-center font-Climate text-3xl r">
-          <motion.div className="a w-2/5 h-1/4 blur-[80px] md:-top-[20%] md:-left-[15%] z-0">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={triggerLight ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="a w-2/5 h-1/4 blur-[80px] md:-top-[20%] md:-left-[15%] z-0"
+          >
             <img src={WhiteBlob.src}></img>
           </motion.div>
-          <motion.div className="a w-1/4 h-1/4 blur-[80px] top-[40%] right-[10%] z-0">
+          <motion.div
+            initial={{ opacity: 0.2 }}
+            whileInView={{ opacity: 1 }}
+            onViewportEnter={() => {
+              setTriggerLight(true);
+            }}
+            onViewportLeave={() => {
+              setTriggerLight(false);
+            }}
+            transition={{ duration: 0.3, delay: 0.3 }}
+            className="a w-1/4 h-1/4 blur-[80px] top-[40%] right-[10%] z-0"
+          >
             <img src={WhiteBlob.src}></img>
           </motion.div>
 
@@ -177,22 +189,10 @@ export default function Tar() {
               style={{ display: "inline-block", overflow: "hidden" }}
               className="btn a top-[25%] font-Climate"
             >
-              <motion.div
-                initial={{ y: "120%" }}
-                whileInView={{ y: 0 }}
-                transition={{ duration: 0.3, type: "spring" }}
-              >
-                {" "}
-                Explore Synopsis
-              </motion.div>
+              <motion.div> Explore Synopsis</motion.div>
             </motion.button>
             <div className=" text-white a text-center bottom-[4%] md:text-[6vw] text-[8.4vw] lH w-full flex flex-col justify-center items-center">
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                transition={{ duration: 0.7 }}
-                className="z-20"
-              >
+              <motion.div className="z-20">
                 {" "}
                 "The <span className="font-NeueT">n</span>arcissism of the
                 smallest <span className="font-NeueT">differences</span> leads
@@ -218,7 +218,7 @@ export default function Tar() {
               {" "}
               <motion.img
                 initial={{ x: "100%", width: 200 }}
-                whileInView={{ x: 0, width: 250 }}
+                whileInView={{ x: 0, width: 270 }}
                 transition={{ duration: 0.7 }}
                 className="pos "
                 src={CateB1.src}

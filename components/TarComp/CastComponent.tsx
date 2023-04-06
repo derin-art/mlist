@@ -20,13 +20,21 @@ export default function CastComponent(props: CastComp) {
   return (
     <motion.div className={`flex items-center mt-[10%] justify-between `}>
       {" "}
-      <div
+      <motion.div
+        style={{ display: "inline-block", overflow: "hidden" }}
         className={`font-Music   text-[20vw] px-[6vw] hidden md:block ${
           props.number % 2 ? "md:hidden" : ""
         }`}
       >
-        {props.number + 1}.
-      </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className={`${props.number % 2 ? "md:hidden " : ""} `}
+        >
+          {props.number + 1}.
+        </motion.div>
+      </motion.div>
       <div
         className={`md:w-[20vw] w-[60vw]  r  text-white font-Climate flex flex-col items-center  py-[4%]`}
       >
@@ -50,13 +58,21 @@ export default function CastComponent(props: CastComp) {
         </div>
         <script src="https://unpkg.com/blotterjs-fork@0.1.0/build/blotter.min.js"></script>
       </div>
-      <div
-        className={`font-Music text-[20vw] px-[6vw] hidden md:block  ${
+      <motion.div
+        style={{ display: "inline-block", overflow: "hidden" }}
+        className={`font-Music   text-[20vw] px-[6vw] hidden md:block ${
           props.number % 2 ? "" : "md:hidden"
         }`}
       >
-        {props.number + 1}.
-      </div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className={`${props.number % 2 ? "" : "md:hidden"}`}
+        >
+          {props.number + 1}.
+        </motion.div>
+      </motion.div>
     </motion.div>
   );
 }

@@ -54,15 +54,21 @@ export default function GridAud() {
             <motion.div
               initial={{ y: "100%" }}
               whileInView={{ y: 0 }}
-              transition={{ duration: 0.7 }}
+              transition={{ duration: 0.4, delay: 0.5 }}
             >
               Berlin,{" "}
             </motion.div>
           </motion.div>
           <div className="font-PvcI">Germany</div>
         </div>
-        <div className="w-[26%] a right-[20%] top-[5%] rotate-[20deg]">
-          <motion.img src={Aud1.src} className={`w-full `}></motion.img>
+        <div className="w-[26%] a right-[20%] top-[5%]">
+          <motion.img
+            initial={{ rotate: "0deg", scale: 0.7 }}
+            whileInView={{ rotate: "20deg", scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            src={Aud1.src}
+            className={`w-full `}
+          ></motion.img>
         </div>
         <div className="h-[40%] a bottom-[10%] left-[5%]">
           <motion.img src={Aud2.src} className={`h-full `}></motion.img>

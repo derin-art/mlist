@@ -42,11 +42,12 @@ export default function TarAlternate() {
         </div>
         <motion.div className="w-full h-[43%] flex items-center justify-center dirt font-Music text-[10vw] text-white">
           <motion.div
-            initial={{}}
+            initial={{ y: 0, scaleY: 1 }}
             whileInView={{
-              scaleY: [0.7, 1.1, 1],
+              scaleY: [1, 0.5, 1.2, 0.7, 1],
+              y: [20, -40, 40, 0],
             }}
-            transition={{ type: "spring", duration: 0.6 }}
+            transition={{ type: "spring", duration: 1, delay: 0.3 }}
           >
             {" "}
             Tar
@@ -66,7 +67,7 @@ export default function TarAlternate() {
           onViewportLeave={() => {
             setIsGrayScale(false);
           }}
-          className={`r w-full flex items-center justify-center align-center duration-[600ms] ${
+          className={`r w-full flex items-center justify-center align-center delay-500 duration-[900ms] ${
             !isGrayScale ? "grayscale" : ""
           }`}
         >
@@ -78,9 +79,9 @@ export default function TarAlternate() {
         <div className="w-full h-[55%] border-b flex items-center justify-center p-[3%]">
           <div className="w-[40vh] rounded-full h-[40vh] border flex items-center justify-center r">
             <motion.div
-              initial={{ opacity: 0, y: 10 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.3, delay: 0.2 }}
               className="font-Climate text-white text-[4vw]"
             >
               7.10.22
@@ -92,7 +93,7 @@ export default function TarAlternate() {
             <motion.img
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
               className="w-full"
               src={WhiteSvg.src}
             ></motion.img>

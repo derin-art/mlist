@@ -6,7 +6,7 @@ import NoemieM from "../../public/Data/Tar/Images/Cast/NoemieM.jpg";
 import MarkS from "../../public/Data/Tar/Images/Cast/MarkS.jpg";
 import { ParallaxController } from "parallax-controller";
 import { useParallax, ParallaxProvider } from "react-scroll-parallax";
-import { DistortionText } from "react-text-fun";
+
 const CastComponent = dynamic(() => import("./CastComponent"));
 import Script from "next/script";
 import dynamic from "next/dynamic";
