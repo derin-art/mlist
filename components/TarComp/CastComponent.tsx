@@ -30,7 +30,7 @@ export default function CastComponent(props: CastComp) {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.2 }}
-          className={`${props.number % 2 ? "md:hidden " : ""} `}
+          className={`${props.number % 2 ? "md:hidden " : ""} hidden md:block`}
         >
           {props.number + 1}.
         </motion.div>
@@ -68,7 +68,7 @@ export default function CastComponent(props: CastComp) {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.4, delay: 0.2 }}
-          className={`${props.number % 2 ? "" : "md:hidden"}`}
+          className={`${props.number % 2 ? "" : "md:hidden"} hidden md:block`}
         >
           {props.number + 1}.
         </motion.div>

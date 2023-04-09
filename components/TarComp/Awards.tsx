@@ -166,7 +166,7 @@ export default function Awards() {
     },
   ];
   return (
-    <div className="w-full AwardH py-[4%] bg-black  flex-wrap flex justify-center ">
+    <div className=" z-40 w-full r h-screen py-[4%] bg-black  flex-wrap flex justify-center ">
       {/*   {ObjAwards.map((item, index) => {
         return (
           <AwardsCont
@@ -177,7 +177,7 @@ export default function Awards() {
         );
       })} */}
       <div className="w-4/5 flex text-white font-Neue h-fit justify-around">
-        <div className="border-2 border-white  w-[25%] rounded-3xl h-[44vh]  overflow-hidden flex items-center justify-center">
+        <div className="border-2 border-white  w-[25%] min-w-[250px] rounded-3xl h-[44vh]  overflow-hidden flex items-center justify-center">
           <SplineObjectAwards></SplineObjectAwards>
         </div>
         <div className=" text-[5vw] flex flex-col">

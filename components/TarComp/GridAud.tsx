@@ -4,17 +4,8 @@ import Aud2 from "../../public/Data/Tar/Images/Aud2.jpg";
 import { motion } from "framer-motion";
 
 export default function GridAud() {
-  const [inViewPort, setInViewPort] = useState(false);
   return (
-    <motion.div
-      onViewportLeave={() => {
-        setInViewPort(false);
-      }}
-      onViewportEnter={() => {
-        setInViewPort(true);
-      }}
-      className="w-full h-screen otherGrid r overflow-hidden"
-    >
+    <motion.div className="w-full h-screen otherGrid  overflow-hidden ">
       <div className="w-full h-full r md:hidden">
         <div className="a font-PvcB text-white top-[5%] right-[5%] text-[7vw]">
           <div className="font-NeueT text-[4vw] ml-[1%] mb-[4%] text-right">
@@ -39,7 +30,7 @@ export default function GridAud() {
         </div>
       </div>
       <div className="w-full h-full r hidden md:block">
-        <div className="a font-PvcB text-white top-[5%] left-[5%] text-[3vw]">
+        <div className="a font-PvcB text-white top-[10%] left-[5%] text-[3vw]">
           <div className="font-NeueT text-[1.7vw] ml-[1%] mb-[4%]">
             Shot at the
           </div>
@@ -61,7 +52,7 @@ export default function GridAud() {
           </motion.div>
           <div className="font-PvcI">Germany</div>
         </div>
-        <div className="w-[26%] a right-[20%] top-[5%]">
+        <div className="w-[26%] a right-[20%] top-[5%] ">
           <motion.img
             initial={{ rotate: "0deg", scale: 0.7 }}
             whileInView={{ rotate: "20deg", scale: 1 }}

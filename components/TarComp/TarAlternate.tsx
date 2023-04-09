@@ -40,14 +40,23 @@ export default function TarAlternate() {
           <div>Tar</div>
           <div>Tar</div>
         </div>
-        <motion.div className="w-full h-[43%] flex items-center justify-center dirt font-Music text-[10vw] text-white">
+        <motion.div className="w-full h-[43%] flex items-center r justify-center dirt font-Music text-[10vw] text-white">
           <motion.div
-            initial={{ y: 0, scaleY: 1 }}
+            initial={{ y: 20, scaleY: 0.6 }}
             whileInView={{
-              scaleY: [1, 0.5, 1.2, 0.7, 1],
-              y: [20, -40, 40, 0],
+              y: [20, -20, 40, -20],
+              scaleY: [0.6, 0.5, 1.2, 1],
+
+              opacity: 1,
+              transition: { type: "spring" },
             }}
-            transition={{ type: "spring", duration: 1, delay: 0.3 }}
+            transition={{
+              type: "spring",
+              duration: 1,
+              delay: 0.3,
+              bounce: 0.6,
+            }}
+            className="absolute"
           >
             {" "}
             Tar
@@ -55,11 +64,12 @@ export default function TarAlternate() {
         </motion.div>
       </div>
       <div className="w-[44%] h-full flex flex-col justify-between ">
-        <div className="font-Neue text-white musicP flex-col  p-[2%] ">
+        <motion.div className="font-Neue text-white musicP flex-col  p-[2%] ">
           <div className="font-NeueT">Music </div>
           <div className="font-NeueT">and</div>
           <div>power</div>
-        </div>
+        </motion.div>
+
         <motion.div
           onViewportEnter={() => {
             setIsGrayScale(true);
@@ -71,6 +81,10 @@ export default function TarAlternate() {
             !isGrayScale ? "grayscale" : ""
           }`}
         >
+          {" "}
+          <span className="text-white self-end  a top-0 right-2 font-Neue border-2 p-1 text-sm rounded-full">
+            Trailer
+          </span>
           <button className="btn a z-20">Play</button>
           <ReactPlayer url={trailerUrl} width={"100%"}></ReactPlayer>
         </motion.div>

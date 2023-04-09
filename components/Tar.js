@@ -4,7 +4,7 @@ import Script from "next/script";
 import Image from "next/image";
 import Music from "./TarComp/Music";
 import MobileTitle from "./TarComp/MobileOnlyComponent/MobileTitle";
-
+import ThreeCanvas from "./ThreeCanvas";
 import TarAlternate from "./TarComp/TarAlternate";
 import TarWave from "./TarWave";
 const TarCastList = dynamic(() => import("./TarComp/TarCastList"));
@@ -27,13 +27,9 @@ import ArrowR from "../public/Icons/ArrowR";
 import MouseIcon from "../public/Icons/MouseIcon";
 import GridAud from "./TarComp/GridAud";
 import Cast from "./TarComp/Cast";
-import {
-  DistortionText,
-  LiquidDistortionText,
-  FliesText,
-  SplitColorChannelText,
-} from "react-text-fun";
+import Sticky from "react-stickynode";
 import Credits from "./TarComp/Credits";
+import ThreeButton from "./3dButton";
 
 export default function Tar() {
   const [triggerLight, setTriggerLight] = useState(false);
@@ -94,7 +90,7 @@ export default function Tar() {
 
   return (
     <div>
-      <div className="w-full overflow-auto h-fit">
+      <div className="w-full overflow-auto h-fit bg-black">
         <MobileTitle></MobileTitle>
         <div className="w-full h-screen flex items-start justify-center r overflow-hidden hidden sm:flex text-red-500 bg-white z-30">
           <div className="w-1/2 h-full bg-black a left-0">
@@ -198,11 +194,31 @@ export default function Tar() {
                 smallest <span className="font-NeueT">differences</span> leads
                 to <span className="font-NeueT">most</span> boring{" "}
               </motion.div>
-              <motion.div
-                style={{ display: "inline-block" }}
-                className=" z-0 rounded-full h-fit border-2 pb-[1.5%]  w-fit text-white font-PvcI pt-[1%] md:mt-4 mt-1"
-              >
-                conformity
+              <motion.div className=" z-0 rounded-full h-fit border-2  flex items-center justify-center w-fit text-white font-PvcB pt-[1%] md:mt-4 mt-1">
+                {["c", "o", "n", "f", "o", "r", "m", "i", "t", "y"].map(
+                  (item, index) => {
+                    return (
+                      <motion.div
+                        key={index}
+                        style={{
+                          display: "inline-block",
+                          overflow: "hidden",
+                        }}
+                        className=" hidden  h-[7vw] flex items-center justify-center flex-col"
+                      >
+                        <motion.div
+                          initial={{ opacity: 1, x: "100%" }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: false }}
+                          transition={{ duration: 0.7 }}
+                          className="flex items-center justify-center "
+                        >
+                          {item}
+                        </motion.div>{" "}
+                      </motion.div>
+                    );
+                  }
+                )}
               </motion.div>
             </div>
           </div>
@@ -229,11 +245,16 @@ export default function Tar() {
             </div>
           </div>
         </div>
+        <Sticky top={-50}>
+          <GridAud></GridAud>
+        </Sticky>
 
-        <GridAud></GridAud>
         <TarCastList></TarCastList>
         <Credits></Credits>
         <Awards></Awards>
+        <div className="w-full h-screen r flex items-center justify-center bg-black">
+          <ThreeButton></ThreeButton>
+        </div>
       </div>
     </div>
   );
