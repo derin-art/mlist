@@ -1,7 +1,6 @@
-import AwardsCont from "./AwardsCont";
-import SplineObjectAwards from "./SplineObjectAwards";
+import ThreeButton from "../../3dButton";
 
-export default function Awards() {
+export default function SocialProof() {
   const ObjAwards = [
     {
       winner: "Cate Blanchett",
@@ -167,22 +166,18 @@ export default function Awards() {
   ];
   return (
     <div className=" z-40 w-full r h-screen py-[4%] bg-black  flex-wrap flex justify-center ">
-      {/*   {ObjAwards.map((item, index) => {
-        return (
-          <AwardsCont
-            award={item.award}
-            winner={item.winner}
-            key={index}
-          ></AwardsCont>
-        );
-      })} */}
       <div className="w-4/5 flex text-white font-Neue h-fit justify-around">
-        <div className="border-2 border-white  w-[25%] min-w-[250px] rounded-3xl h-[44vh]  overflow-hidden flex items-center justify-center">
-          <SplineObjectAwards></SplineObjectAwards>
+        <div className="border-2 border-white  w-[30%] min-w-[250px] rounded-3xl h-[44vh]  overflow-hidden flex items-center justify-center">
+          Awards
         </div>
         <div className=" text-[5vw] flex flex-col">
           It won Plenty.
-          <button className="btn self-end">Explore Awards</button>
+          <div className="self-end z-0">
+            <ThreeButton
+              ExploreSynopsis={true}
+              text={"Explore Synopsis"}
+            ></ThreeButton>
+          </div>
         </div>
       </div>
     </div>

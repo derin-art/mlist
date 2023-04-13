@@ -1,14 +1,9 @@
 import * as THREE from "three";
 import dynamic from "next/dynamic";
-import {
-  Canvas,
-  PointLightProps,
-  SpotLightProps,
-  useFrame,
-} from "@react-three/fiber";
-const ThreeSpring = dynamic(() => import("./ThreeSpring"));
-import { Suspense, useEffect, useRef } from "react";
-import { Edges, OrbitControls, SpotLight, useHelper } from "@react-three/drei";
+import { Canvas, useFrame } from "@react-three/fiber";
+
+import { Suspense, useRef, useState } from "react";
+import { Edges, OrbitControls, useHelper } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
 import { SpotLightHelper } from "three";
 import {
@@ -19,95 +14,26 @@ import {
 
 interface ObjectProps {
   isHovered: boolean;
+  ExploreSynopisis?: boolean;
+  ExploreAwards?: boolean;
+  textProps: {
+    no: number;
+    wrd1Length: number;
+    wrd2Length: number;
+  };
 }
 
-const FirstCube = () => {
-  const cubeRef = useRef<THREE.Mesh>(null);
-  cubeRef.current && cubeRef.current.rotation.reorder("YXZ");
-  useFrame(() => {
-    if (cubeRef.current) {
-      cubeRef.current.rotation.y += 0.015;
-      cubeRef.current.rotation.x += 0.03;
-    }
-  });
-
-  const material1 = new THREE.MeshPhysicalMaterial({
-    roughness: 0.1,
-    clearcoat: 0.2,
-    color: "#0000ff",
-    transmission: 0.1,
-    thickness: 4,
-  });
-  return (
-    <mesh material={material1} ref={cubeRef} position={[3, 3, 0]}>
-      <Edges></Edges>
-      {/* 
-      <meshBasicMaterial color={"#0000ff"}></meshBasicMaterial> */}
-      <boxBufferGeometry args={[0.8, 1.2, 1]}></boxBufferGeometry>
-    </mesh>
-  );
-};
-
-const SecondCube = () => {
-  const ref = useRef<THREE.Mesh>(null);
-  useFrame(() => {
-    if (ref.current) {
-      ref.current.rotation.y += 0.03;
-      ref.current.rotation.z += 0.02;
-    }
-  });
-
-  const material1 = new THREE.MeshPhysicalMaterial({
-    roughness: 0.1,
-    clearcoat: 0.6,
-    color: "white",
-    transmission: 0.5,
-    thickness: 4,
-  });
-
-  return (
-    <mesh position={[0, -2, 0]} ref={ref}>
-      <Edges></Edges>
-
-      <meshBasicMaterial color={"#00ff00"}></meshBasicMaterial>
-      <coneBufferGeometry args={[0.5, 1, 10]}></coneBufferGeometry>
-    </mesh>
-  );
-};
-
-const Torus = () => {
-  const torusRef = useRef<THREE.Mesh>(null);
-  useFrame(({ clock }) => {
-    if (torusRef.current) {
-      torusRef.current.rotation.x += 0.04;
-      torusRef.current.rotation.y += 0.02;
-    }
-  });
-
-  const material1 = new THREE.MeshPhysicalMaterial({
-    roughness: 0.1,
-    clearcoat: 0.6,
-    color: "white",
-    transmission: 0.5,
-    thickness: 4,
-  });
-  return (
-    <motion.mesh
-      animate={{ x: [-2, 3, -2], y: 3 }}
-      transition={{ duration: 10, delay: 1 }}
-      initial={{ scale: 1, x: -2, y: 4, z: 0 }}
-      material={material1}
-      ref={torusRef}
-      position={[-2, 4, 0]}
-    >
-      <torusBufferGeometry args={[0.7, 0.4, 20]}></torusBufferGeometry>
-    </motion.mesh>
-  );
-};
-
-const PillPlane = (props: { pillRef: any }) => {
+const PillPlane = (props: {
+  pillRef: any;
+  width?: number;
+  ExploreAwards?: boolean;
+  ExploreSynopsis?: boolean;
+  wrd2: number;
+}) => {
   let x = 1;
   let y = 1;
+  const dis = props.wrd2 - 5;
+  /* let width = props.width ? props.width * 0.76 : 12.4; */
   let width = 12.4;
   let height = 2.3;
   let radius = 1.3;
@@ -125,73 +51,76 @@ const PillPlane = (props: { pillRef: any }) => {
 
   let geometry = new THREE.ShapeGeometry(shape);
 
-  const material1 = new THREE.MeshPhysicalMaterial({
-    roughness: 0.1,
-    clearcoat: 0.5,
-    color: "#1d4ed8",
-    transmission: 0.1,
-    thickness: 4,
-  });
-
   return (
-    <mesh geometry={geometry} position={[-7.2, -2.12, 0]} ref={props.pillRef}>
+    <motion.mesh
+      geometry={geometry}
+      position={[-7.9, -2.12, 0]}
+      ref={props.pillRef}
+    >
       <meshPhongMaterial reflectivity={1} color={"#1d4ed8"}></meshPhongMaterial>
-    </mesh>
+    </motion.mesh>
   );
 };
 
-const SpinningLight = () => {
-  const ref = useRef(null);
-
-  return (
-    <motion.pointLight
-      position={[0, 0, 2]}
-      initial={{ x: -7 }}
-      animate={{ x: [-7, 6, -7] }}
-      transition={{ duration: 3, repeat: Infinity, type: "spring" }}
-      intensity={5}
-      color={"red"}
-    ></motion.pointLight>
-  );
-};
-
-const SpinningLightRed = () => {
-  const ref = useRef<THREE.PointLight>(null);
-  useFrame(({ clock }) => {
+const Globe = (props: {
+  position: [x: number, y: number, z: number];
+  size: number;
+  Animation?: TargetAndTransition;
+}) => {
+  const [isRendered, setIsRendered] = useState(true);
+  const [current, setCurrent] = useState({
+    x: 0,
+    y: 0,
+  });
+  let currentX: number = 0;
+  let currentY: number = 0;
+  const ref = useRef<THREE.Mesh>(null!);
+  useFrame(() => {
     if (ref.current) {
-      ref.current.position.z = Math.sin(clock.elapsedTime) * 4;
-
-      ref.current.position.y = Math.sin(clock.elapsedTime) * 4;
+      ref.current.rotation.y += 0.03;
+      setCurrent((prev) => {
+        return { x: ref.current.position.x, y: ref.current.position.y };
+      });
+      const accesion =
+        Math.abs(props.position[1]) - Math.abs(ref.current.position.y);
+      props.Animation && console.log(accesion);
+      if (Math.abs(accesion) > 0.6) {
+        console.log("sdms");
+        setIsRendered(false);
+      }
     }
   });
+
+  const anim: TargetAndTransition | undefined = isRendered
+    ? props.Animation
+    : {
+        scale: [1.1, 1, 0.8, 0],
+        opacity: [1, 0],
+        x: [current.x, current.x - 0.1, current.x + 0.1],
+        y: [current.y, current.y + 0.2],
+        transition: {
+          duration: 3,
+
+          type: "spring",
+        },
+      };
   return (
-    <motion.pointLight
-      position={[0, 0, 2]}
-      intensity={1}
-      color={"red"}
-    ></motion.pointLight>
+    <>
+      {" "}
+      <motion.mesh ref={ref} animate={anim} position={props.position}>
+        <sphereBufferGeometry
+          args={[props.size ? props.size : 0.5, 15, 15]}
+        ></sphereBufferGeometry>
+        <meshPhongMaterial
+          transparent={true}
+          shininess={100}
+          emissive={"blue"}
+          color={"blue"}
+        ></meshPhongMaterial>
+      </motion.mesh>
+    </>
   );
 };
-
-function Lights() {
-  const light = useRef();
-  useHelper(light, THREE.SpotLightHelper, "cyan");
-  return (
-    <motion.spotLight
-      animate={{ x: [-4, 5, -4] }}
-      transition={{ duration: 2, repeat: Infinity }}
-      ref={light}
-      intensity={0.2}
-      position={[0, 0, 5]}
-      shadow-mapSize-width={64}
-      shadow-mapSize-height={64}
-      angle={0.3}
-      penumbra={0.4}
-      castShadow
-      shadow-bias={-0.001}
-    />
-  );
-}
 
 function DLights(props: {
   animation?: TargetAndTransition;
@@ -211,14 +140,11 @@ function DLights(props: {
               transition: { duration: 10, repeat: Infinity, delay: 4 },
             }
       }
-      ref={light}
       color={props.color ? props.color : "red"}
       intensity={props.intensity ? props.intensity : 8}
       position={props.position ? props.position : [0, 0, 1]}
       shadow-mapSize-width={64}
       shadow-mapSize-height={64}
-      angle={0.4}
-      penumbra={0.2}
       castShadow
       shadow-bias={-0.001}
     />
@@ -229,19 +155,138 @@ export default function ThreeCanvas(props: ObjectProps) {
   const ref = useRef();
   const pillRef = useRef<THREE.Mesh>(null);
 
+  const globePositions: {
+    pos: [x: number, y: number, z: number];
+    siz: number;
+    Animation?: TargetAndTransition;
+  }[] = [
+    {
+      pos: [4, 1.6, 0],
+      siz: 0.8,
+      Animation: {
+        scale: [1, 0.95, 0.9, 1],
+        opacity: [1, 0],
+        x: [4, 4.1, 3.9, 4],
+        y: [1.6, 1.4, 1.6],
+        rotateY: [0, 360, 0],
+        transition: { duration: 5, repeat: Infinity },
+      },
+    },
+    {
+      pos: [6, 1, 0],
+      siz: 0.3,
+      Animation: {
+        scale: [1, 0.95, 0.9, 1],
+        rotateX: [0, 360, 0],
+        x: [6, 6.1, 6.2, 6.1, 6, 5.9, 6],
+        transition: { duration: 2, repeat: Infinity },
+      },
+    },
+    {
+      pos: [4, -1.6, 0],
+      siz: 0.4,
+      Animation: {
+        scale: [1, 0.8, 0.9, 1],
+        rotateX: [0, 360, 0],
+        x: [4, 3.9, 3.8, 4.1, 4, 3.9, 4],
+        y: [-1.6, -1.7, -1.6],
+        transition: { duration: 2, repeat: Infinity },
+      },
+    },
+    {
+      pos: [6, -0.6, 0],
+      siz: 1,
+      Animation: {
+        scale: [1, 0.8, 0.9, 1],
+        rotateX: [0, 360, 0],
+        x: [6, 6.2, 6.1, 5.9, 5.8, 6],
+
+        transition: { duration: 1.5, repeat: Infinity },
+      },
+    },
+    {
+      pos: [2, -1.6, 0],
+      siz: 0.6,
+      Animation: {
+        scale: [1, 0.8, 0.9, 1],
+        rotateX: [0, 360, 0],
+        x: [2, 2.1, 1.9, 2.1, 1.8, 2],
+
+        transition: { duration: 1.3, repeat: Infinity },
+      },
+    },
+    {
+      pos: [-2, -0.8, 0],
+      siz: 0.6,
+      Animation: {
+        scale: [1, 0.7, 0.9, 1, 1.1, 1],
+        rotateX: [0, 360, 0],
+        x: [-2, -2.2, -2.1, -2, -1.8, -2],
+        y: [-0.8, -1.2, -0.8],
+        transition: { duration: 4, repeat: Infinity },
+      },
+    },
+    {
+      pos: [-4, -1.8, 0],
+      siz: 0.8,
+      Animation: {
+        scale: [1, 0.7, 0.9, 1, 1.1, 1],
+        rotateX: [0, 360, 0],
+        x: [-4, -4.2, -4.1, -4, -3.8, -4],
+        y: [-1.8, -1.6, -1.8],
+        transition: { duration: 3, repeat: Infinity, repeatDelay: 0.4 },
+      },
+    },
+    {
+      pos: [-1, 0.5, 0],
+      siz: 0.4,
+      Animation: {
+        scale: [1, 0.6, 0.9, 0.8, 1.1, 1],
+        rotateX: [0, 360, 0],
+        x: [-1, -1.2, -0.9, -1, -1.2, -1],
+        y: [0.5, 0.6, 0.5],
+        transition: { duration: 2.5, repeat: Infinity },
+      },
+    },
+    {
+      pos: [-4, 0.7, 0],
+      siz: 0.5,
+      Animation: {
+        scale: [1, 0.7, 0.9, 1, 1.1, 1],
+        rotateX: [0, 360, 0],
+        x: [-4, -4.2, -4.1, -4, -3.8, -4],
+        y: [0.7, 0.6, 0.8, 0.7],
+        transition: { duration: 3, repeat: Infinity },
+      },
+    },
+    {
+      pos: [-3, 1.2, 0],
+      siz: 1,
+      Animation: {
+        scale: [1, 0.7, 0.9, 1, 1.1, 1],
+        rotateX: [0, 360, 0],
+        x: [-3, -3.3, -3.1, -3, -2.8, -3],
+        y: [1.2, 1.3, 0.9, 1, 1.2],
+        transition: { duration: 4, repeat: Infinity },
+      },
+    },
+  ];
+
   return (
     <>
       <AnimatePresence>
         <m.div
-          key={props.isHovered.toString()}
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          animate={{ opacity: [0, 1] }}
+          transition={{ duration: 0.6 }}
+          key={props.isHovered.toString()}
           exit={{ opacity: 0 }}
           className="w-full flex items-center justify-center a"
         >
           {props.isHovered && (
-            <div className={` z-20 h-[200px] a w-full r bg-black `}>
+            <div
+              className={` z-20 h-[200px] a w-[130%] r bg-transparent flex items-center justify-center `}
+            >
               <Canvas camera={{ position: [0, 0, 5], fov: 100 }}>
                 <ambientLight></ambientLight>
 
@@ -267,12 +312,12 @@ export default function ThreeCanvas(props: ObjectProps) {
 
                         transition: { duration: 7, repeat: Infinity },
                       }}
-                      intensity={7}
+                      intensity={6}
                       position={[-5, -2, 1]}
                       color={"#F88DAD"}
                     ></DLights>
                     <DLights
-                      intensity={3}
+                      intensity={2}
                       animation={{
                         y: [2, 0, -2, 2],
                         x: [-2, 0, 2, -2],
@@ -284,10 +329,29 @@ export default function ThreeCanvas(props: ObjectProps) {
                       position={[-2, 2, 1]}
                     ></DLights>
                   </motion.group>
-                  <SecondCube></SecondCube>
-                  <FirstCube></FirstCube>
-                  <Torus></Torus>
-                  <PillPlane pillRef={pillRef}></PillPlane>
+                  {props.isHovered && (
+                    <>
+                      {globePositions.map((item, index) => {
+                        return (
+                          <Globe
+                            Animation={item.Animation}
+                            key={index}
+                            position={item.pos}
+                            size={item.siz}
+                          ></Globe>
+                        );
+                      })}
+                    </>
+                  )}
+                  <PillPlane
+                    width={
+                      props.textProps.wrd1Length + props.textProps.wrd2Length
+                    }
+                    wrd2={props.textProps.wrd2Length}
+                    ExploreAwards={props.ExploreAwards}
+                    ExploreSynopsis={props.ExploreSynopisis}
+                    pillRef={pillRef}
+                  ></PillPlane>
                 </Suspense>
               </Canvas>
             </div>

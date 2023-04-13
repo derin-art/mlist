@@ -1,7 +1,7 @@
 import Title11 from "../../../public/Data/Tar/Images/Title11.jpg";
 import Image from "next/image";
 
-export default function MobileTitle() {
+export default function MobileHero() {
   return (
     <div className="w-full r h-screen flex items-center justify-center overflow-hidden sm:hidden">
       <div className="flex a top-4 justify-around w-full">

@@ -6,7 +6,7 @@ type CastProps = {
 };
 import { AnimatePresence, motion } from "framer-motion";
 import { useParallax, Parallax } from "react-scroll-parallax";
-import Image from "next/image";
+
 import { useState, useEffect } from "react";
 import RightArr from "../../public/Icons/RightArr";
 

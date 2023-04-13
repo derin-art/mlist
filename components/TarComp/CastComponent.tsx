@@ -6,9 +6,7 @@ type CastComp = {
   id: string;
   number: number;
 };
-import Script from "next/script";
 import dynamic from "next/dynamic";
-import WaveText from "../TarComp/Wavetext";
 const Distortion = dynamic(() => import("../DistortText"));
 import { motion } from "framer-motion";
 
@@ -18,22 +16,18 @@ export default function CastComponent(props: CastComp) {
   const characterNameSplit = props.as.split(" ");
 
   return (
-    <motion.div className={`flex items-center mt-[10%] justify-between `}>
+    <motion.div
+      className={`flex items-center mb-[8%] lg:mb-[4%] justify-between ${
+        props.number % 2 ? "ml-[10%]" : "mr-[10%]"
+      } `}
+    >
       {" "}
       <motion.div
-        style={{ display: "inline-block", overflow: "hidden" }}
-        className={`font-Music   text-[20vw] px-[6vw] hidden md:block ${
+        className={`font-Music   text-[20vw] px-[6vw] hidden  md:block ${
           props.number % 2 ? "md:hidden" : ""
         }`}
       >
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          className={`${props.number % 2 ? "md:hidden " : ""} hidden md:block`}
-        >
-          {props.number + 1}.
-        </motion.div>
+        {props.number + 1}
       </motion.div>
       <div
         className={`md:w-[20vw] w-[60vw]  r  text-white font-Climate flex flex-col items-center  py-[4%]`}
@@ -47,7 +41,10 @@ export default function CastComponent(props: CastComp) {
           </span>
           <span className="font-PvcI md:text-[1.4vw] text-sm">{split[1]}</span>
         </div>
-        <img className="w-full duration-300 " src={props.img.src}></img>
+        <img
+          className="lg:w-[85%] w-full duration-300 "
+          src={props.img.src}
+        ></img>
 
         <div className="font-NeueT mt-4">
           {" "}
@@ -59,19 +56,11 @@ export default function CastComponent(props: CastComp) {
         <script src="https://unpkg.com/blotterjs-fork@0.1.0/build/blotter.min.js"></script>
       </div>
       <motion.div
-        style={{ display: "inline-block", overflow: "hidden" }}
         className={`font-Music   text-[20vw] px-[6vw] hidden md:block ${
           props.number % 2 ? "" : "md:hidden"
         }`}
       >
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          className={`${props.number % 2 ? "" : "md:hidden"} hidden md:block`}
-        >
-          {props.number + 1}.
-        </motion.div>
+        {props.number + 1}
       </motion.div>
     </motion.div>
   );

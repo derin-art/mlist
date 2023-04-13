@@ -201,10 +201,6 @@ a {
   width: 55vw;
 }
 
-.mH {
-  height: 100vh;
-}
-
 .grit {
   -webkit-mask-image: url("../public/grit.png");
   mask-image: url("../public/grit.png");
@@ -424,6 +420,10 @@ a {
   }
 }
 
-.sdsdsd{
+.sdsdsd {
   background-color: #1d4ed8;
+}
+
+.will-change {
+  will-change: contents;
 }

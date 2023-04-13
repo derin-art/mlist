@@ -1,9 +1,8 @@
-import { useState } from "react";
-import Aud1 from "../../public/Data/Tar/Images/Aud1.jpg";
-import Aud2 from "../../public/Data/Tar/Images/Aud2.jpg";
+import Aud1 from "../../../public/Data/Tar/Images/Aud1.jpg";
+import Aud2 from "../../../public/Data/Tar/Images/Aud2.jpg";
 import { motion } from "framer-motion";
 
-export default function GridAud() {
+export default function LocationCta() {
   return (
     <motion.div className="w-full h-screen otherGrid  overflow-hidden ">
       <div className="w-full h-full r md:hidden">

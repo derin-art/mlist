@@ -1,15 +1,13 @@
-import CastHov from "./CastHov";
-import CateB from "../../public/Data/Tar/Images/Cast/CateB.jpg";
-import NinaH from "../../public/Data/Tar/Images/Cast/NinaH.jpg";
-import SophieK from "../../public/Data/Tar/Images/Cast/SophieK.jpg";
-import NoemieM from "../../public/Data/Tar/Images/Cast/NoemieM.jpg";
-import MarkS from "../../public/Data/Tar/Images/Cast/MarkS.jpg";
-import { ParallaxController } from "parallax-controller";
-import { useParallax, ParallaxProvider } from "react-scroll-parallax";
+import CateB from "../../../public/Data/Tar/Images/Cast/CateB.jpg";
+import NinaH from "../../../public/Data/Tar/Images/Cast/NinaH.jpg";
+import SophieK from "../../../public/Data/Tar/Images/Cast/SophieK.jpg";
+import NoemieM from "../../../public/Data/Tar/Images/Cast/NoemieM.jpg";
+import MarkS from "../../../public/Data/Tar/Images/Cast/MarkS.jpg";
 
-const CastComponent = dynamic(() => import("./CastComponent"));
-import Script from "next/script";
+import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
+
+const CastComponent = dynamic(() => import("../CastComponent"));
 
 export default function TarCastList() {
   const cast = [
@@ -50,10 +48,12 @@ export default function TarCastList() {
     },
   ];
   return (
-    <div className="w-full h-fit r bg-black pb-[5%] flex-col flex items-center  text-white">
-      <div className="font-NeueT text-[2vw] mt-[4%]">
-        C<span className="">a</span>st
+    <motion.div className="w-full h-fit r bg-black pb-[5%] flex-col flex items-center  text-white">
+      <div className="font-Neue text-[8vw] hidden mt-[4%] rounded-full a left-[20%]">
+        Cast
+        <div>List</div>
       </div>
+      <div className="mb-[10%]"></div>
       {cast.map((item, index) => {
         return (
           <CastComponent
@@ -67,6 +67,6 @@ export default function TarCastList() {
           ></CastComponent>
         );
       })}
-    </div>
+    </motion.div>
   );
 }
