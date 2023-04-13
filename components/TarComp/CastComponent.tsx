@@ -17,18 +17,9 @@ export default function CastComponent(props: CastComp) {
 
   return (
     <motion.div
-      className={`flex items-center mb-[8%] lg:mb-[4%] justify-between ${
-        props.number % 2 ? "ml-[10%]" : "mr-[10%]"
-      } `}
+      className={`flex items-center mb-[8%] lg:mb-[1%] justify-between   p-2`}
     >
       {" "}
-      <motion.div
-        className={`font-Music   text-[20vw] px-[6vw] hidden  md:block ${
-          props.number % 2 ? "md:hidden" : ""
-        }`}
-      >
-        {props.number + 1}
-      </motion.div>
       <div
         className={`md:w-[20vw] w-[60vw]  r  text-white font-Climate flex flex-col items-center  py-[4%]`}
       >
@@ -42,7 +33,7 @@ export default function CastComponent(props: CastComp) {
           <span className="font-PvcI md:text-[1.4vw] text-sm">{split[1]}</span>
         </div>
         <img
-          className="lg:w-[85%] w-full duration-300 "
+          className="lg:w-[120%] w-full duration-300 "
           src={props.img.src}
         ></img>
 
@@ -55,13 +46,6 @@ export default function CastComponent(props: CastComp) {
         </div>
         <script src="https://unpkg.com/blotterjs-fork@0.1.0/build/blotter.min.js"></script>
       </div>
-      <motion.div
-        className={`font-Music   text-[20vw] px-[6vw] hidden md:block ${
-          props.number % 2 ? "" : "md:hidden"
-        }`}
-      >
-        {props.number + 1}
-      </motion.div>
     </motion.div>
   );
 }

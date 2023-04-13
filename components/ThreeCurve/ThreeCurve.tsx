@@ -131,7 +131,7 @@ const PloygonShape = () => {
     bevelThickness: 1,
   };
 
-  const prob = new THREE.Shape();
+  const prob = new THREE.Shape(); 
 
   const equalLengt = 0;
   const thicks = 0.4;

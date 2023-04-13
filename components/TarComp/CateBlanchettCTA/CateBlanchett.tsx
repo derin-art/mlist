@@ -1,6 +1,47 @@
 import { motion } from "framer-motion";
 import CateB1 from "../../../public/Data/Tar/Images/CateB.jpg";
 
+const upWardArrow = (
+  style?: string,
+  width: string = "24",
+  height: string = "24"
+) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={width}
+      height={height}
+      fill="currentColor"
+      className={`${style}`}
+      viewBox="0 0 16 16"
+    >
+      <path
+        fillRule="evenodd"
+        d="M14 2.5a.5.5 0 0 0-.5-.5h-6a.5.5 0 0 0 0 1h4.793L2.146 13.146a.5.5 0 0 0 .708.708L13 3.707V8.5a.5.5 0 0 0 1 0v-6z"
+      />
+    </svg>
+  );
+};
+
+const sunIcon = (
+  style?: string,
+  width: string = "24",
+  height: string = "24"
+) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={width}
+      height={height}
+      fill="currentColor"
+      className={style}
+      viewBox="0 0 16 16"
+    >
+      <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm.5-9.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm5-5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm-11 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9.743-4.036a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm-7.779 7.779a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm7.072 0a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707zM3.757 4.464a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707z" />
+    </svg>
+  );
+};
+
 export default function CateBlanchettCta() {
   return (
     <div className="h-screen w-full flex items-center justify-center bg-black r overflow-hidden">
@@ -25,6 +66,22 @@ export default function CateBlanchettCta() {
         <div className="text-white font-PvcB md:text-[1.5vw] text-[3vw]">
           Lydia<span className="font-PvcI"> Tar</span>
         </div>
+      </div>
+      <div className="a top-[17%] text-white left-[20%] border-2 border-blue-700 font-Neue justify-center rounded-[1.4vw] text-[2vw] items-center p-1 px-2 w-fit flex">
+        Staring <div>{sunIcon("fill-white", "2vw", "2vw")}</div>
+      </div>
+
+      <div
+        style={{ overflow: "hidden", display: "inline-block" }}
+        className="a right-[20%] border-2 rounded-3xl p-4"
+      >
+        <motion.div
+          transition={{ duration: 0.6 }}
+          initial={{ x: "-100%", y: "100%" }}
+          whileInView={{ x: "0", y: "0" }}
+        >
+          {upWardArrow("fill-white", "15vw", "15vw")}
+        </motion.div>
       </div>
     </div>
   );

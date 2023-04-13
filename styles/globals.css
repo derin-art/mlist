@@ -427,3 +427,7 @@ a {
 .will-change {
   will-change: contents;
 }
+
+.cast-title {
+  line-height: 90%;
+}

@@ -30,8 +30,8 @@ export default function LocationCta() {
       </div>
       <div className="w-full h-full r hidden md:block">
         <div className="a font-PvcB text-white top-[10%] left-[5%] text-[3vw]">
-          <div className="font-NeueT text-[1.7vw] ml-[1%] mb-[4%]">
-            Shot at the
+          <div className="font-Neue text-[1.7vw] ml-[1%] mb-[2%]">
+            Shot at the Majestic
           </div>
           <div className="border-2 rounded-full px-[4%]">Dresden </div>
           <div className="font-PvcI">Philharmonic</div>
@@ -49,19 +49,22 @@ export default function LocationCta() {
               Berlin,{" "}
             </motion.div>
           </motion.div>
-          <div className="font-PvcI">Germany</div>
+          <div className="font-PvcI  text-right">Germany</div>
         </div>
-        <div className="w-[26%] a right-[20%] top-[5%] ">
+        <div className="w-[26%] a right-[20%] top-[20%] ">
           <motion.img
-            initial={{ rotate: "0deg", scale: 0.7 }}
-            whileInView={{ rotate: "20deg", scale: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             src={Aud1.src}
             className={`w-full `}
           ></motion.img>
         </div>
-        <div className="h-[40%] a bottom-[10%] left-[5%]">
-          <motion.img src={Aud2.src} className={`h-full `}></motion.img>
+        <div className="h-[40%] a bottom-[10%] left-[5%] r">
+          <div className="text-sm text-white text-right font-Neue  mb-3">
+            <span className="border-2 z-30 p-2 rounded-full border-blue-700">
+              51.0504° N, 13.7373° E
+            </span>
+          </div>
+          <motion.img src={Aud2.src} className={`h-full z-0`}></motion.img>
         </div>
       </div>
     </motion.div>

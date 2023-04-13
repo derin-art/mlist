@@ -33,7 +33,7 @@ export default function SynopsisCta() {
       <div className="gridF1 font-Neue  p-2 text-white flex h-screen r w-full  justify-center items-center">
         <motion.button
           style={{ display: "inline-block" }}
-          className="a top-[25%] font-Climate"
+          className="a top-[20%] font-Climate"
         >
           {" "}
           <ThreeButton
