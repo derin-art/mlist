@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import dynamic from "next/dynamic";
+import ThreeSpring from "../ThreeSpring";
 import {
   Canvas,
   PointLightProps,
@@ -31,15 +32,7 @@ const Globe = (props: { position: [x: number, y: number, z: number] }) => {
     currentY = ref.current.position.y;
   }
   return (
-    <motion.mesh
-      animate={{
-        x: [currentX, currentX * 1.3, currentX],
-        y: [currentY, currentY * 1.3, currentY],
-        transition: { repeat: Infinity, duration: 1 },
-      }}
-      ref={ref}
-      position={props.position}
-    >
+    <motion.mesh position={props.position}>
       <sphereBufferGeometry args={[1, 20, 15]}></sphereBufferGeometry>
       <meshBasicMaterial color={"red"}></meshBasicMaterial>
     </motion.mesh>
@@ -131,7 +124,7 @@ const PloygonShape = () => {
     bevelThickness: 1,
   };
 
-  const prob = new THREE.Shape(); 
+  const prob = new THREE.Shape();
 
   const equalLengt = 0;
   const thicks = 0.4;
@@ -365,7 +358,7 @@ export default function ThreeCurve() {
 
   return (
     <div className="w-full h-screen bg-white r">
-      <Canvas camera={{ position: [0, 0, 4] }}>
+      <Canvas camera={{ position: [0, 2, 4] }}>
         <group>
           {positions.map((item, index) => {
             return <Globe key={index} position={[item.x, item.y, 0]}></Globe>;

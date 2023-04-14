@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-
+const ThreeCurve = dynamic(() => import("../components/ThreeCurve/ThreeCurve"));
 import Hero from "./TarComp/Hero/Hero";
 import TarTrailer from "./TarComp/TarTrailer";
 import SynopsisCta from "./TarComp/SynopisCTA/SynopsisCta";
@@ -22,6 +22,7 @@ export default function Tar() {
 
         <TarCarList></TarCarList>
         <SocialProof></SocialProof>
+        <ThreeCurve></ThreeCurve>
 
         {/*   <div className="w-full h-screen r flex items-center justify-center bg-black">
           <ThreeButton text="Explore Something"></ThreeButton>
