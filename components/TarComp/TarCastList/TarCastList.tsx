@@ -18,6 +18,7 @@ export default function TarCastList() {
         img: CateB,
         style: "top-[10%] left-[20%] ",
         id: "sdmsd",
+        no: 1,
       },
       {
         as: "Sharon Goodnow",
@@ -25,6 +26,7 @@ export default function TarCastList() {
         img: NinaH,
         style: "top-[25%] right-[20%]",
         id: "sdmsd1",
+        no: 2,
       },
     ],
     [
@@ -34,6 +36,7 @@ export default function TarCastList() {
         img: SophieK,
         style: "top-[40%] left-[20%]",
         id: "sdmsd2",
+        no: 3,
       },
       {
         as: "Francesca Lentini",
@@ -41,6 +44,7 @@ export default function TarCastList() {
         img: NoemieM,
         style: "top-[60%] right-[20%]",
         id: "sdmsd3",
+        no: 4,
       },
     ],
     [
@@ -50,36 +54,44 @@ export default function TarCastList() {
         img: MarkS,
         style: "top-[70%] left-[20%]",
         id: "sdmsd4",
+        no: 5,
       },
     ],
   ];
   return (
-    <motion.div className="w-full h-fit r bg-black pb-[5%] flex-col flex items-center  text-white">
-      <div className="font-Neue text-[5vw]  mt-[0%]  cast-title r w-full flex items-center justify-center">
-        <div className="a left-[10%] border-2 rounded-full p-2 r">
-          <span className="font-NeueI">CAST </span>LIST{" "}
+    <div className="flex items-center justify-center p-1 bg-black pt-[4vw]">
+      <motion.div className="w-full  h-fit r pb-[5%] flex-col flex items-center  text-white">
+        <div className="font-PvcB text-[4vw]  mt-[0%]  cast-title r w-full flex items-center justify-center">
+          <motion.div className="a left-[16%]  tracking-[.0.7em]">
+            <motion.div>
+              CAST <span className="font-PvcI">(LIST)</span>
+            </motion.div>
+          </motion.div>
         </div>
-      </div>
-      <div className="mb-[10%]"></div>
-      {cast.map((castArr, index) => {
-        return (
-          <div key={index} className="w-full flex justify-around ">
-            {castArr.map((item, indexA) => {
-              return (
-                <CastComponent
-                  as={item.as}
-                  id={item.id}
-                  key={indexA}
-                  img={item.img}
-                  number={indexA}
-                  name={item.name}
-                  syle={item.style}
-                ></CastComponent>
-              );
-            })}
-          </div>
-        );
-      })}
-    </motion.div>
+        <div className="mb-[5%]"></div>
+        {cast.map((castArr, index) => {
+          return (
+            <div key={index} className="w-full flex justify-around p-8 ">
+              {castArr.map((item, indexA) => {
+                return (
+                  <div className="border-white  w-[30%] flex items-center justify-center">
+                    <CastComponent
+                      as={item.as}
+                      no={item.no}
+                      id={item.id}
+                      key={indexA}
+                      img={item.img}
+                      number={indexA}
+                      name={item.name}
+                      syle={item.style}
+                    ></CastComponent>
+                  </div>
+                );
+              })}
+            </div>
+          );
+        })}
+      </motion.div>
+    </div>
   );
 }

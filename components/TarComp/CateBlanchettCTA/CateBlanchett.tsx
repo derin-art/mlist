@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import CateB1 from "../../../public/Data/Tar/Images/CateB.jpg";
+import CateB1Png from "../../../public/Data/Tar/Images/CateB.png";
+import WhiteBlob from "../../../public/Svg/White.svg";
 
 const upWardArrow = (
   style?: string,
@@ -45,6 +47,10 @@ const sunIcon = (
 export default function CateBlanchettCta() {
   return (
     <div className="h-screen w-full flex items-center justify-center bg-black r overflow-hidden">
+      <img
+        className="a blur-[90px] w-[40vw] h-[50vw]"
+        src={WhiteBlob.src}
+      ></img>
       <div className="a w-full flex flex-col items-center will-change justify-center text-white md:text-[23px] text-[4vw] lS">
         <div className="text-white font-PvcI ">
           Cate <span className="font-PvcB">Blanchett</span> is
@@ -67,21 +73,8 @@ export default function CateBlanchettCta() {
           Lydia<span className="font-PvcI"> Tar</span>
         </div>
       </div>
-      <div className="a top-[17%] text-white left-[20%] border-2 border-blue-700 font-Neue justify-center rounded-[1.4vw] text-[2vw] items-center p-1 px-2 w-fit flex">
-        Staring <div>{sunIcon("fill-white", "2vw", "2vw")}</div>
-      </div>
-
-      <div
-        style={{ overflow: "hidden", display: "inline-block" }}
-        className="a right-[20%] border-2 rounded-3xl p-4"
-      >
-        <motion.div
-          transition={{ duration: 0.6 }}
-          initial={{ x: "-100%", y: "100%" }}
-          whileInView={{ x: "0", y: "0" }}
-        >
-          {upWardArrow("fill-white", "15vw", "15vw")}
-        </motion.div>
+      <div className="a top-[17%] text-white left-[20%] border-2 border-blue-700 font-Neue justify-center rounded-full text-sm items-center p-1 px-2 w-fit flex">
+        Staring <div>{sunIcon("fill-white", "1.3vw", "1.3vw")}</div>
       </div>
     </div>
   );

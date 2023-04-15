@@ -4,18 +4,7 @@ import { motion } from "framer-motion";
 export default function VideoCta() {
   return (
     <div className="w-full HorH bg-black flex r items-center justify-center overflow-hidden">
-      <motion.div
-        initial={{ width: "70%" }}
-        whileHover={{
-          x: 0,
-          width: "100%",
-        }}
-        transition={{
-          duration: 0.6,
-          delay: 0.2,
-        }}
-        className="w-full"
-      >
+      <motion.div className="w-full">
         <ReactPlayer
           width={"100%"}
           height={"100%"}
@@ -28,6 +17,9 @@ export default function VideoCta() {
         go of that
       </div>
       <button className="a btn">Play</button>
+      <div className="text-sm a bottom-[15%] left-4 font-PvcB text-white">
+        Dresden <span className="font-PvcI">Philharmonic</span>
+      </div>
       <div className="a font-Neue text-[8vw] text-center w-[80%]  text-white flex flex-col items-center hidden">
         <span className="behindImage "> "You cant let go of that "</span>
         <div className="font-PvcI border-white rounded-full border-2 w-fit text-center text-white opacity-0">

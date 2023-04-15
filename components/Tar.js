@@ -22,7 +22,6 @@ export default function Tar() {
 
         <TarCarList></TarCarList>
         <SocialProof></SocialProof>
-        <ThreeCurve></ThreeCurve>
 
         {/*   <div className="w-full h-screen r flex items-center justify-center bg-black">
           <ThreeButton text="Explore Something"></ThreeButton>

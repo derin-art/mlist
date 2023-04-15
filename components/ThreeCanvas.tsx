@@ -1,8 +1,8 @@
 import * as THREE from "three";
 import dynamic from "next/dynamic";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 
-import { Suspense, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Edges, OrbitControls, useHelper } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
 import { SpotLightHelper } from "three";
@@ -122,6 +122,123 @@ const Globe = (props: {
   );
 };
 
+const globePositions: {
+  pos: [x: number, y: number, z: number];
+  siz: number;
+  Animation?: TargetAndTransition;
+}[] = [
+  {
+    pos: [4, 1.6, 0],
+    siz: 0.8,
+    Animation: {
+      scale: [1, 0.95, 0.9, 1],
+      opacity: [1, 0],
+      x: [4, 4.1, 3.9, 4],
+      y: [1.6, 1.4, 1.6],
+      rotateY: [0, 360, 0],
+      transition: { duration: 5, repeat: Infinity },
+    },
+  },
+  {
+    pos: [6, 1, 0],
+    siz: 0.3,
+    Animation: {
+      scale: [1, 0.95, 0.9, 1],
+      rotateX: [0, 360, 0],
+      x: [6, 6.1, 6.2, 6.1, 6, 5.9, 6],
+      transition: { duration: 2, repeat: Infinity },
+    },
+  },
+  {
+    pos: [4, -1.6, 0],
+    siz: 0.4,
+    Animation: {
+      scale: [1, 0.8, 0.9, 1],
+      rotateX: [0, 360, 0],
+      x: [4, 3.9, 3.8, 4.1, 4, 3.9, 4],
+      y: [-1.6, -1.7, -1.6],
+      transition: { duration: 2, repeat: Infinity },
+    },
+  },
+  {
+    pos: [6, -0.6, 0],
+    siz: 1,
+    Animation: {
+      scale: [1, 0.8, 0.9, 1],
+      rotateX: [0, 360, 0],
+      x: [6, 6.2, 6.1, 5.9, 5.8, 6],
+
+      transition: { duration: 1.5, repeat: Infinity },
+    },
+  },
+  {
+    pos: [2, -1.6, 0],
+    siz: 0.6,
+    Animation: {
+      scale: [1, 0.8, 0.9, 1],
+      rotateX: [0, 360, 0],
+      x: [2, 2.1, 1.9, 2.1, 1.8, 2],
+
+      transition: { duration: 1.3, repeat: Infinity },
+    },
+  },
+  {
+    pos: [-2, -0.8, 0],
+    siz: 0.6,
+    Animation: {
+      scale: [1, 0.7, 0.9, 1, 1.1, 1],
+      rotateX: [0, 360, 0],
+      x: [-2, -2.2, -2.1, -2, -1.8, -2],
+      y: [-0.8, -1.2, -0.8],
+      transition: { duration: 4, repeat: Infinity },
+    },
+  },
+  {
+    pos: [-4, -1.8, 0],
+    siz: 0.8,
+    Animation: {
+      scale: [1, 0.7, 0.9, 1, 1.1, 1],
+      rotateX: [0, 360, 0],
+      x: [-4, -4.2, -4.1, -4, -3.8, -4],
+      y: [-1.8, -1.6, -1.8],
+      transition: { duration: 3, repeat: Infinity, repeatDelay: 0.4 },
+    },
+  },
+  {
+    pos: [-1, 0.5, 0],
+    siz: 0.4,
+    Animation: {
+      scale: [1, 0.6, 0.9, 0.8, 1.1, 1],
+      rotateX: [0, 360, 0],
+      x: [-1, -1.2, -0.9, -1, -1.2, -1],
+      y: [0.5, 0.6, 0.5],
+      transition: { duration: 2.5, repeat: Infinity },
+    },
+  },
+  {
+    pos: [-4, 0.7, 0],
+    siz: 0.5,
+    Animation: {
+      scale: [1, 0.7, 0.9, 1, 1.1, 1],
+      rotateX: [0, 360, 0],
+      x: [-4, -4.2, -4.1, -4, -3.8, -4],
+      y: [0.7, 0.6, 0.8, 0.7],
+      transition: { duration: 3, repeat: Infinity },
+    },
+  },
+  {
+    pos: [-3, 1.2, 0],
+    siz: 1,
+    Animation: {
+      scale: [1, 0.7, 0.9, 1, 1.1, 1],
+      rotateX: [0, 360, 0],
+      x: [-3, -3.3, -3.1, -3, -2.8, -3],
+      y: [1.2, 1.3, 0.9, 1, 1.2],
+      transition: { duration: 4, repeat: Infinity },
+    },
+  },
+];
+
 function DLights(props: {
   animation?: TargetAndTransition;
   position?: [x: number, y: number, z: number];
@@ -151,126 +268,66 @@ function DLights(props: {
   );
 }
 
+const CameraComp = (props: { x: number; y: number }) => {
+  const { camera } = useThree();
+  /* 
+  useFrame(({ clock }) => {
+    camera.updateProjectionMatrix();
+  }); */
+
+  return <OrbitControls></OrbitControls>;
+};
+
+const BubblesGroup = (props: { x: number; y: number }) => {
+  const bubbleRef = useRef<THREE.Group>(null);
+
+  useFrame(() => {
+    if (bubbleRef.current) {
+      bubbleRef.current.position.x = props.x * -2;
+      bubbleRef.current.position.y = props.y * -1;
+    }
+  });
+
+  return (
+    <>
+      <motion.group ref={bubbleRef}>
+        {globePositions.map((item, index) => {
+          return (
+            <Globe
+              Animation={item.Animation}
+              key={index}
+              position={item.pos}
+              size={item.siz}
+            ></Globe>
+          );
+        })}
+      </motion.group>
+    </>
+  );
+};
+
 export default function ThreeCanvas(props: ObjectProps) {
   const ref = useRef();
   const pillRef = useRef<THREE.Mesh>(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-  const globePositions: {
-    pos: [x: number, y: number, z: number];
-    siz: number;
-    Animation?: TargetAndTransition;
-  }[] = [
-    {
-      pos: [4, 1.6, 0],
-      siz: 0.8,
-      Animation: {
-        scale: [1, 0.95, 0.9, 1],
-        opacity: [1, 0],
-        x: [4, 4.1, 3.9, 4],
-        y: [1.6, 1.4, 1.6],
-        rotateY: [0, 360, 0],
-        transition: { duration: 5, repeat: Infinity },
-      },
-    },
-    {
-      pos: [6, 1, 0],
-      siz: 0.3,
-      Animation: {
-        scale: [1, 0.95, 0.9, 1],
-        rotateX: [0, 360, 0],
-        x: [6, 6.1, 6.2, 6.1, 6, 5.9, 6],
-        transition: { duration: 2, repeat: Infinity },
-      },
-    },
-    {
-      pos: [4, -1.6, 0],
-      siz: 0.4,
-      Animation: {
-        scale: [1, 0.8, 0.9, 1],
-        rotateX: [0, 360, 0],
-        x: [4, 3.9, 3.8, 4.1, 4, 3.9, 4],
-        y: [-1.6, -1.7, -1.6],
-        transition: { duration: 2, repeat: Infinity },
-      },
-    },
-    {
-      pos: [6, -0.6, 0],
-      siz: 1,
-      Animation: {
-        scale: [1, 0.8, 0.9, 1],
-        rotateX: [0, 360, 0],
-        x: [6, 6.2, 6.1, 5.9, 5.8, 6],
+  useEffect(() => {
+    window.addEventListener("mousemove", (e) => {
+      const xCalculation = e.clientX / window.innerWidth - 0.5;
+      const yCalculation = e.clientY / window.innerHeight - 0.5;
+      setMousePos((prev) => {
+        console.log(xCalculation, yCalculation);
+        return { x: xCalculation * -1, y: yCalculation };
+      });
+    });
+    return window.removeEventListener("mousemove", () => {});
+  }, []);
 
-        transition: { duration: 1.5, repeat: Infinity },
-      },
-    },
-    {
-      pos: [2, -1.6, 0],
-      siz: 0.6,
-      Animation: {
-        scale: [1, 0.8, 0.9, 1],
-        rotateX: [0, 360, 0],
-        x: [2, 2.1, 1.9, 2.1, 1.8, 2],
-
-        transition: { duration: 1.3, repeat: Infinity },
-      },
-    },
-    {
-      pos: [-2, -0.8, 0],
-      siz: 0.6,
-      Animation: {
-        scale: [1, 0.7, 0.9, 1, 1.1, 1],
-        rotateX: [0, 360, 0],
-        x: [-2, -2.2, -2.1, -2, -1.8, -2],
-        y: [-0.8, -1.2, -0.8],
-        transition: { duration: 4, repeat: Infinity },
-      },
-    },
-    {
-      pos: [-4, -1.8, 0],
-      siz: 0.8,
-      Animation: {
-        scale: [1, 0.7, 0.9, 1, 1.1, 1],
-        rotateX: [0, 360, 0],
-        x: [-4, -4.2, -4.1, -4, -3.8, -4],
-        y: [-1.8, -1.6, -1.8],
-        transition: { duration: 3, repeat: Infinity, repeatDelay: 0.4 },
-      },
-    },
-    {
-      pos: [-1, 0.5, 0],
-      siz: 0.4,
-      Animation: {
-        scale: [1, 0.6, 0.9, 0.8, 1.1, 1],
-        rotateX: [0, 360, 0],
-        x: [-1, -1.2, -0.9, -1, -1.2, -1],
-        y: [0.5, 0.6, 0.5],
-        transition: { duration: 2.5, repeat: Infinity },
-      },
-    },
-    {
-      pos: [-4, 0.7, 0],
-      siz: 0.5,
-      Animation: {
-        scale: [1, 0.7, 0.9, 1, 1.1, 1],
-        rotateX: [0, 360, 0],
-        x: [-4, -4.2, -4.1, -4, -3.8, -4],
-        y: [0.7, 0.6, 0.8, 0.7],
-        transition: { duration: 3, repeat: Infinity },
-      },
-    },
-    {
-      pos: [-3, 1.2, 0],
-      siz: 1,
-      Animation: {
-        scale: [1, 0.7, 0.9, 1, 1.1, 1],
-        rotateX: [0, 360, 0],
-        x: [-3, -3.3, -3.1, -3, -2.8, -3],
-        y: [1.2, 1.3, 0.9, 1, 1.2],
-        transition: { duration: 4, repeat: Infinity },
-      },
-    },
-  ];
+  /*   props.isHovered &&
+    useFrame(({ camera }) => {
+      camera.position.x = mousePos.x;
+      camera.position.y = mousePos.y;
+    }); */
 
   return (
     <>
@@ -287,10 +344,10 @@ export default function ThreeCanvas(props: ObjectProps) {
             <div
               className={` z-20 h-[200px] a w-[130%] r bg-transparent flex items-center justify-center `}
             >
-              <Canvas camera={{ position: [0, 0, 5], fov: 100 }}>
+              <Canvas camera={{ fov: 100, position: [0, 0, 5] }}>
                 <ambientLight></ambientLight>
 
-                <OrbitControls></OrbitControls>
+                <CameraComp x={mousePos.x} y={mousePos.y}></CameraComp>
 
                 <Suspense fallback={null}>
                   <motion.group initial={{ display: "none" }}>
@@ -330,18 +387,7 @@ export default function ThreeCanvas(props: ObjectProps) {
                     ></DLights>
                   </motion.group>
                   {props.isHovered && (
-                    <>
-                      {globePositions.map((item, index) => {
-                        return (
-                          <Globe
-                            Animation={item.Animation}
-                            key={index}
-                            position={item.pos}
-                            size={item.siz}
-                          ></Globe>
-                        );
-                      })}
-                    </>
+                    <BubblesGroup x={mousePos.x} y={mousePos.y}></BubblesGroup>
                   )}
                   <PillPlane
                     width={

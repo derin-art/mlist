@@ -5,6 +5,7 @@ type CastComp = {
   syle?: string;
   id: string;
   number: number;
+  no: number;
 };
 import dynamic from "next/dynamic";
 const Distortion = dynamic(() => import("../DistortText"));
@@ -17,7 +18,7 @@ export default function CastComponent(props: CastComp) {
 
   return (
     <motion.div
-      className={`flex items-center mb-[8%] lg:mb-[1%] justify-between   p-2`}
+      className={`flex items-center mb-[8%] lg:mb-[1%] justify-between    p-2`}
     >
       {" "}
       <div
@@ -37,11 +38,12 @@ export default function CastComponent(props: CastComp) {
           src={props.img.src}
         ></img>
 
-        <div className="font-NeueT mt-4">
+        <div className="font-Neue mt-4 border w-full bg-white text-black px-2 r overflow-hidden">
           {" "}
           is {characterNameSplit[0]}{" "}
-          <span className="border-2 rounded-full p-2 px-4">
-            {characterNameSplit[1]}
+          <span className="">{characterNameSplit[1]}</span>
+          <span className="a right-0 p-2 rounded-full border-black border">
+            {props.no}
           </span>
         </div>
         <script src="https://unpkg.com/blotterjs-fork@0.1.0/build/blotter.min.js"></script>

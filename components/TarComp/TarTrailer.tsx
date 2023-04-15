@@ -1,11 +1,13 @@
 import WhiteSvg from "../../public/Svg/White.svg";
 import SplineObject from "./SplineObject";
 import ReactPlayer from "react-player";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import ThreeCurve from "../ThreeCurve/ThreeCurve";
 
 export default function TarTrailer() {
   const [isGrayScale, setIsGrayScale] = useState(false);
+  const [animationIsOpen, setAnimationIsOpen] = useState(false);
 
   const trailerUrl =
     "https://res.cloudinary.com/doaahozax/video/upload/v1680302090/y2mate.com_-_T%C3%81R_Official_Trailer_HD_In_Select_Theaters_October_7_1080p_hnzkdo.mp4";
@@ -13,9 +15,17 @@ export default function TarTrailer() {
   return (
     <div className="w-full h-screen border-y bg-black border-white flex space-x-2 will-change">
       <div className="w-[28%] h-full border-r flex flex-col">
-        <div className="w-full h-[52%] border-b flex items-center justify-center">
-          <SplineObject></SplineObject>
-        </div>
+        <motion.div
+          whileInView={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+          transition={{ duration: 0.7 }}
+          className="w-full h-[52%] border-b r flex items-center justify-center bg-white"
+        >
+          <div className="font-Neue text-black top-4 a z-30 border-2 p-1 border-blue-700 rounded-full ">
+            It's all about her
+          </div>
+          <ThreeCurve beginAnimation={isGrayScale}></ThreeCurve>
+        </motion.div>
         <div className="h-[5%] w-full border-b bg-white text-black flex font-Climate flex items-center justify-center space-x-6">
           <div>Tar</div>
           <div>Tar</div>
@@ -56,7 +66,7 @@ export default function TarTrailer() {
           }`}
         >
           {" "}
-          <span className="text-white self-end  a top-0 right-2 font-Neue border-2 p-1 text-sm rounded-full">
+          <span className="text-white self-end  a top-0 right-2 font-Neue border-2 border-blue-700 p-1 text-sm rounded-full">
             Trailer
           </span>
           <button className="btn a z-20">Play</button>

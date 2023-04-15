@@ -42,13 +42,16 @@ export default function SynopsisCta() {
           ></ThreeButton>
         </motion.button>
         <div className=" text-white a text-center will-change bottom-[4%] md:text-[6vw] text-[8.4vw] lH w-full flex flex-col justify-center items-center">
+          <div className="text-sm text-white border-2 border-blue-700 p-1 rounded-full ">
+            Tár:
+          </div>
           <motion.div className="z-20">
             {" "}
-            "The <span className="font-NeueT">n</span>arcissism of the smallest{" "}
+            "The <span className="font-Neue">n</span>arcissism of the smallest{" "}
             <span className="font-NeueT">differences</span> leads to{" "}
             <span className="font-NeueT">most</span> boring{" "}
           </motion.div>
-          <motion.div className=" z-0 rounded-full h-fit border-2  flex items-center justify-center w-fit text-white font-PvcB pt-[1%] md:mt-4 mt-1">
+          <motion.div className=" z-0 rounded-full h-fit border-2 r  flex items-center justify-center w-fit text-white font-PvcB pt-[1%] md:mt-4 mt-1">
             {["c", "o", "n", "f", "o", "r", "m", "i", "t", "y"].map(
               (item, index) => {
                 return (
@@ -73,6 +76,7 @@ export default function SynopsisCta() {
                 );
               }
             )}
+            <span className="font-Neue a right-[0%] top-0">"</span>
           </motion.div>
         </div>
       </div>
