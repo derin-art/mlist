@@ -1,6 +1,6 @@
 import * as THREE from "three";
 
-import { Canvas, useThree } from "@react-three/fiber";
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { OrbitControls } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
@@ -11,7 +11,10 @@ interface ThreeCurveProps {
 
 const Controls = () => {
   const { camera } = useThree();
-  camera.rotation.set(0, 0, (Math.PI / 180) * 90);
+  useFrame(() => {
+    camera.rotation.reorder("YXZ");
+    camera.rotation.set((Math.PI / 180) * 10, 0, 0);
+  });
   return <OrbitControls></OrbitControls>;
 };
 
