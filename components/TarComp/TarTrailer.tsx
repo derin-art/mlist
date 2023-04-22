@@ -21,17 +21,15 @@ export default function TarTrailer() {
           transition={{ duration: 0.7 }}
           className="w-full h-[52%] border-b r flex items-center justify-center bg-white"
         >
-          <div className="font-Neue text-black top-4 a z-30 border-2 p-1 border-blue-700 rounded-full ">
+          <div className="font-Neue text-black top-4 a z-30 border-2 p-1 px-2 border-blue-700 rounded-full ">
             It's all about her
           </div>
           <ThreeCurve beginAnimation={isGrayScale}></ThreeCurve>
         </motion.div>
         <div className="h-[5%] w-full border-b bg-white text-black flex font-Climate flex items-center justify-center space-x-6">
-          <div>Tar</div>
-          <div>Tar</div>
-          <div>Tar</div>
-          <div>Tar</div>
-          <div>Tar</div>
+          {[1, 2, 3, 4, 5, 6].map((item) => {
+            return <div key={item}>TÁR.</div>;
+          })}
         </div>
         <motion.div className="w-full h-[43%] flex items-center r will-change justify-center dirt font-Music text-[10vw] text-white">
           <motion.div
@@ -48,7 +46,7 @@ export default function TarTrailer() {
         </motion.div>
       </div>
       <div className="w-[44%] h-full flex flex-col justify-between ">
-        <motion.div className="font-Neue text-white musicP flex-col  p-[2%] ">
+        <motion.div className="font-Neue text-white text-[5vw]  p-[2%] leading-[0.9] ">
           <div className="font-NeueT">Music </div>
           <div className="font-NeueT">and</div>
           <div>power</div>
@@ -66,7 +64,7 @@ export default function TarTrailer() {
           }`}
         >
           {" "}
-          <span className="text-white self-end  a top-0 right-2 font-Neue border-2 border-blue-700 p-1 text-sm rounded-full">
+          <span className="text-white self-end  a top-0 right-2 font-Neue border-2 border-blue-700 p-1 px-2 text-sm rounded-full">
             Trailer
           </span>
           <button className="btn a z-20">Play</button>

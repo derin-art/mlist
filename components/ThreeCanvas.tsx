@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import dynamic from "next/dynamic";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import PlayButtonHoverObject from "./TarComp/ThreeComponents/PlayButtonHoverObjects";
 
 import { Suspense, useEffect, useRef, useState } from "react";
 import { Edges, OrbitControls, useHelper } from "@react-three/drei";
@@ -83,9 +84,8 @@ const Globe = (props: {
       });
       const accesion =
         Math.abs(props.position[1]) - Math.abs(ref.current.position.y);
-      props.Animation && console.log(accesion);
+
       if (Math.abs(accesion) > 0.6) {
-        console.log("sdms");
         setIsRendered(false);
       }
     }
@@ -258,7 +258,7 @@ function DLights(props: {
             }
       }
       color={props.color ? props.color : "red"}
-      intensity={props.intensity ? props.intensity : 8}
+      intensity={props.intensity ? props.intensity : 2}
       position={props.position ? props.position : [0, 0, 1]}
       shadow-mapSize-width={64}
       shadow-mapSize-height={64}

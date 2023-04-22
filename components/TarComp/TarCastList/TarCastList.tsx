@@ -59,22 +59,22 @@ export default function TarCastList() {
     ],
   ];
   return (
-    <div className="flex items-center justify-center p-1 bg-black pt-[4vw]">
+    <div className="flex items-center justify-center p-1 bg-black mt-[7vw] r">
       <motion.div className="w-full  h-fit r pb-[5%] flex-col flex items-center  text-white">
         <div className="font-PvcB text-[4vw]  mt-[0%]  cast-title r w-full flex items-center justify-center">
-          <motion.div className="a left-[16%]  tracking-[.0.7em]">
-            <motion.div>
-              CAST <span className="font-PvcI">(LIST)</span>
+          <motion.div className="a left-[7%]  tracking-[0.05em] ">
+            <motion.div className="">
+              CAST <span className="font-PvcI -ml-[8%]">LIST</span>
             </motion.div>
           </motion.div>
         </div>
-        <div className="mb-[5%]"></div>
+        <div className="mb-[4%]"></div>
         {cast.map((castArr, index) => {
           return (
-            <div key={index} className="w-full flex justify-around p-8 ">
+            <div key={index} className="w-full flex justify-between p-12 ">
               {castArr.map((item, indexA) => {
                 return (
-                  <div className="border-white  w-[30%] flex items-center justify-center">
+                  <div className="border-white w-[30%] flex items-center justify-center">
                     <CastComponent
                       as={item.as}
                       no={item.no}

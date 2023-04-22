@@ -41,18 +41,17 @@ export default function SynopsisCta() {
             text={"Explore Synopsis"}
           ></ThreeButton>
         </motion.button>
-        <div className=" text-white a text-center will-change bottom-[4%] md:text-[6vw] text-[8.4vw] lH w-full flex flex-col justify-center items-center">
-          <div className="text-sm text-white border-2 border-blue-700 p-1 rounded-full ">
-            Tár:
-          </div>
-          <motion.div className="z-20">
+        <div className=" text-white a text-center will-change bottom-[4%] md:text-[6vw] text-[8.4vw] leading-[0.9] w-full flex flex-col justify-center items-center">
+          <div className="text-base text-white font-PvcI mb-4">Lydia Tar-</div>
+          <motion.div className="z-20 font-NeueT">
             {" "}
-            "The <span className="font-Neue">n</span>arcissism of the smallest{" "}
-            <span className="font-NeueT">differences</span> leads to{" "}
-            <span className="font-NeueT">most</span> boring{" "}
+            "The <span className="font-">n</span>arcissism of the smallest{" "}
+            <span className="font-">differences</span>{" "}
+            <span className="font-NeueT">leads to</span>{" "}
+            <span className="font">most</span> boring{" "}
           </motion.div>
-          <motion.div className=" z-0 rounded-full h-fit border-2 r  flex items-center justify-center w-fit text-white font-PvcB pt-[1%] md:mt-4 mt-1">
-            {["c", "o", "n", "f", "o", "r", "m", "i", "t", "y"].map(
+          <motion.div className=" z-0 rounded-full h-fit border-4 r px-[2%] p-3 text-[5.4vw] pdt-[1.6%]  flex items-center justify-center w-fit text-white font-PvcB  md:mt-4 mt-1">
+            {["C", "o", "n", "f", "o", "r", "m", "i", "t", "y"].map(
               (item, index) => {
                 return (
                   <motion.div
@@ -61,7 +60,7 @@ export default function SynopsisCta() {
                       display: "inline-block",
                       overflow: "hidden",
                     }}
-                    className=" hidden  h-[7vw] flex items-center justify-center flex-col"
+                    className=" flex items-center justify-center flex-col   "
                   >
                     <motion.div
                       initial={{ opacity: 1, x: "100%" }}
@@ -76,7 +75,7 @@ export default function SynopsisCta() {
                 );
               }
             )}
-            <span className="font-Neue a right-[0%] top-0">"</span>
+            <span className="font-NeueT a right-[0%] top-0">"</span>
           </motion.div>
         </div>
       </div>

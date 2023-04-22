@@ -5,6 +5,9 @@ import glsl from "babel-plugin-glsl/macro";
 import Tar from "../public/Data/Tar/Images/Title.jpg";
 import * as THREE from "three";
 
+const loadingManager = new THREE.LoadingManager();
+const textureLoader = new THREE.TextureLoader();
+
 const WaveShaderMateria = shaderMaterial(
   // Uniform
   {
@@ -57,33 +60,47 @@ const WaveShaderMateria = shaderMaterial(
 
 extend({ WaveShaderMateria });
 
-const Plane = () => {
+const Plane = ({ image }) => {
+  let tarTexture;
   const ref22 = useRef();
   useFrame(({ clock }) => (ref22.current.uTime = clock.getElapsedTime()));
-
-  const [image] = useLoader(THREE.TextureLoader, [Tar.src]);
+  textureLoader.load(Tar.src, (texture) => {
+    tarTexture = texture;
+  });
 
   return (
     <mesh position={[0, 0, 0]}>
       <planeBufferGeometry args={[2.0, 3.0, 40, 40]} />
-      <waveShaderMateria
-        toneMapped={false}
-        uTexture={image}
-        ref={ref22}
-        uColor={"pink"}
-      />
+      {image ? (
+        <waveShaderMateria
+          toneMapped={false}
+          uTexture={image}
+          ref={ref22}
+          uColor={"pink"}
+        />
+      ) : (
+        <></>
+      )}
     </mesh>
   );
 };
 
 const Scene = () => {
+  const [image] = useLoader(THREE.TextureLoader, [Tar.src], (loader) => {
+    /* loader.manager.onStart = (a, b, c) => {
+      console.log(a, b, c);
+    }; */
+  });
+
   return (
-    <Canvas camera={{ fov: 40, position: [0, 0, 6] }}>
-      <OrbitControls></OrbitControls>
-      <Suspense fallback={null}>
-        <Plane />
-      </Suspense>
-    </Canvas>
+    <>
+      <Canvas camera={{ fov: 40, position: [0, 0, 6] }}>
+        <OrbitControls></OrbitControls>
+        <Suspense fallback={null}>
+          <Plane image={image} />
+        </Suspense>
+      </Canvas>
+    </>
   );
 };
 

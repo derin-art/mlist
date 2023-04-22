@@ -74,7 +74,7 @@ export default function CateBlanchettCta() {
         </div>
       </div>
       <div className="a top-[17%] text-white left-[20%] border-2 border-blue-700 font-Neue justify-center rounded-full text-sm items-center p-1 px-2 w-fit flex">
-        Staring <div>{sunIcon("fill-white", "1.3vw", "1.3vw")}</div>
+        Cinematography by Florian Hoffmeister
       </div>
     </div>
   );

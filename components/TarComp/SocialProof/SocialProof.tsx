@@ -1,4 +1,5 @@
 import ThreeButton from "../../3dButton";
+import AwardsThreeComponent from "../ThreeComponents/AwardsThreeComponent";
 
 export default function SocialProof() {
   const ObjAwards = [
@@ -165,20 +166,12 @@ export default function SocialProof() {
     },
   ];
   return (
-    <div className=" z-40 w-full r h-screen py-[4%] bg-black  flex-wrap flex justify-center ">
-      <div className="w-4/5 flex text-white font-Neue h-fit justify-around">
-        <div className="border-2 border-white  w-[30%] min-w-[250px] rounded-3xl h-[44vh]  overflow-hidden flex items-center justify-center">
-          Awards
-        </div>
-        <div className=" text-[5vw] flex flex-col">
-          It won Plenty.
-          <div className="self-end z-0">
-            <ThreeButton
-              ExploreSynopsis={true}
-              text={"Explore Synopsis"}
-            ></ThreeButton>
-          </div>
-        </div>
+    <div className=" w-full r h-screen py-[4%] bg-black  flex-wrap flex justify-center ">
+      <AwardsThreeComponent></AwardsThreeComponent>
+      <div className="text-white  px-8 leading-[0.9]">
+        <div className="font-PvcI text-[8vw] ml-[4%]">it won</div>
+        <div className="font-PvcB text-[6vw]">Plenty</div>
+        <ThreeButton text="Explore Awards"></ThreeButton>
       </div>
     </div>
   );

@@ -30,26 +30,33 @@ export default function LocationCta() {
       </div>
       <div className="w-full h-full r hidden md:block">
         <div className="a font-PvcB text-white top-[10%] left-[5%] text-[3vw]">
-          <div className="font-Neue text-[1.7vw] ml-[1%] mb-[2%]">
+          <div className="font-Neue text-sm ml-[1%] mb-[6%] border-2 p-1 px-2 rounded-full w-fit border-blue-700">
             Shot at the Majestic
           </div>
-          <div className="border-2 rounded-full px-[4%]">Dresden </div>
-          <div className="font-PvcI">Philharmonic</div>
+          <div className="leading-[1]">
+            <div
+              style={{ display: "inline-block", overflow: "hidden" }}
+              className="border-2 rounded-full px-[4%] p-3"
+            >
+              <div className=" ">Dresden </div>
+            </div>
+            <div className="font-PvcI">Philharmonic</div>
+          </div>
         </div>
-        <div className="a font-PvcB text-white bottom-[40%] z-30 right-[10%] text-[3vw]">
+        <div className="a font-PvcB text-white bottom-[40%] z-30 right-[10%] text-[3vw] leading-[0.9]">
           <motion.div
             style={{ display: "inline-block", overflow: "hidden" }}
-            className="border-2 rounded-full px-[4%] backdrop-grayscale"
+            className="border-2 rounded-full px-[4%] backdrop-grayscale p-3 "
           >
             <motion.div
-              initial={{ y: "100%" }}
+              initial={{ y: "110%" }}
               whileInView={{ y: 0 }}
-              transition={{ duration: 0.4, delay: 0.5 }}
+              transition={{ duration: 0.4, delay: 0.2 }}
             >
               Berlin,{" "}
             </motion.div>
           </motion.div>
-          <div className="font-PvcI  text-right">Germany</div>
+          <div className="font-PvcI  text-right ">Germany</div>
         </div>
         <div className="w-[26%] a right-[20%] top-[20%] ">
           <motion.img
@@ -60,7 +67,7 @@ export default function LocationCta() {
         </div>
         <div className="h-[40%] a bottom-[10%] left-[5%] r">
           <div className="text-sm text-white text-right font-Neue  mb-3">
-            <span className="border-2 z-30 p-2 rounded-full border-blue-700">
+            <span className="border-2 z-30 p-1 px-2 rounded-full border-blue-700">
               51.0504° N, 13.7373° E
             </span>
           </div>

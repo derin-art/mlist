@@ -11,7 +11,7 @@ export default function Hero() {
           <TarWave></TarWave>
         </div>
         <div className="w-1/2 h-full a right-0 flex flex-col items-center r justify-center">
-          <div className="text-sm a bottom-[14.4vw] border-2 border-blue-700 text-black font-Neue right-[19.5%] rounded-full p-1">
+          <div className="text-sm a bottom-[14.4vw] border-2 border-blue-700 text-black font-Neue right-[17.9%] rounded-full p-1 px-2">
             Script by Todd Fields
           </div>
           <motion.div className="a bottom-0 flex text-[13vw] font-Climate text-black">
