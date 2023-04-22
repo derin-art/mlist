@@ -30,7 +30,7 @@ export default function Tar() {
           <ThreeButton text="Explore Something"></ThreeButton>
         </div>
         <ThreeCurve></ThreeCurve> */}
-        <div className="r flex items-center justify-center">
+        <div className="r flex items-center justify-center hidden">
           {" "}
           <button className="a z-50 btn">Play</button>
           <TestCanvas></TestCanvas>

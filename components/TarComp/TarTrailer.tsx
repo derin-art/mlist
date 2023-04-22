@@ -31,18 +31,8 @@ export default function TarTrailer() {
             return <div key={item}>TÁR.</div>;
           })}
         </div>
-        <motion.div className="w-full h-[43%] flex items-center r will-change justify-center dirt font-Music text-[10vw] text-white">
-          <motion.div
-            transition={{ duration: 0.7, type: "spring" }}
-            initial={{ y: 0 }}
-            whileInView={{
-              translateY: [0, 20, -40, 30, 0],
-            }}
-            className="absolute will-change"
-          >
-            {" "}
-            Tar
-          </motion.div>
+        <motion.div className="w-full h-[43%] flex items-center r will-change justify-center dirt font-PvcI text-[10vw] text-white">
+          <motion.div className="absolute will-change"> tar</motion.div>
         </motion.div>
       </div>
       <div className="w-[44%] h-full flex flex-col justify-between ">

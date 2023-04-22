@@ -50,7 +50,7 @@ export default function SynopsisCta() {
             <span className="font-NeueT">leads to</span>{" "}
             <span className="font">most</span> boring{" "}
           </motion.div>
-          <motion.div className=" z-0 rounded-full h-fit border-4 r px-[2%] p-3 text-[5.4vw] pdt-[1.6%]  flex items-center justify-center w-fit text-white font-PvcB  md:mt-4 mt-1">
+          <motion.div className=" z-0 rounded-full h-fit border-4 r px-[2%] p-[1.5%] text-[5.4vw]  flex items-center justify-center w-fit text-white font-PvcB  md:mt-4 mt-1">
             {["C", "o", "n", "f", "o", "r", "m", "i", "t", "y"].map(
               (item, index) => {
                 return (
