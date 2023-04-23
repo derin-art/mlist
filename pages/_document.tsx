@@ -6,7 +6,7 @@ export default function Document() {
     <Html lang="en" style={{ scrollBehavior: "smooth" }}>
       <Head>
         <meta charSet="utf-8" />
-        <title>Tar</title>
+
         <meta name="description" content="" />
         <meta name="author" content="Derin Owoade" />
       </Head>

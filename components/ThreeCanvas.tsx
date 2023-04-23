@@ -1,6 +1,12 @@
 import * as THREE from "three";
 import dynamic from "next/dynamic";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import {
+  Canvas,
+  GroupProps,
+  MeshProps,
+  useFrame,
+  useThree,
+} from "@react-three/fiber";
 import PlayButtonHoverObject from "./TarComp/ThreeComponents/PlayButtonHoverObjects";
 
 import { Suspense, useEffect, useRef, useState } from "react";
@@ -75,7 +81,7 @@ const Globe = (props: {
   });
   let currentX: number = 0;
   let currentY: number = 0;
-  const ref = useRef<THREE.Mesh>(null!);
+  const ref: any = useRef<MeshProps>(null!);
   useFrame(() => {
     if (ref.current) {
       ref.current.rotation.y += 0.03;
@@ -279,12 +285,14 @@ const CameraComp = (props: { x: number; y: number }) => {
 };
 
 const BubblesGroup = (props: { x: number; y: number }) => {
-  const bubbleRef = useRef<THREE.Group>(null);
+  const bubbleRef: any = useRef<GroupProps>(null);
 
   useFrame(() => {
     if (bubbleRef.current) {
-      bubbleRef.current.position.x = props.x * -2;
-      bubbleRef.current.position.y = props.y * -1;
+      if (bubbleRef.current.position) {
+        bubbleRef.current.position.x = props.x * -2;
+        bubbleRef.current.position.y = props.y * -1;
+      }
     }
   });
 
@@ -316,7 +324,6 @@ export default function ThreeCanvas(props: ObjectProps) {
       const xCalculation = e.clientX / window.innerWidth - 0.5;
       const yCalculation = e.clientY / window.innerHeight - 0.5;
       setMousePos((prev) => {
-        console.log(xCalculation, yCalculation);
         return { x: xCalculation * -1, y: yCalculation };
       });
     });
@@ -331,79 +338,69 @@ export default function ThreeCanvas(props: ObjectProps) {
 
   return (
     <>
-      <AnimatePresence>
-        <m.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 1] }}
-          transition={{ duration: 0.6 }}
-          key={props.isHovered.toString()}
-          exit={{ opacity: 0 }}
-          className="w-full flex items-center justify-center a"
+      <m.div
+        key={props.isHovered.toString()}
+        className="w-full flex items-center justify-center a"
+      >
+        <div
+          className={` z-20 h-[200px] a w-[130%] r bg-transparent flex items-center justify-center `}
         >
-          {props.isHovered && (
-            <div
-              className={` z-20 h-[200px] a w-[130%] r bg-transparent flex items-center justify-center `}
-            >
-              <Canvas camera={{ fov: 100, position: [0, 0, 5] }}>
-                <ambientLight></ambientLight>
+          <Canvas key={"1stCanvas"} camera={{ fov: 100, position: [0, 0, 5] }}>
+            <ambientLight></ambientLight>
 
-                <CameraComp x={mousePos.x} y={mousePos.y}></CameraComp>
+            <CameraComp x={mousePos.x} y={mousePos.y}></CameraComp>
 
-                <Suspense fallback={null}>
-                  <motion.group initial={{ display: "none" }}>
-                    <DLights
-                      intensity={3}
-                      position={[-6, 0, 2]}
-                      animation={{
-                        x: [-6, 0, 6, -6],
-                        transition: {
-                          duration: 10,
-                          repeat: Infinity,
-                        },
-                      }}
-                    ></DLights>
-                    <DLights
-                      animation={{
-                        x: [-5, 0, 4, -4],
-                        y: [-2, 0, 2, -2],
+            <Suspense fallback={null}>
+              <motion.group initial={{ display: "none" }}>
+                <DLights
+                  intensity={3}
+                  position={[-6, 0, 2]}
+                  animation={{
+                    x: [-6, 0, 6, -6],
+                    transition: {
+                      duration: 10,
+                      repeat: Infinity,
+                    },
+                  }}
+                ></DLights>
+                <DLights
+                  animation={{
+                    x: [-5, 0, 4, -4],
+                    y: [-2, 0, 2, -2],
 
-                        transition: { duration: 7, repeat: Infinity },
-                      }}
-                      intensity={6}
-                      position={[-5, -2, 1]}
-                      color={"#F88DAD"}
-                    ></DLights>
-                    <DLights
-                      intensity={2}
-                      animation={{
-                        y: [2, 0, -2, 2],
-                        x: [-2, 0, 2, -2],
-                        transition: {
-                          duration: 10,
-                          repeat: Infinity,
-                        },
-                      }}
-                      position={[-2, 2, 1]}
-                    ></DLights>
-                  </motion.group>
-                  {props.isHovered && (
-                    <BubblesGroup x={mousePos.x} y={mousePos.y}></BubblesGroup>
-                  )}
-                  <PillPlane
-                    width={
-                      props.textProps.wrd1Length + props.textProps.wrd2Length
-                    }
-                    wrd2={props.textProps.wrd2Length}
-                    ExploreAwards={props.ExploreAwards}
-                    ExploreSynopsis={props.ExploreSynopisis}
-                    pillRef={pillRef}
-                  ></PillPlane>
-                </Suspense>
-              </Canvas>
-            </div>
-          )}
-        </m.div>
-      </AnimatePresence>
+                    transition: { duration: 7, repeat: Infinity },
+                  }}
+                  intensity={6}
+                  position={[-5, -2, 1]}
+                  color={"#F88DAD"}
+                ></DLights>
+                <DLights
+                  intensity={2}
+                  animation={{
+                    y: [2, 0, -2, 2],
+                    x: [-2, 0, 2, -2],
+                    transition: {
+                      duration: 10,
+                      repeat: Infinity,
+                    },
+                  }}
+                  position={[-2, 2, 1]}
+                ></DLights>
+              </motion.group>
+              {props.isHovered && (
+                <BubblesGroup x={mousePos.x} y={mousePos.y}></BubblesGroup>
+              )}
+              <PillPlane
+                width={props.textProps.wrd1Length + props.textProps.wrd2Length}
+                wrd2={props.textProps.wrd2Length}
+                ExploreAwards={props.ExploreAwards}
+                ExploreSynopsis={props.ExploreSynopisis}
+                pillRef={pillRef}
+              ></PillPlane>
+            </Suspense>
+          </Canvas>
+        </div>
+      </m.div>
     </>
   );
 }

@@ -1,6 +1,7 @@
 import * as THREE from "three";
+import ThreeSpring from "../ThreeSpring";
 
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Canvas, MeshProps, useFrame, useThree } from "@react-three/fiber";
 import { Suspense, useEffect, useRef, useState } from "react";
 import { OrbitControls } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
@@ -27,7 +28,7 @@ const Globe = (props: {
 
   let currentX: number = 0;
   let currentY: number = 0;
-  const ref = useRef<THREE.Mesh>(null!);
+  const ref: any = useRef<MeshProps>(null!);
   useEffect(() => {
     if (ref.current) {
       setCurrent((prev) => ({
@@ -66,12 +67,13 @@ const Globe = (props: {
 const DistortOrb = () => {
   return (
     <mesh>
-      <meshPhongMaterial
-        transparent={true}
-        shininess={100}
+      <meshPhysicalMaterial
+        metalness={1}
+        clearcoat={1}
+        roughness={0.4}
         color={"white"}
-      ></meshPhongMaterial>
-      <sphereBufferGeometry args={[4, 20, 15]}></sphereBufferGeometry>
+      ></meshPhysicalMaterial>
+      <sphereBufferGeometry args={[4, 30, 30]}></sphereBufferGeometry>
     </mesh>
   );
 };
@@ -118,13 +120,13 @@ export default function ThreeCurve(props: ThreeCurveProps) {
     <div className="w-full h-full bg-white   ">
       <Canvas
         camera={{
-          position: [0, -3, 17],
+          position: [0, 0, 17],
         }}
       >
         <Suspense fallback={null}>
           <Controls></Controls>
           <pointLight position={[0, 0, 15]} intensity={1}></pointLight>
-          <ambientLight intensity={0.4}></ambientLight>
+
           <EllipseGroup
             startAnimation={props.beginAnimation}
             radius={10}

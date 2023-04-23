@@ -26,10 +26,10 @@ export default function Hero() {
                   className="  "
                 >
                   <motion.span
-                    initial={{ opacity: 1, x: "100%" }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ x: "100%" }}
+                    whileInView={{ x: 0 }}
                     viewport={{ once: false }}
-                    transition={{ duration: 0.7 }}
+                    transition={{ duration: 0.6 }}
                     className="flex items-center justify-center"
                   >
                     {item}

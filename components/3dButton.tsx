@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import ThreeCanvas from "./ThreeCanvas";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -25,25 +25,27 @@ export default function ThreeButton(props: ThreeButtonProps) {
 
   return (
     <div className="font-Climate  rounded-full text-sm w-fit p-3 text-white r flex items-center justify-center">
-      <AnimatePresence>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
-          key={isHovered.toString()}
-          className=""
-        >
-          {isHovered && (
-            <ThreeCanvas
-              ExploreAwards={props.ExploreAwards}
-              ExploreSynopisis={props.ExploreSynopsis}
-              textProps={textProps}
-              isHovered={isHovered}
-            ></ThreeCanvas>
-          )}
-        </motion.div>
-      </AnimatePresence>
+      <Suspense fallback={null}>
+        <AnimatePresence>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+            key={isHovered.toString()}
+            className=""
+          >
+            {isHovered && (
+              <ThreeCanvas
+                ExploreAwards={props.ExploreAwards}
+                ExploreSynopisis={props.ExploreSynopsis}
+                textProps={textProps}
+                isHovered={isHovered}
+              ></ThreeCanvas>
+            )}
+          </motion.div>
+        </AnimatePresence>
+      </Suspense>
       <motion.p
         onMouseLeave={() => {
           setIsHovered(false);

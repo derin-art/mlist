@@ -84,7 +84,7 @@ export default function TarTrailer() {
               src={WhiteSvg.src}
             ></motion.img>
           </div>
-          <div className="z-20 timeF font-NeueT">
+          <div className="z-20 timeF font-NeueT text-[4vw]">
             158 <span className="font-Neue"> min</span>
           </div>
         </div>

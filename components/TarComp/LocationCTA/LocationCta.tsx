@@ -51,7 +51,7 @@ export default function LocationCta() {
             <motion.div
               initial={{ y: "110%" }}
               whileInView={{ y: 0 }}
-              transition={{ duration: 0.4, delay: 0.2 }}
+              transition={{ duration: 0.6 }}
             >
               Berlin,{" "}
             </motion.div>

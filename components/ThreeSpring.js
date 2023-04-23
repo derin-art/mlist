@@ -1,4 +1,4 @@
-import { Gltf, useGLTF } from "@react-three/drei";
+import { Gltf, OrbitControls, useGLTF } from "@react-three/drei";
 import { useRef, useState } from "react";
 import { useLoader } from "@react-three/fiber";
 import { useEffect } from "react";
@@ -8,7 +8,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 export default function ThreeSpring() {
   const [model, setModel] = useState(null);
   const ref = useRef();
-  const { scene } = useGLTF("/dog.glb");
+  const { scene } = useGLTF("/tar.glb");
   /*   useEffect(async () => {
     const loader = new GLTFLoader();
     loader.load("spring.glb", async (gltf) => {
@@ -19,8 +19,12 @@ export default function ThreeSpring() {
   }, []);
  */
 
+  console.log(scene);
+
   return (
-    <group ref={ref} position={[0, 0, 0]} dispose={null}>
+    <group scale={[10, 10, 10]} ref={ref} position={[0, 0, -2]} dispose={null}>
+      <OrbitControls></OrbitControls>
+      <directionalLight intensity={30} position={[0, 0, 3]}></directionalLight>
       <primitive position={[0, 0, 0]} object={scene}></primitive>
     </group>
   );

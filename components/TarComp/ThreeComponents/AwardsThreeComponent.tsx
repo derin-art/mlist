@@ -1,6 +1,6 @@
 import { Suspense, useState, useRef } from "react";
-import { Scene } from "three";
-import { Canvas } from "@react-three/fiber";
+import { Object3D, Scene } from "three";
+import { Canvas, GroupProps, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { Edges, OrbitControls, useHelper } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
@@ -16,7 +16,6 @@ const DatControls = (props: {
   const [data, setData] = useState({ ...props.otherData });
 
   const handleUpdates = (newData: any) => {
-    console.log(newData, "sd");
     setData((prev: any) => {
       props.setGroupProps(newData);
       return { ...prev, ...newData };
@@ -33,6 +32,7 @@ const DatControls = (props: {
             min={9000}
             max={9999}
             step={1}
+            key={1}
           />,
           <DatNumber
             path="x"
@@ -40,6 +40,7 @@ const DatControls = (props: {
             min={-40}
             step={0.01}
             label="X-placement"
+            key={2}
           ></DatNumber>,
           <DatNumber
             path="y"
@@ -47,6 +48,7 @@ const DatControls = (props: {
             min={-40}
             step={0.01}
             label="Y-placement"
+            key={3}
           ></DatNumber>,
           <DatNumber
             path="z"
@@ -54,6 +56,7 @@ const DatControls = (props: {
             min={-40}
             step={0.01}
             label="Z-placement"
+            key={4}
           ></DatNumber>,
           <DatNumber
             path="rotateX"
@@ -61,6 +64,7 @@ const DatControls = (props: {
             min={0}
             step={0.01}
             label="X-rotation"
+            key={5}
           ></DatNumber>,
           <DatNumber
             path="rotateY"
@@ -68,8 +72,9 @@ const DatControls = (props: {
             min={0}
             step={0.01}
             label="Y-rotation"
+            key={6}
           ></DatNumber>,
-          <DatBoolean path="beginAnim"></DatBoolean>,
+          <DatBoolean key={7} path="beginAnim"></DatBoolean>,
         ]}
         title="CurveGroup"
         closed={false}
@@ -84,6 +89,7 @@ const DatControls = (props: {
             min={-40}
             step={0.001}
             label="lightX"
+            key={1}
           ></DatNumber>,
           <DatNumber
             path="lightY"
@@ -91,6 +97,7 @@ const DatControls = (props: {
             min={-40}
             step={0.001}
             label="lightY"
+            key={2}
           ></DatNumber>,
           <DatNumber
             path="lightZ"
@@ -98,6 +105,7 @@ const DatControls = (props: {
             min={-40}
             step={0.001}
             label="lightZ"
+            key={3}
           ></DatNumber>,
           <DatNumber
             path="lightRX"
@@ -105,6 +113,7 @@ const DatControls = (props: {
             min={0}
             step={0.01}
             label="lightRX"
+            key={4}
           ></DatNumber>,
           <DatNumber
             path="lightRY"
@@ -112,6 +121,7 @@ const DatControls = (props: {
             min={0}
             step={0.01}
             label="lightRY"
+            key={5}
           ></DatNumber>,
           <DatNumber
             path="lightRZ"
@@ -119,6 +129,7 @@ const DatControls = (props: {
             min={0}
             step={0.01}
             label="lightRZ"
+            key={6}
           ></DatNumber>,
           <DatNumber
             path="lightIntensity"
@@ -126,6 +137,7 @@ const DatControls = (props: {
             min={0}
             step={0.01}
             label="lightIntensity"
+            key={7}
           ></DatNumber>,
         ]}
       ></DatFolder>
@@ -162,7 +174,7 @@ const Globe = (props: {
       return false;
     }
   };
-  console.log(animationBegin());
+
   return (
     <motion.mesh
       transition={{ duration: 0.7, delay: 0.5 }}
@@ -198,7 +210,7 @@ function DLights(props: {
   intensity?: number;
   rotation: [x: number, y: number, z: number];
 }) {
-  const light = useRef();
+  const light: any = useRef<Object3D>();
   useHelper(light, THREE.DirectionalLightHelper);
   return (
     <motion.directionalLight
@@ -275,7 +287,6 @@ const Curve = (props: { rotate?: boolean; beginAnim: boolean }) => {
       }
       transition={{ duration: 0.6, delay: 0.5 }}
       onClick={() => {
-        console.log("hey");
         setIsMouseOver((prev) => !prev);
       }}
       animate={
@@ -297,6 +308,41 @@ const Curve = (props: { rotate?: boolean; beginAnim: boolean }) => {
           ></Globe>
         );
       })}
+    </motion.group>
+  );
+};
+
+const AwardsObjectGroup = (props: { groupProp: any }) => {
+  const [beginInfiniteAnim, setBeginInfiniteAnim] = useState(false);
+  const ref: any = useRef<GroupProps>(null);
+
+  /*   useFrame(({ clock }) => {
+    if (ref.current && beginInfiniteAnim) {
+      ref.current.rotation.y = clock.elapsedTime * 2;
+    }
+  }); */
+
+  return (
+    <motion.group
+      ref={ref}
+      transition={{ duration: 1.5 }}
+      animate={
+        props.groupProp.beginAnim
+          ? { rotateY: [0, Math.PI * 4] }
+          : { rotateY: 0 }
+      }
+      onAnimationComplete={() => {
+        setBeginInfiniteAnim(true);
+        console.log("completed");
+      }}
+      rotation={[props.groupProp.rotateX, props.groupProp.rotateY, 0]}
+      position={[props.groupProp.x, 3.07, -25.88]}
+    >
+      <Curve beginAnim={props.groupProp.beginAnim}></Curve>
+      <CenterOrb></CenterOrb>
+      <ambientLight position={[0, -4, 0]} intensity={0.1}></ambientLight>
+      <OrbitControls></OrbitControls>
+      <Curve beginAnim={props.groupProp.beginAnim} rotate={true}></Curve>
     </motion.group>
   );
 };
@@ -357,25 +403,7 @@ export default function AwardsThreeComponent() {
               rotation={[lightRX, lightRY, lightRZ]}
               position={[lightX, lightY, lightZ]}
             ></DLights>
-            <motion.group
-              transition={{ duration: 1.5 }}
-              animate={
-                groupProp.beginAnim
-                  ? { rotateY: [0, Math.PI * 4] }
-                  : { rotateY: 0 }
-              }
-              rotation={[groupProp.rotateX, groupProp.rotateY, 0]}
-              position={[groupProp.x, groupProp.y, groupProp.z]}
-            >
-              <Curve beginAnim={groupProp.beginAnim}></Curve>
-              <CenterOrb></CenterOrb>
-              <ambientLight
-                position={[0, -4, 0]}
-                intensity={0.1}
-              ></ambientLight>
-              <OrbitControls></OrbitControls>
-              <Curve beginAnim={groupProp.beginAnim} rotate={true}></Curve>
-            </motion.group>
+            <AwardsObjectGroup groupProp={groupProp}></AwardsObjectGroup>
           </Suspense>
         </Canvas>
       </div>

@@ -15,7 +15,6 @@ export default function CastHov(props: CastProps) {
   const [pe, setPe] = useState({ x: 0, y: 0 });
   useEffect(() => {
     window.addEventListener("mousemove", (e) => {
-      console.log(e.clientX, "mouse");
       const xPos = (e.x / window.innerWidth) * 100;
       const yPos = (e.y / window.innerHeight) * 100;
       const act = { x: xPos, y: yPos };
