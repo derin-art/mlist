@@ -17,8 +17,9 @@ export default function VideoCta() {
         go of that
       </div>
       <button className="a btn">Play</button>
-      <div className="text-sm a bottom-[4%] left-4 font-PvcB text-white">
-        Dresden <span className="font-PvcI -ml-[3%]">Philharmonic</span>
+      <div className="text-sm a bottom-[4%] left-4 font-PvcB text-white flex items-center gap-2">
+        <div className="h-4 w-4 rounded-full bg-blue-700"></div> Dresden{" "}
+        <span className="font-PvcI -ml-[3%]">Philharmonic</span>
       </div>
       <div className="a font-Neue text-[8vw] text-center w-[80%]  text-white flex flex-col items-center hidden">
         <span className="behindImage "> "You cant let go of that "</span>

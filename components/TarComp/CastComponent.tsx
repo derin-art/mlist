@@ -42,7 +42,7 @@ export default function CastComponent(props: CastComp) {
           {" "}
           is {characterNameSplit[0]}{" "}
           <span className="">{characterNameSplit[1]}</span>
-          <span className="a right-0 p-2 rounded-full border-black border">
+          <span className="a right-2  p-2 pt-1 rounded-full border-blue-700 border-2">
             {props.no}
           </span>
         </div>

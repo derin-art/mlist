@@ -31,7 +31,11 @@ export default function ThreeButton(props: ThreeButtonProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
+            transition={{
+              duration: 0.2,
+              delay: 0.2,
+              ease: [0.58, 0.28, 0.64, 0.75],
+            }}
             key={isHovered.toString()}
             className=""
           >
@@ -53,7 +57,7 @@ export default function ThreeButton(props: ThreeButtonProps) {
         onMouseOver={() => {
           setIsHovered(true);
         }}
-        className="z-30 border-2  hover:cursor-pointer p-2 rounded-full w-[210px] flex items-center justify-center"
+        className="z-30 border-2  hover:border-transparent duration-[400ms]  hover:cursor-pointer p-2 rounded-full w-[210px] flex items-center justify-center"
       >
         {" "}
         {props.text ? props.text : "Explore Something"}

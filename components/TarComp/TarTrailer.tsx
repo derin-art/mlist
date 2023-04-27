@@ -1,7 +1,7 @@
 import WhiteSvg from "../../public/Svg/White.svg";
-import SplineObject from "./SplineObject";
+
 import ReactPlayer from "react-player";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import ThreeCurve from "../ThreeCurve/ThreeCurve";
 
@@ -31,17 +31,14 @@ export default function TarTrailer() {
             return <div key={item}>TÁR.</div>;
           })}
         </div>
-        <motion.div className="w-full h-[43%] flex items-center r will-change justify-center dirt font-PvcI text-[10vw] text-white">
-          <motion.div className="absolute will-change"> tar</motion.div>
+        <motion.div className="w-full h-[43%] flex items-center r will-change justify-center items-center dirt font-PvcI text-[12vw] text-white">
+          <motion.div className="absolute will-change  h-fit mb-[12%]">
+            {" "}
+            tar
+          </motion.div>
         </motion.div>
       </div>
-      <div className="w-[44%] h-full flex flex-col justify-between ">
-        <motion.div className="font-Neue text-white text-[5vw]  p-[2%] leading-[0.9] ">
-          <div className="font-NeueT">Music </div>
-          <div className="font-NeueT">and</div>
-          <div>power</div>
-        </motion.div>
-
+      <div className="w-[44%] h-full flex flex-col justify-center r">
         <motion.div
           onViewportEnter={() => {
             setIsGrayScale(true);
@@ -53,7 +50,6 @@ export default function TarTrailer() {
             !isGrayScale ? "grayscale" : ""
           }`}
         >
-          {" "}
           <span className="text-white self-end  a top-0 right-2 font-Neue border-2 border-blue-700 p-1 px-2 text-sm rounded-full">
             Trailer
           </span>
@@ -67,7 +63,7 @@ export default function TarTrailer() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: 0.2 }}
+              transition={{ duration: 0.6, ease: [0.58, 0.28, 0.64, 0.75] }}
               className="font-Climate text-white text-[4vw]"
             >
               7.10.22
@@ -79,12 +75,16 @@ export default function TarTrailer() {
             <motion.img
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{
+                duration: 0.6,
+                delay: 0.2,
+                ease: [0.58, 0.28, 0.64, 0.75],
+              }}
               className="w-full"
               src={WhiteSvg.src}
             ></motion.img>
           </div>
-          <div className="z-20 timeF font-NeueT text-[4vw]">
+          <div className="z-20 timeF font-NeueT text-[5vw]">
             158 <span className="font-Neue"> min</span>
           </div>
         </div>

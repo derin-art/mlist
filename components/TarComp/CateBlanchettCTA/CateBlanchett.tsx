@@ -3,8 +3,20 @@ import { useState } from "react";
 import CateB1 from "../../../public/Data/Tar/Images/CateB.jpg";
 import WhiteBlob from "../../../public/Svg/White.svg";
 
+const BorderAnimCont = (props: { text: string; styles: string }) => {
+  return (
+    <div
+      className={` box  text-white font-Neue   rounded-full text-sm pl-[1.5px] pr-[1.5px] pb-[0.9px] pt-[0.9px] ${props.styles}`}
+    >
+      {" "}
+      <div className="rounded-full p-1 overflow-hidden bg-black px-2">
+        {props.text}
+      </div>
+    </div>
+  );
+};
+
 export default function CateBlanchettCta() {
-  const [startAnim, setAnimStart] = useState(false);
   return (
     <div className="h-screen w-full flex items-center justify-center bg-black r overflow-hidden">
       <motion.img
@@ -17,24 +29,24 @@ export default function CateBlanchettCta() {
         </div>
 
         <motion.div className="will-change h-[420px] w-[260px]">
-          <motion.div
-            onViewportEnter={() => {
-              setAnimStart(true);
-            }}
-            className=""
-            onViewportLeave={() => {
-              setAnimStart(false);
-            }}
-            style={{ display: "inline-block", overflow: "hidden" }}
-          >
+          <motion.div style={{ display: "inline-block", overflow: "hidden" }}>
             {" "}
             <motion.img
-              initial={{ x: "100%", width: 150 }}
-              whileHover={{ scale: 1.05 }}
-              animate={
-                startAnim ? { x: 0, width: 260 } : { x: "100%", width: 200 }
-              }
-              transition={{ duration: 0.6 }}
+              whileHover={{ scale: 1.1 }}
+              width={260}
+              viewport={{ once: true }}
+              initial={{
+                x: "100%",
+                width: 200,
+              }}
+              whileInView={{
+                x: 0,
+                width: 260,
+                transition: {
+                  duration: 0.6,
+                  ease: [0.58, 0.28, 0.64, 0.75],
+                },
+              }}
               src={CateB1.src}
             ></motion.img>
           </motion.div>
@@ -43,9 +55,24 @@ export default function CateBlanchettCta() {
           Lydia<span className="font-PvcI"> Tar</span>
         </div>
       </div>
-      <div className="a top-[17%] text-white left-[20%] border-2 border-blue-700 font-Neue justify-center rounded-full text-sm items-center p-1 px-2 w-fit flex">
-        Cinematography by Florian Hoffmeister
-      </div>
+      <BorderAnimCont
+        text="   Cinematography by Florian Hoffmeister"
+        styles="a top-[20%] left-[20%]"
+      ></BorderAnimCont>
+      <BorderAnimCont
+        text="Edited by Monika Willi"
+        styles="a bottom-[30%] left-[15%]"
+      ></BorderAnimCont>
+      <BorderAnimCont
+        text="Produced by Alexandra Milchan, Scott Lambert"
+        styles="a  right-[20%] bottom-[20%]"
+      ></BorderAnimCont>
+
+      <BorderAnimCont
+        text="Music by 	
+Hildur Guðnadóttir"
+        styles="a  right-[20%]"
+      ></BorderAnimCont>
     </div>
   );
 }

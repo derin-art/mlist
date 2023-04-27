@@ -44,7 +44,12 @@ const Globe = (props: {
   return (
     <motion.mesh
       ref={ref}
-      transition={{ duration: 1.3, repeat: Infinity, delay: props.delay }}
+      transition={{
+        duration: 1.4,
+        delay: props.delay,
+        ease: [0.58, 0.28, 0.64, 0.75],
+        repeat: Infinity,
+      }}
       animate={
         props.startAnimation && {
           x: [current.x, current.x * 0.8, current.x * 1.2, current.x],
@@ -115,22 +120,64 @@ const EllipseGroup = (props: {
   );
 };
 
+const SpinningEllipseGroup = (props: {
+  radius: number;
+  delay?: number;
+  startAnimation: boolean;
+}) => {
+  const positions = [];
+  const curveEllispe = new THREE.EllipseCurve(
+    0,
+    0, // ax, aY
+    props.radius,
+    props.radius, // xRadius, yRadius
+    0,
+    2 * Math.PI, // aStartAngle, aEndAngle
+    false, // aClockwise
+    0 // aRotation
+  );
+
+  for (let i = 0; i < 10; i++) {
+    positions.push(curveEllispe.getPoint(i / 10));
+  }
+  const ref = useRef<THREE.Group>(null);
+  useFrame(() => {
+    if (ref.current) {
+      ref.current.rotation.z += 0.01;
+    }
+  });
+  return (
+    <group ref={ref}>
+      {positions.map((item, index) => {
+        return (
+          <Globe
+            startAnimation={props.startAnimation}
+            delay={props.delay}
+            key={index}
+            position={[item.x, item.y, 0]}
+          ></Globe>
+        );
+      })}
+    </group>
+  );
+};
+
 export default function ThreeCurve(props: ThreeCurveProps) {
   return (
     <div className="w-full h-full bg-white   ">
       <Canvas
         camera={{
-          position: [0, 0, 17],
+          position: [0, -3, 17],
         }}
       >
         <Suspense fallback={null}>
           <Controls></Controls>
           <pointLight position={[0, 0, 15]} intensity={1}></pointLight>
 
-          <EllipseGroup
+          <SpinningEllipseGroup
             startAnimation={props.beginAnimation}
             radius={10}
-          ></EllipseGroup>
+          ></SpinningEllipseGroup>
           <DistortOrb></DistortOrb>
           <EllipseGroup
             startAnimation={props.beginAnimation}

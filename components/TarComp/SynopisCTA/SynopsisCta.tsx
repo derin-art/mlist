@@ -9,7 +9,7 @@ export default function SynopsisCta() {
       <motion.div
         initial={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="a w-2/5 h-1/4 blur-[80px] md:-top-[20%] md:-left-[15%] z-0"
+        className="a w-2/5 h-1/4 blur-[80px] md:-top-[20%] md:-left-[0%] z-0"
       >
         <img src={WhiteBlob.src}></img>
       </motion.div>
@@ -32,8 +32,10 @@ export default function SynopsisCta() {
             text={"Explore Synopsis"}
           ></ThreeButton>
         </motion.button>
-        <div className=" text-white a text-center will-change bottom-[4%] md:text-[6vw] text-[8.4vw] leading-[0.9] w-full flex flex-col justify-center items-center">
-          <div className="text-xl text-white font-PvcI mb-4">Lydia Tar-</div>
+        <div className=" text-white a text-center will-change bottom-[4%] md:text-[7vw] text-[8.4vw] leading-[0.9] w-full flex flex-col justify-center items-center">
+          <div className="text-sm text-white font-PvcI mb-8">
+            <span className="">Lydia</span> Tar-
+          </div>
           <motion.div className="z-20 font-NeueT">
             {" "}
             "The <span className="font-">n</span>arcissism of the smallest{" "}
@@ -41,7 +43,7 @@ export default function SynopsisCta() {
             <span className="font-NeueT">leads to</span>{" "}
             <span className="font">most</span> boring{" "}
           </motion.div>
-          <motion.div className="willChange z-0 rounded-full h-fit border-4 r text-xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-[6vw] p-3 flex items-center justify-center w-fit text-white font-PvcB  md:mt-4 mt-1">
+          <motion.div className="willChange z-0 rounded-full h-fit border-4 r text-xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-[6.6vw] p-3 flex items-center justify-center w-fit text-white font-PvcB  md:mt-4 mt-1">
             {["C", "o", "n", "f", "o", "r", "m", "i", "t", "y"].map(
               (item, index) => {
                 return (
@@ -57,7 +59,11 @@ export default function SynopsisCta() {
                       initial={{ opacity: 1, x: "100%" }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: false }}
-                      transition={{ duration: 0.6 }}
+                      transition={{
+                        duration: 0.6,
+                        ease: [0.58, 0.28, 0.64, 0.75],
+                        delay: index * 0.01,
+                      }}
                       className="flex items-center justify-center "
                     >
                       {item}

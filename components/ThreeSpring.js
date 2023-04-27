@@ -8,7 +8,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 export default function ThreeSpring() {
   const [model, setModel] = useState(null);
   const ref = useRef();
-  const { scene } = useGLTF("/tar.glb");
+  const { scene } = useGLTF("/tar.glb")
   /*   useEffect(async () => {
     const loader = new GLTFLoader();
     loader.load("spring.glb", async (gltf) => {
@@ -19,7 +19,7 @@ export default function ThreeSpring() {
   }, []);
  */
 
-  console.log(scene);
+ 
 
   return (
     <group scale={[10, 10, 10]} ref={ref} position={[0, 0, -2]} dispose={null}>

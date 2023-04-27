@@ -14,6 +14,26 @@ a {
   text-decoration: none;
 }
 
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
 @font-face {
   font-family: Neue;
   src: url("../public/fonts/neue-montreal-free-demo-pangram-pangram-030418/NeueMontreal-Regular.otf");
@@ -87,4 +107,43 @@ a {
 
 .will-change {
   will-change: contents;
+}
+
+.box {
+  --border-size: 1px;
+  --border-angle: 0turn;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: conic-gradient(
+      from var(--border-angle),
+      #00000000,
+      #00000000,
+      #00000000
+    ),
+    conic-gradient(from var(--border-angle), transparent 50%, #08f, #f03);
+  background-size: calc(100% - (var(--border-size) * 2))
+      calc(100% - (var(--border-size) * 2)),
+    cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  animation: bg-spin 2.2s cubic-bezier(0.24, 0.28, 0.28, 0.28) infinite;
+  @keyframes bg-spin {
+    to {
+      --border-angle: 1turn;
+    }
+  }
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: 0turn;
 }

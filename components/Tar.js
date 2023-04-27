@@ -8,16 +8,37 @@ import LocationCta from "./TarComp/LocationCTA/LocationCta";
 import SocialProof from "./TarComp/SocialProof/SocialProof";
 import VideoCta from "./TarComp/VideoCTA/VideoCta";
 import TestCanvas from "./TarComp/ThreeComponents/TestCanvas";
+import Lenis from "@studio-freight/lenis";
 
-import AwardsThreeComponent from "./TarComp/ThreeComponents/AwardsThreeComponent";
 import { Canvas } from "@react-three/fiber";
 import ThreeSpring from "./ThreeSpring";
+
 const TarCarList = dynamic(() => import("./TarComp/TarCastList/TarCastList"));
 
+import React from "react";
+
 export default function Tar() {
+  const lenis = new Lenis({
+    orientation: "vertical",
+    easing: (t) => Math.min(1, 2.001 - Math.pow(2, -10 * t)),
+    smooth: true,
+    lerp: 0.7,
+  });
+
+  lenis.on("scroll", (e) => {
+    console.log(e);
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    console;
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
   return (
-    <div>
-      <div className="w-full  h-fit bg-black r">
+    <div className="">
+      <div className="w-full  h-fit bg-black r lenis">
         <Hero></Hero>
         <TarTrailer></TarTrailer>
         <SynopsisCta></SynopsisCta>

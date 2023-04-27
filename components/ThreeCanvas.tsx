@@ -30,6 +30,9 @@ interface ObjectProps {
   };
 }
 
+//Config
+THREE.ColorManagement.enabled = true;
+
 const PillPlane = (props: {
   pillRef: any;
   width?: number;
@@ -64,7 +67,11 @@ const PillPlane = (props: {
       position={[-7.9, -2.12, 0]}
       ref={props.pillRef}
     >
-      <meshPhongMaterial reflectivity={1} color={"#1d4ed8"}></meshPhongMaterial>
+      <meshPhongMaterial
+        reflectivity={0.3}
+        color={"black"}
+        shininess={30}
+      ></meshPhongMaterial>
     </motion.mesh>
   );
 };
@@ -84,7 +91,7 @@ const Globe = (props: {
   const ref: any = useRef<MeshProps>(null!);
   useFrame(() => {
     if (ref.current) {
-      ref.current.rotation.y += 0.03;
+      ref.current.rotation.x += 0.03;
       setCurrent((prev) => {
         return { x: ref.current.position.x, y: ref.current.position.y };
       });
@@ -117,11 +124,14 @@ const Globe = (props: {
         <sphereBufferGeometry
           args={[props.size ? props.size : 0.5, 15, 15]}
         ></sphereBufferGeometry>
+
         <meshPhongMaterial
           transparent={true}
-          shininess={100}
-          emissive={"blue"}
-          color={"blue"}
+          shininess={15}
+          specular={"white"}
+          reflectivity={1}
+          emissive={"black"}
+          color={"black"}
         ></meshPhongMaterial>
       </motion.mesh>
     </>
@@ -146,12 +156,12 @@ const globePositions: {
     },
   },
   {
-    pos: [6, 1, 0],
+    pos: [4, 1, 0],
     siz: 0.3,
     Animation: {
       scale: [1, 0.95, 0.9, 1],
       rotateX: [0, 360, 0],
-      x: [6, 6.1, 6.2, 6.1, 6, 5.9, 6],
+      x: [4, 4.1, 4.2, 4.1, 4, 3.9, 4],
       transition: { duration: 2, repeat: Infinity },
     },
   },
@@ -159,7 +169,7 @@ const globePositions: {
     pos: [4, -1.6, 0],
     siz: 0.4,
     Animation: {
-      scale: [1, 0.8, 0.9, 1],
+      scale: [1, 0.7, 0.9, 1],
       rotateX: [0, 360, 0],
       x: [4, 3.9, 3.8, 4.1, 4, 3.9, 4],
       y: [-1.6, -1.7, -1.6],
@@ -167,14 +177,14 @@ const globePositions: {
     },
   },
   {
-    pos: [6, -0.6, 0],
+    pos: [4, -0.6, 0],
     siz: 1,
     Animation: {
-      scale: [1, 0.8, 0.9, 1],
+      scale: [1, 0.7, 0.9, 1],
       rotateX: [0, 360, 0],
-      x: [6, 6.2, 6.1, 5.9, 5.8, 6],
+      x: [4, 4.2, 4.1, 3.9, 3.8, 4],
 
-      transition: { duration: 1.5, repeat: Infinity },
+      transition: { duration: 4, repeat: Infinity },
     },
   },
   {
@@ -185,14 +195,14 @@ const globePositions: {
       rotateX: [0, 360, 0],
       x: [2, 2.1, 1.9, 2.1, 1.8, 2],
 
-      transition: { duration: 1.3, repeat: Infinity },
+      transition: { duration: 3, repeat: Infinity },
     },
   },
   {
     pos: [-2, -0.8, 0],
     siz: 0.6,
     Animation: {
-      scale: [1, 0.7, 0.9, 1, 1.1, 1],
+      scale: [1, 0.7, 0.9, 1, 1.3, 1],
       rotateX: [0, 360, 0],
       x: [-2, -2.2, -2.1, -2, -1.8, -2],
       y: [-0.8, -1.2, -0.8],
@@ -200,10 +210,21 @@ const globePositions: {
     },
   },
   {
+    pos: [-2.2, -1, 0],
+    siz: 0.7,
+    Animation: {
+      scale: [1, 0.7, 0.9, 1, 1.3, 1],
+      rotateX: [0, 360, 0],
+      x: [-2.2, -2.3, -2.1, -2, -1.8, -2.2],
+      y: [-1, -1.2, -1],
+      transition: { duration: 4, repeat: Infinity },
+    },
+  },
+  {
     pos: [-4, -1.8, 0],
     siz: 0.8,
     Animation: {
-      scale: [1, 0.7, 0.9, 1, 1.1, 1],
+      scale: [1, 0.7, 0.9, 1, 1.2, 1],
       rotateX: [0, 360, 0],
       x: [-4, -4.2, -4.1, -4, -3.8, -4],
       y: [-1.8, -1.6, -1.8],
@@ -214,11 +235,11 @@ const globePositions: {
     pos: [-1, 0.5, 0],
     siz: 0.4,
     Animation: {
-      scale: [1, 0.6, 0.9, 0.8, 1.1, 1],
+      scale: [1, 0.6, 0.9, 0.8, 1.2, 1],
       rotateX: [0, 360, 0],
       x: [-1, -1.2, -0.9, -1, -1.2, -1],
       y: [0.5, 0.6, 0.5],
-      transition: { duration: 2.5, repeat: Infinity },
+      transition: { duration: 3, repeat: Infinity },
     },
   },
   {
@@ -229,7 +250,7 @@ const globePositions: {
       rotateX: [0, 360, 0],
       x: [-4, -4.2, -4.1, -4, -3.8, -4],
       y: [0.7, 0.6, 0.8, 0.7],
-      transition: { duration: 3, repeat: Infinity },
+      transition: { duration: 4, repeat: Infinity },
     },
   },
   {
@@ -243,6 +264,73 @@ const globePositions: {
       transition: { duration: 4, repeat: Infinity },
     },
   },
+  {
+    pos: [-3.1, 1.3, 0],
+    siz: 0.5,
+    Animation: {
+      scale: [1, 0.7, 0.9, 1, 1.1, 1],
+      rotateX: [0, 360, 0],
+      x: [-3.1, -3.3, -3.1, -3, -2.8, -3],
+      y: [1.3, 1.4, 1, 0.9, 1.2],
+      transition: { duration: 5, repeat: Infinity },
+    },
+  },
+  {
+    pos: [2, 1.2, 0],
+    siz: 0.7,
+    Animation: {
+      scale: [1, 0.7, 0.9, 1, 1.1, 1],
+      rotateX: [0, 360, 0],
+      x: [2, 2.3, 2.1, 2, 2.3, 2],
+      y: [1.2, 1.3, 0.9, 1, 1.2],
+      transition: { duration: 4, repeat: Infinity },
+    },
+  },
+  {
+    pos: [2.2, 1.2, 0],
+    siz: 1,
+    Animation: {
+      scale: [1, 0.7, 0.9, 1, 1.1, 1],
+      rotateX: [0, 360, 0],
+      x: [2.2, 2.3, 2.1, 2, 2.3, 2.2],
+      y: [1.2, 1.3, 0.9, 1, 1.2],
+      transition: { duration: 4, repeat: Infinity },
+    },
+  },
+  {
+    pos: [2.2, 1.2, 0],
+    siz: 1,
+    Animation: {
+      scale: [1, 0.7, 0.9, 1, 1.1, 1],
+      rotateX: [0, 360, 0],
+      x: [2.2, 2.3, 2.1, 2, 2.3, 2.2],
+      y: [1.2, 1.3, 0.9, 1, 1.2],
+      transition: { duration: 4, repeat: Infinity },
+    },
+  },
+  {
+    pos: [2.3, 1.6, 0],
+    siz: 0.5,
+    Animation: {
+      scale: [1, 0.7, 0.9, 1, 1.1, 1],
+      rotateX: [0, 360, 0],
+      x: [2.3, 2.3, 2.1, 2, 2.3],
+      y: [1.6, 1.3, 0.9, 1, 1.2, 1.6],
+      transition: { duration: 4, repeat: Infinity },
+    },
+  },
+  {
+    pos: [-2, 1.6, 0],
+    siz: 0.5,
+  },
+  {
+    pos: [-1, -0.6, 0],
+    siz: 0.6,
+  },
+  {
+    pos: [1, -0.6, 0],
+    siz: 0.7,
+  },
 ];
 
 function DLights(props: {
@@ -251,10 +339,11 @@ function DLights(props: {
   color?: string;
   intensity?: number;
 }) {
-  const light = useRef();
-  /*  useHelper(light, THREE.DirectionalLightHelper); */
+  const light: any = useRef();
+  /*   useHelper(light, THREE.DirectionalLightHelper); */
   return (
     <motion.directionalLight
+      ref={light}
       animate={
         props.animation
           ? props.animation
@@ -353,50 +442,52 @@ export default function ThreeCanvas(props: ObjectProps) {
             <Suspense fallback={null}>
               <motion.group initial={{ display: "none" }}>
                 <DLights
-                  intensity={3}
-                  position={[-6, 0, 2]}
+                  intensity={3.7}
+                  position={[-2, 0, 2]}
                   animation={{
-                    x: [-6, 0, 6, -6],
+                    x: [-2, 0, 2, -2],
                     transition: {
-                      duration: 10,
+                      duration: 4,
                       repeat: Infinity,
                     },
                   }}
+                  color="blue"
                 ></DLights>
-                <DLights
+                {/*     <DLights
                   animation={{
                     x: [-5, 0, 4, -4],
                     y: [-2, 0, 2, -2],
 
-                    transition: { duration: 7, repeat: Infinity },
+                    transition: { duration: 6, repeat: Infinity },
                   }}
                   intensity={6}
                   position={[-5, -2, 1]}
                   color={"#F88DAD"}
                 ></DLights>
                 <DLights
-                  intensity={2}
+                  intensity={5}
                   animation={{
-                    y: [2, 0, -2, 2],
-                    x: [-2, 0, 2, -2],
+                    y: [1.5, 0, -1.5, 1.5],
+                    x: [-2.5, 0, 2, -2.5],
                     transition: {
-                      duration: 10,
+                      duration: 4,
                       repeat: Infinity,
                     },
                   }}
-                  position={[-2, 2, 1]}
-                ></DLights>
+                  color="red"
+                  position={[-2.5, 1.5, 1]}
+                ></DLights> */}
               </motion.group>
               {props.isHovered && (
                 <BubblesGroup x={mousePos.x} y={mousePos.y}></BubblesGroup>
               )}
-              <PillPlane
+              {/*       <PillPlane
                 width={props.textProps.wrd1Length + props.textProps.wrd2Length}
                 wrd2={props.textProps.wrd2Length}
                 ExploreAwards={props.ExploreAwards}
                 ExploreSynopsis={props.ExploreSynopisis}
                 pillRef={pillRef}
-              ></PillPlane>
+              ></PillPlane> */}
             </Suspense>
           </Canvas>
         </div>

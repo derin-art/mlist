@@ -14,6 +14,10 @@ export default function Hero() {
           <div className="text-sm a bottom-[14.4vw] border-2 border-blue-700 text-black font-Neue right-[17.9%] rounded-full p-1 px-2">
             Script by Todd Fields
           </div>
+          <div className="a font-Neue text-black text-center mb-[14%] text-sm">
+            <div className="font-PvcI">Empire</div>
+            Blanchett has delivered the performance of a lifetime
+          </div>
           <motion.div className="a bottom-0 flex text-[13vw] font-Climate text-black">
             {["T", "Á", "R"].map((item, index) => {
               return (
@@ -29,7 +33,10 @@ export default function Hero() {
                     initial={{ x: "100%" }}
                     whileInView={{ x: 0 }}
                     viewport={{ once: false }}
-                    transition={{ duration: 0.6 }}
+                    transition={{
+                      duration: 0.6,
+                      ease: [0.58, 0.28, 0.64, 0.75],
+                    }}
                     className="flex items-center justify-center"
                   >
                     {item}

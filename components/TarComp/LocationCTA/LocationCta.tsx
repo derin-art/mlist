@@ -51,7 +51,7 @@ export default function LocationCta() {
             <motion.div
               initial={{ y: "110%" }}
               whileInView={{ y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.4, ease: [0.58, 0.28, 0.64, 0.75] }}
             >
               Berlin,{" "}
             </motion.div>
@@ -59,11 +59,7 @@ export default function LocationCta() {
           <div className="font-PvcI  text-right ">Germany</div>
         </div>
         <div className="w-[26%] a right-[20%] top-[20%] ">
-          <motion.img
-            transition={{ duration: 0.6, delay: 0.2 }}
-            src={Aud1.src}
-            className={`w-full `}
-          ></motion.img>
+          <motion.img src={Aud1.src} className={`w-full `}></motion.img>
         </div>
         <div className="h-[40%] a bottom-[10%] left-[5%] r">
           <div className="text-sm text-white text-right font-Neue  mb-3">
