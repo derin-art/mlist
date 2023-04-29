@@ -19,7 +19,7 @@ export default function TarTrailer() {
           whileInView={{ opacity: 1 }}
           initial={{ opacity: 0 }}
           transition={{ duration: 0.7 }}
-          className="w-full h-[52%] border-b r flex items-center justify-center bg-white"
+          className="w-full h-[57%] border-b r flex items-center justify-center bg-white"
         >
           <div className="font-Neue text-black top-4 a z-30 border-2 p-1 px-2 border-blue-700 rounded-full ">
             It's all about her
@@ -31,10 +31,10 @@ export default function TarTrailer() {
             return <div key={item}>TÁR.</div>;
           })}
         </div>
-        <motion.div className="w-full h-[43%] flex items-center r will-change justify-center items-center dirt font-PvcI text-[12vw] text-white">
-          <motion.div className="absolute will-change  h-fit mb-[12%]">
+        <motion.div className="w-full h-[38%] flex items-center r will-change justify-center overflow-hidden items-center dirt font-PvcI text-[12vw] text-white">
+          <motion.div className="absolute will-change  h-fit mb-[12%] ">
             {" "}
-            tar
+            Maestro
           </motion.div>
         </motion.div>
       </div>
@@ -84,9 +84,16 @@ export default function TarTrailer() {
               src={WhiteSvg.src}
             ></motion.img>
           </div>
-          <div className="z-20 timeF font-NeueT text-[5vw]">
-            158 <span className="font-Neue"> min</span>
-          </div>
+          <motion.div style={{ display: "inline-block", overflow: "hidden" }}>
+            <motion.div
+              initial={{ y: "100%" }}
+              whileInView={{ y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="z-20 timeF font-NeueT text-[5vw]"
+            >
+              158 <span className="font-Neue"> min</span>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </div>

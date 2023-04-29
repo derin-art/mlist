@@ -9,7 +9,7 @@ export default function SynopsisCta() {
       <motion.div
         initial={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.3 }}
-        className="a w-2/5 h-1/4 blur-[80px] md:-top-[20%] md:-left-[0%] z-0"
+        className="a w-2/5 h-1/4 blur-[80px] md:top-[10%] md:-left-[0%] z-0"
       >
         <img src={WhiteBlob.src}></img>
       </motion.div>
@@ -33,7 +33,7 @@ export default function SynopsisCta() {
           ></ThreeButton>
         </motion.button>
         <div className=" text-white a text-center will-change bottom-[4%] md:text-[7vw] text-[8.4vw] leading-[0.9] w-full flex flex-col justify-center items-center">
-          <div className="text-sm text-white font-PvcI mb-8">
+          <div className="text-[4vw] text-white font-PvcI mb-8">
             <span className="">Lydia</span> Tar-
           </div>
           <motion.div className="z-20 font-NeueT">

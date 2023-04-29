@@ -38,7 +38,7 @@ export default function CastComponent(props: CastComp) {
           src={props.img.src}
         ></img>
 
-        <div className="font-Neue mt-4 border w-full bg-white text-black px-2 r overflow-hidden">
+        <div className="font-Neue mt-4 border-2 rounded-full border-blue-700 w-full text-white px-2 r overflow-hidden">
           {" "}
           is {characterNameSplit[0]}{" "}
           <span className="">{characterNameSplit[1]}</span>
@@ -46,7 +46,6 @@ export default function CastComponent(props: CastComp) {
             {props.no}
           </span>
         </div>
-        <script src="https://unpkg.com/blotterjs-fork@0.1.0/build/blotter.min.js"></script>
       </div>
     </motion.div>
   );

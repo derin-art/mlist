@@ -91,7 +91,6 @@ const Globe = (props: {
   const ref: any = useRef<MeshProps>(null!);
   useFrame(() => {
     if (ref.current) {
-      ref.current.rotation.x += 0.03;
       setCurrent((prev) => {
         return { x: ref.current.position.x, y: ref.current.position.y };
       });
@@ -122,7 +121,7 @@ const Globe = (props: {
       {" "}
       <motion.mesh ref={ref} animate={anim} position={props.position}>
         <sphereBufferGeometry
-          args={[props.size ? props.size : 0.5, 15, 15]}
+          args={[props.size, 14, 14]}
         ></sphereBufferGeometry>
 
         <meshPhongMaterial

@@ -6,7 +6,6 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Component {...pageProps} />
-      <Script src="https://unpkg.com/blotterjs-fork@0.1.0/build/blotter.min.js"></Script>
     </>
   );
 }

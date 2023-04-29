@@ -18,7 +18,7 @@ export default function Hero() {
             <div className="font-PvcI">Empire</div>
             Blanchett has delivered the performance of a lifetime
           </div>
-          <motion.div className="a bottom-0 flex text-[13vw] font-Climate text-black">
+          <motion.div className="a bottom-0 flex text-[13vw] font-Climate  ">
             {["T", "Á", "R"].map((item, index) => {
               return (
                 <motion.span
@@ -32,12 +32,12 @@ export default function Hero() {
                   <motion.span
                     initial={{ x: "100%" }}
                     whileInView={{ x: 0 }}
-                    viewport={{ once: false }}
                     transition={{
                       duration: 0.6,
                       ease: [0.58, 0.28, 0.64, 0.75],
+                      delay: 0.1,
                     }}
-                    className="flex items-center justify-center"
+                    className="flex items-center justify-center text-transparent bg-clip-text bg-gradient-to-r from-black to-blue-700"
                   >
                     {item}
                   </motion.span>{" "}

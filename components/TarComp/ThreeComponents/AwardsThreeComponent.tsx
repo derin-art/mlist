@@ -1,4 +1,4 @@
-import { Suspense, useState, useRef } from "react";
+import { Suspense, useState, useRef, use, useEffect } from "react";
 import { Object3D, Scene } from "three";
 import { Canvas, GroupProps, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
@@ -203,6 +203,42 @@ const Globe = (props: {
   );
 };
 
+function SLight(props: {
+  animation?: TargetAndTransition;
+  position?: [x: number, y: number, z: number];
+  color?: string;
+  intensity?: number;
+  rotation: [x: number, y: number, z: number];
+}) {
+  const light: any = useRef<Object3D>();
+  useHelper(light, THREE.SpotLightHelper);
+  let posX = 0;
+  let posY = 0;
+
+  useEffect(() => {
+    if (light.current) {
+      posX = light.current.position.x;
+      posY = light.current.position.y;
+    }
+  }, []);
+
+  return (
+    <motion.spotLight
+      rotation={[props.rotation[0], props.rotation[1], props.rotation[2]]}
+      ref={light}
+      color={props.color ? props.color : "red"}
+      intensity={props.intensity ? props.intensity : 2}
+      position={props.position ? props.position : [0, 0, 1]}
+      angle={Math.PI / 7}
+      penumbra={0.8}
+      shadow-mapSize-width={24}
+      shadow-mapSize-height={24}
+      castShadow
+      shadow-bias={-0.001}
+    />
+  );
+}
+
 function DLights(props: {
   animation?: TargetAndTransition;
   position?: [x: number, y: number, z: number];
@@ -394,15 +430,25 @@ export default function AwardsThreeComponent() {
       <div className="w-[40vw] h-[30vw] gridBg rounded-3xl bg-black z-0 overflow-hidden border-2">
         <Canvas>
           <Suspense fallback={null}>
-            <directionalLight
+            {/*   <directionalLight
               position={[0, 0, 4]}
               intensity={3}
-            ></directionalLight>
-            <DLights
+            ></directionalLight> */}
+            <mesh position={[0, 0, -48]}>
+              <planeBufferGeometry args={[130, 130]}></planeBufferGeometry>
+              <meshPhysicalMaterial color={"black"}></meshPhysicalMaterial>
+            </mesh>
+            {/*   <DLights
               intensity={groupProp.lightIntensity}
               rotation={[lightRX, lightRY, lightRZ]}
               position={[lightX, lightY, lightZ]}
-            ></DLights>
+            ></DLights> */}
+            <SLight
+              intensity={groupProp.lightIntensity}
+              rotation={[lightRX, lightRY, lightRZ]}
+              position={[lightX, lightY, lightZ]}
+              color="white"
+            ></SLight>
             <AwardsObjectGroup groupProp={groupProp}></AwardsObjectGroup>
           </Suspense>
         </Canvas>

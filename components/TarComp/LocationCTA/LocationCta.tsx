@@ -1,5 +1,6 @@
 import Aud1 from "../../../public/Data/Tar/Images/Aud1.jpg";
 import Aud2 from "../../../public/Data/Tar/Images/Aud2.jpg";
+import { ParallaxProvider, useParallax } from "react-scroll-parallax";
 import { motion } from "framer-motion";
 
 export default function LocationCta() {
@@ -67,7 +68,7 @@ export default function LocationCta() {
               51.0504° N, 13.7373° E
             </span>
           </div>
-          <motion.img src={Aud2.src} className={`h-full z-0`}></motion.img>
+          <motion.img src={Aud2.src} className={`h-full z-0 `}></motion.img>
         </div>
       </div>
     </motion.div>
