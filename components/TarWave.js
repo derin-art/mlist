@@ -66,7 +66,6 @@ const Plane = ({ image }) => {
   useFrame(({ clock }) => (ref22.current.uTime = clock.getElapsedTime()));
   textureLoader.load(Tar.src, (texture) => {
     tarTexture = texture;
-    
   });
 
   return (

@@ -34,7 +34,6 @@ export default function CateBlanchettCta() {
             <motion.img
               whileHover={{ scale: 1.1 }}
               width={260}
-              viewport={{ once: true }}
               initial={{
                 x: "100%",
                 width: 200,

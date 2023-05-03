@@ -2,9 +2,10 @@ import * as THREE from "three";
 import ThreeSpring from "../ThreeSpring";
 
 import { Canvas, MeshProps, useFrame, useThree } from "@react-three/fiber";
-import { Suspense, useEffect, useRef, useState } from "react";
-import { OrbitControls } from "@react-three/drei";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
+import { OrbitControls, PerformanceMonitor } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
+import { MeshPhongMaterial, SphereGeometry } from "three";
 
 interface ThreeCurveProps {
   beginAnimation: boolean;
@@ -23,6 +24,8 @@ const Globe = (props: {
   position: [x: number, y: number, z: number];
   delay?: number;
   startAnimation: boolean;
+  geom: any;
+  mat: any;
 }) => {
   const [current, setCurrent] = useState({ x: 0, y: 0 });
 
@@ -43,6 +46,8 @@ const Globe = (props: {
   }
   return (
     <motion.mesh
+      material={props.mat}
+      geometry={props.geom}
       ref={ref}
       transition={{
         duration: 1.4,
@@ -51,20 +56,22 @@ const Globe = (props: {
         repeat: Infinity,
       }}
       animate={
-        props.startAnimation && {
-          x: [current.x, current.x * 0.8, current.x * 1.2, current.x],
-          y: [current.y, current.y * 0.8, current.y * 1.2, current.y],
-        }
+        props.startAnimation
+          ? {
+              x: [current.x, current.x * 0.8, current.x * 1.2, current.x],
+              y: [current.y, current.y * 0.8, current.y * 1.2, current.y],
+            }
+          : { x: current.x, y: current.y }
       }
       position={props.position}
     >
-      <sphereBufferGeometry args={[1, 20, 15]}></sphereBufferGeometry>
+      {/*    <sphereBufferGeometry args={[1, 20, 15]}></sphereBufferGeometry>
       <meshPhongMaterial
         transparent={true}
         shininess={100}
         emissive={"blue"}
         color={"blue"}
-      ></meshPhongMaterial>
+      ></meshPhongMaterial> */}
     </motion.mesh>
   );
 };
@@ -87,6 +94,8 @@ const EllipseGroup = (props: {
   radius: number;
   delay?: number;
   startAnimation: boolean;
+  geom: any;
+  mat: any;
 }) => {
   const positions = [];
   const curveEllispe = new THREE.EllipseCurve(
@@ -109,6 +118,8 @@ const EllipseGroup = (props: {
       {positions.map((item, index) => {
         return (
           <Globe
+            geom={props.geom}
+            mat={props.mat}
             startAnimation={props.startAnimation}
             delay={props.delay}
             key={index}
@@ -124,6 +135,8 @@ const SpinningEllipseGroup = (props: {
   radius: number;
   delay?: number;
   startAnimation: boolean;
+  geom: any;
+  mat: any;
 }) => {
   const positions = [];
   const curveEllispe = new THREE.EllipseCurve(
@@ -143,7 +156,7 @@ const SpinningEllipseGroup = (props: {
   const ref = useRef<THREE.Group>(null);
   useFrame(() => {
     if (ref.current) {
-      ref.current.rotation.z += 0.01;
+      props.startAnimation ? (ref.current.rotation.z += 0.01) : null;
     }
   });
   return (
@@ -151,6 +164,8 @@ const SpinningEllipseGroup = (props: {
       {positions.map((item, index) => {
         return (
           <Globe
+            geom={props.geom}
+            mat={props.mat}
             startAnimation={props.startAnimation}
             delay={props.delay}
             key={index}
@@ -163,35 +178,62 @@ const SpinningEllipseGroup = (props: {
 };
 
 export default function ThreeCurve(props: ThreeCurveProps) {
+  const [dpr, setDpr] = useState(1.5);
+
+  const globeGeom = useMemo(() => new SphereGeometry(1, 17, 15), []);
+  const globeMat = useMemo(
+    () =>
+      new MeshPhongMaterial({
+        shininess: 25,
+        emissive: "#1d4ed8",
+        emissiveIntensity: 1.2,
+        color: "#7e22ce",
+      }),
+    []
+  );
   return (
     <div className="w-full h-full bg-white   ">
       <Canvas
         camera={{
           position: [0, -3, 17],
         }}
+        dpr={dpr}
       >
+        <PerformanceMonitor
+          onChange={({ factor }) => setDpr(Math.round(0.5 + 1.5 * factor))}
+          onIncline={() => setDpr(2)}
+          onDecline={() => setDpr(0.8)}
+        ></PerformanceMonitor>
         <Suspense fallback={null}>
           <Controls></Controls>
           <pointLight position={[0, 0, 15]} intensity={1}></pointLight>
 
           <SpinningEllipseGroup
+            geom={globeGeom}
+            mat={globeMat}
             startAnimation={props.beginAnimation}
             radius={10}
           ></SpinningEllipseGroup>
           <DistortOrb></DistortOrb>
           <EllipseGroup
+            geom={globeGeom}
+            mat={globeMat}
             startAnimation={props.beginAnimation}
             delay={0.2}
-            radius={14}
-          ></EllipseGroup>
-
-          <EllipseGroup
-            startAnimation={props.beginAnimation}
-            delay={0.4}
             radius={16}
           ></EllipseGroup>
 
           <EllipseGroup
+            geom={globeGeom}
+            mat={globeMat}
+            startAnimation={props.beginAnimation}
+            delay={0.4}
+            radius={18}
+          ></EllipseGroup>
+
+          <EllipseGroup
+            geom={globeGeom}
+            mat={globeMat}
             startAnimation={props.beginAnimation}
             delay={0.6}
             radius={18}

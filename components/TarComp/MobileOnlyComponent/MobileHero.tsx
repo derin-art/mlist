@@ -20,11 +20,11 @@ export default function MobileHero() {
           alt="Image of Tar"
         ></Image>
       </div>
-      <div className="a  w-fit h-fit font-Climate text-[50vw] text-blue-700 ">
-        tár
+      <div className="a  w-fit h-fit font-Climate text-[46vw] text-blue-700 ">
+        Tár
       </div>
 
-      <div className=" a bottom-10 text-gray-300 text-xs xs:text-base font-Neue">
+      <div className=" a bottom-10 text-gray-300 text-[12px]  font-Neue">
         A film by Todd Fields, runtime: 158 mins
       </div>
     </div>

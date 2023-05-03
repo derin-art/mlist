@@ -148,11 +148,7 @@ const DatControls = (props: {
 const CenterOrb = () => {
   return (
     <mesh position={[0, -16, 0]}>
-      <meshPhongMaterial
-        transparent={true}
-        shininess={100}
-        color={"white"}
-      ></meshPhongMaterial>
+      <meshBasicMaterial transparent={true} color={"white"}></meshBasicMaterial>
       <sphereBufferGeometry args={[2, 20, 15]}></sphereBufferGeometry>
     </mesh>
   );
@@ -194,9 +190,11 @@ const Globe = (props: {
     >
       <meshPhongMaterial
         transparent={true}
-        shininess={100}
-        emissive={"blue"}
+        shininess={3}
+        reflectivity={0.4}
+        emissive={"black"}
         color={"blue"}
+        specular={"blue"}
       ></meshPhongMaterial>
       <sphereBufferGeometry args={[size, 20, 20]}></sphereBufferGeometry>
     </motion.mesh>
@@ -209,11 +207,28 @@ function SLight(props: {
   color?: string;
   intensity?: number;
   rotation: [x: number, y: number, z: number];
+  frameRotationX?: number;
+  frameRotationY?: number;
+  delay: number;
+  speed: number;
 }) {
+  const [startFrame, setStartFrame] = useState(false);
   const light: any = useRef<Object3D>();
-  useHelper(light, THREE.SpotLightHelper);
+  /*   useHelper(light, THREE.SpotLightHelper); */
   let posX = 0;
   let posY = 0;
+
+  useFrame(({ clock }) => {
+    if (light.current && startFrame) {
+      light.current.position.x = props.frameRotationX
+        ? Math.sin(clock.elapsedTime * props.speed) * props.frameRotationX
+        : (Math.sin(clock.elapsedTime * props.speed) * Math.PI) / 2;
+      light.current.position.y = props.frameRotationY
+        ? Math.cos(clock.elapsedTime) * props.frameRotationY
+        : (Math.cos(clock.elapsedTime) * Math.PI) / 2;
+    }
+  });
+  setTimeout(() => setStartFrame(true), props.delay);
 
   useEffect(() => {
     if (light.current) {
@@ -229,8 +244,8 @@ function SLight(props: {
       color={props.color ? props.color : "red"}
       intensity={props.intensity ? props.intensity : 2}
       position={props.position ? props.position : [0, 0, 1]}
-      angle={Math.PI / 7}
-      penumbra={0.8}
+      angle={Math.PI / 10}
+      penumbra={0.2}
       shadow-mapSize-width={24}
       shadow-mapSize-height={24}
       castShadow
@@ -394,11 +409,11 @@ export default function AwardsThreeComponent() {
     beginAnim: false,
     lightX: 0,
     lightY: 0,
-    lightZ: 0,
+    lightZ: 20.6,
     lightRX: 0,
     lightRY: 0,
     lightRZ: 0,
-    lightIntensity: 0,
+    lightIntensity: 3,
   });
 
   const {
@@ -444,9 +459,33 @@ export default function AwardsThreeComponent() {
               position={[lightX, lightY, lightZ]}
             ></DLights> */}
             <SLight
+              speed={-0.7}
+              delay={640}
+              frameRotationX={Math.PI * 15}
+              frameRotationY={Math.PI * 2}
               intensity={groupProp.lightIntensity}
               rotation={[lightRX, lightRY, lightRZ]}
               position={[lightX, lightY, lightZ]}
+              color="white"
+            ></SLight>
+            <SLight
+              speed={1.7}
+              delay={0}
+              frameRotationX={Math.PI * 25}
+              frameRotationY={Math.PI * 10}
+              intensity={groupProp.lightIntensity}
+              rotation={[lightRX, lightRY, lightRZ]}
+              position={[40, -100, lightZ]}
+              color="white"
+            ></SLight>
+            <SLight
+              speed={1.2}
+              delay={1000}
+              frameRotationX={Math.PI * 12}
+              frameRotationY={Math.PI * 20}
+              intensity={groupProp.lightIntensity}
+              rotation={[lightRX, lightRY, lightRZ]}
+              position={[40, 100, lightZ]}
               color="white"
             ></SLight>
             <AwardsObjectGroup groupProp={groupProp}></AwardsObjectGroup>

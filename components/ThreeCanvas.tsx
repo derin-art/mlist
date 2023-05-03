@@ -444,7 +444,6 @@ export default function ThreeCanvas(props: ObjectProps) {
                   intensity={3.7}
                   position={[-2, 0, 2]}
                   animation={{
-                    x: [-2, 0, 2, -2],
                     transition: {
                       duration: 4,
                       repeat: Infinity,

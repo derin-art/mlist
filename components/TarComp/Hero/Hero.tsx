@@ -35,9 +35,9 @@ export default function Hero() {
                     transition={{
                       duration: 0.6,
                       ease: [0.58, 0.28, 0.64, 0.75],
-                      delay: 0.1,
+                      delay: 0.2,
                     }}
-                    className="flex items-center justify-center text-transparent bg-clip-text bg-gradient-to-r from-black to-blue-700"
+                    className="flex items-center justify-center text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-purple-700"
                   >
                     {item}
                   </motion.span>{" "}

@@ -2,13 +2,16 @@ import Aud1 from "../../../public/Data/Tar/Images/Aud1.jpg";
 import Aud2 from "../../../public/Data/Tar/Images/Aud2.jpg";
 import { ParallaxProvider, useParallax } from "react-scroll-parallax";
 import { motion } from "framer-motion";
+import Roll from "../MicroInteractions/Roll";
+import { useState } from "react";
 
 export default function LocationCta() {
+  const [triggerAnim, setTriggerAnim] = useState(false);
   return (
     <motion.div className="w-full h-screen otherGrid  overflow-hidden ">
       <div className="w-full h-full r md:hidden">
         <div className="a font-PvcB text-white top-[5%] right-[5%] text-[7vw]">
-          <div className="font-NeueT text-[4vw] ml-[1%] mb-[4%] text-right">
+          <div className="font-Neue text-[4vw] ml-[1%] mb-[4%] text-right">
             Shot at the
           </div>
           <div className="border-2 rounded-full px-[4%] backdrop-grayscale">
@@ -25,14 +28,19 @@ export default function LocationCta() {
         <div className="w-[60%]">
           <img src={Aud1.src} className="w-full"></img>
         </div>
-        <div className="h-[40%] a bottom-[10%] -right-[40%]">
+        <div className="w-[100%] a bottom-[10%] -right-[30%]">
           <img src={Aud2.src} className="h-full"></img>
         </div>
       </div>
       <div className="w-full h-full r hidden md:block">
         <div className="a font-PvcB text-white top-[10%] left-[5%] text-[3vw]">
-          <div className="font-Neue text-sm ml-[1%] mb-[6%] border-2 p-1 px-2 rounded-full w-fit border-blue-700">
-            Shot at the Majestic
+          <div className="font-Neue text-sm ml-[1%] mb-[6%] w-fit ">
+            <Roll
+              text="Shot at the Majestic"
+              key={"2"}
+              triggerBool={triggerAnim}
+              additionalStyles="border-2 border-blue-700 p-1 px-2 rounded-full"
+            ></Roll>
           </div>
           <div className="leading-[1]">
             <div
@@ -49,25 +57,30 @@ export default function LocationCta() {
             style={{ display: "inline-block", overflow: "hidden" }}
             className="border-2 rounded-full px-[4%] backdrop-grayscale p-3 "
           >
-            <motion.div
-              initial={{ y: "110%" }}
-              whileInView={{ y: 0 }}
-              transition={{ duration: 0.4, ease: [0.58, 0.28, 0.64, 0.75] }}
-            >
-              Berlin,{" "}
-            </motion.div>
+            Berlin,
           </motion.div>
           <div className="font-PvcI  text-right ">Germany</div>
         </div>
         <div className="w-[26%] a right-[20%] top-[20%] ">
           <motion.img src={Aud1.src} className={`w-full `}></motion.img>
         </div>
-        <div className="h-[40%] a bottom-[10%] left-[5%] r">
-          <div className="text-sm text-white text-right font-Neue  mb-3">
-            <span className="border-2 z-30 p-1 px-2 rounded-full border-blue-700">
-              51.0504° N, 13.7373° E
-            </span>
-          </div>
+        <div className="w-[40%] a bottom-[10%] left-[5%] r">
+          <motion.div
+            onViewportLeave={() => {
+              setTriggerAnim(false);
+            }}
+            onViewportEnter={() => {
+              setTriggerAnim(true);
+            }}
+            className="text-sm text-white text-right font-Neue  mb-3"
+          >
+            <Roll
+              text="51.0504° N, 13.7373° E"
+              key={"1"}
+              triggerBool={triggerAnim}
+              additionalStyles="border-2 z-30 p-1 px-2 rounded-full border-blue-700"
+            ></Roll>
+          </motion.div>
           <motion.img src={Aud2.src} className={`h-full z-0 `}></motion.img>
         </div>
       </div>

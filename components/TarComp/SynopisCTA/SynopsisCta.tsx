@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import WhiteBlob from "../../../public/Svg/White.svg";
-import ThreeButton from "@/components/3dButton";
+import dynamic from "next/dynamic";
+
+const ThreeButton = dynamic(() => import("../../../components/3dButton"));
 
 export default function SynopsisCta() {
   return (
@@ -32,8 +34,8 @@ export default function SynopsisCta() {
             text={"Explore Synopsis"}
           ></ThreeButton>
         </motion.button>
-        <div className=" text-white a text-center will-change bottom-[4%] md:text-[7vw] text-[8.4vw] leading-[0.9] w-full flex flex-col justify-center items-center">
-          <div className="text-[4vw] text-white font-PvcI mb-8">
+        <div className=" text-white a text-center will-change bottom-[4%] md:text-[7vw] sm:text-[8.4vw] text-[10vw] leading-[0.9] w-full flex flex-col justify-center items-center">
+          <div className="sm:text-[4vw] text-[7vw] text-white font-PvcI mb-4 sm:mb-8">
             <span className="">Lydia</span> Tar-
           </div>
           <motion.div className="z-20 font-NeueT">
@@ -43,7 +45,7 @@ export default function SynopsisCta() {
             <span className="font-NeueT">leads to</span>{" "}
             <span className="font">most</span> boring{" "}
           </motion.div>
-          <motion.div className="willChange z-0 rounded-full h-fit border-4 r text-xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-[6.6vw] p-3 flex items-center justify-center w-fit text-white font-PvcB  md:mt-4 mt-1">
+          <motion.div className="willChange z-0 rounded-full h-fit border-4 r text-[6.3vw] sm:text-4xl md:text-5xl lg:text-7xl xl:text-[6.6vw] p-3 flex items-center justify-center w-fit text-white font-PvcB  md:mt-4 mt-1">
             {["C", "o", "n", "f", "o", "r", "m", "i", "t", "y"].map(
               (item, index) => {
                 return (

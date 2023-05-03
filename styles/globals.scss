@@ -114,16 +114,19 @@ html.lenis {
   --border-angle: 0turn;
   width: fit-content;
   height: fit-content;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
+  @media screen and (min-width: 480px) {
+    display: flex;
+  }
   background-image: conic-gradient(
       from var(--border-angle),
       #00000000,
       #00000000,
       #00000000
     ),
-    conic-gradient(from var(--border-angle), transparent 50%, #08f, #f03);
+    conic-gradient(from var(--border-angle), transparent 50%, #1d4ed8, #7e22ce);
   background-size: calc(100% - (var(--border-size) * 2))
       calc(100% - (var(--border-size) * 2)),
     cover;

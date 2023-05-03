@@ -7,6 +7,7 @@ import CateBlanchettCta from "./TarComp/CateBlanchettCTA/CateBlanchett";
 import LocationCta from "./TarComp/LocationCTA/LocationCta";
 import SocialProof from "./TarComp/SocialProof/SocialProof";
 import VideoCta from "./TarComp/VideoCTA/VideoCta";
+import Rool from "./TarComp/MicroInteractions/Roll";
 
 import Lenis from "@studio-freight/lenis";
 
@@ -68,7 +69,7 @@ export default function Tar() {
   typeof window !== "undefined" && runLenis();
   return (
     <div /* id="smooth-wrapper" */>
-      <div /* id="smooth-content"  */ className="w-full row bg-black r lenis">
+      <div /* id="smooth-content" */ className="w-full row bg-black r lenis">
         <Hero></Hero>
         <TarTrailer></TarTrailer>
 

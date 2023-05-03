@@ -1,5 +1,6 @@
 import { Suspense, useState } from "react";
-import ThreeCanvas from "./ThreeCanvas";
+import dynamic from "next/dynamic";
+const ThreeCanvas = dynamic(() => import("./ThreeCanvas"));
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ThreeButtonProps {
@@ -37,7 +38,7 @@ export default function ThreeButton(props: ThreeButtonProps) {
               ease: [0.58, 0.28, 0.64, 0.75],
             }}
             key={isHovered.toString()}
-            className=""
+            className="hidden sm:block"
           >
             {isHovered && (
               <ThreeCanvas
@@ -57,7 +58,7 @@ export default function ThreeButton(props: ThreeButtonProps) {
         onMouseOver={() => {
           setIsHovered(true);
         }}
-        className="z-30 border-2  hover:border-transparent duration-[400ms]  hover:cursor-pointer p-2 rounded-full w-[210px] flex items-center justify-center"
+        className="z-30 border-2  hover:border-transparent duration-[400ms]  hover:cursor-pointer sm:p-2 btn rounded-full sm:w-[210px] flex items-center justify-center"
       >
         {" "}
         {props.text ? props.text : "Explore Something"}
