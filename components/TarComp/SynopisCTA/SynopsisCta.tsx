@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import WhiteBlob from "../../../public/Svg/White.svg";
+import WhiteBlob1 from "../../../public/Svg/White1.svg";
 import dynamic from "next/dynamic";
 
 const ThreeButton = dynamic(() => import("../../../components/3dButton"));
 
 export default function SynopsisCta() {
   return (
-    <div className="h-screen overflow-hidden border-t -mt-[1%] border-white w-full bg-black flex items-center justify-center font-Climate text-3xl r">
+    <div className="h-screen overflow-hidden border-t  border-white w-full bg-black flex items-center justify-center font-Climate text-3xl r">
       <motion.div
         initial={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.3 }}
@@ -17,8 +18,22 @@ export default function SynopsisCta() {
       </motion.div>
       <motion.div
         initial={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        className="a w-[25%] h-1/4 blur-[80px] md:top-[20%] md:left-[10%] z-0"
+      >
+        <img src={WhiteBlob1.src}></img>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 1 }}
         transition={{ duration: 0.3, delay: 0.3 }}
-        className="a w-1/4 h-1/4 blur-[80px] top-[40%] right-[10%] z-0"
+        className="a w-1/4 h-1/4 blur-[80px] top-[40%] right-[10%] z-10"
+      >
+        <img src={WhiteBlob1.src}></img>
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 1 }}
+        transition={{ duration: 0.3, delay: 0.3 }}
+        className="a w-1/4 h-1/4 blur-[80px] top-[40%] right-[14%] z-0"
       >
         <img src={WhiteBlob.src}></img>
       </motion.div>

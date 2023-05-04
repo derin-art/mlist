@@ -1,11 +1,13 @@
 import * as THREE from "three";
-import ThreeSpring from "../ThreeSpring";
 
 import { Canvas, MeshProps, useFrame, useThree } from "@react-three/fiber";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { OrbitControls, PerformanceMonitor } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
 import { MeshPhongMaterial, SphereGeometry } from "three";
+
+// r150
+THREE.ColorManagement.enabled = true;
 
 interface ThreeCurveProps {
   beginAnimation: boolean;
@@ -180,13 +182,13 @@ const SpinningEllipseGroup = (props: {
 export default function ThreeCurve(props: ThreeCurveProps) {
   const [dpr, setDpr] = useState(1.5);
 
-  const globeGeom = useMemo(() => new SphereGeometry(1, 17, 15), []);
+  const globeGeom = useMemo(() => new SphereGeometry(1.3, 17, 15), []);
   const globeMat = useMemo(
     () =>
       new MeshPhongMaterial({
         shininess: 25,
         emissive: "#1d4ed8",
-        emissiveIntensity: 1.2,
+        emissiveIntensity: 1,
         color: "#7e22ce",
       }),
     []
@@ -220,7 +222,7 @@ export default function ThreeCurve(props: ThreeCurveProps) {
             mat={globeMat}
             startAnimation={props.beginAnimation}
             delay={0.2}
-            radius={16}
+            radius={12}
           ></EllipseGroup>
 
           <EllipseGroup
@@ -228,7 +230,7 @@ export default function ThreeCurve(props: ThreeCurveProps) {
             mat={globeMat}
             startAnimation={props.beginAnimation}
             delay={0.4}
-            radius={18}
+            radius={14}
           ></EllipseGroup>
 
           <EllipseGroup
@@ -236,7 +238,7 @@ export default function ThreeCurve(props: ThreeCurveProps) {
             mat={globeMat}
             startAnimation={props.beginAnimation}
             delay={0.6}
-            radius={18}
+            radius={16}
           ></EllipseGroup>
         </Suspense>
       </Canvas>

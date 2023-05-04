@@ -7,18 +7,9 @@ export default function Hero() {
   return (
     <>
       <div className="w-full h-screen flex items-start justify-center r overflow-hidden hidden sm:flex text-red-500 bg-white z-30">
-        <div className="w-1/2 h-full bg-black a left-0">
+        <div className="w-1/2 h-full bg-black a left-0 r flex items-center justify-center">
           <TarWave></TarWave>
-        </div>
-        <div className="w-1/2 h-full a right-0 flex flex-col items-center r justify-center">
-          <div className="text-sm a bottom-[14.4vw] border-2 border-blue-700 text-black font-Neue right-[17.9%] rounded-full p-1 px-2">
-            Script by Todd Fields
-          </div>
-          <div className="a font-Neue text-black text-center mb-[14%] text-sm">
-            <div className="font-PvcI">Empire</div>
-            Blanchett has delivered the performance of a lifetime
-          </div>
-          <motion.div className="a bottom-0 flex text-[13vw] font-Climate  ">
+          <motion.div className="a bottom-0 flex text-[13vw] font-PvcB ">
             {["T", "Á", "R"].map((item, index) => {
               return (
                 <motion.span
@@ -37,14 +28,29 @@ export default function Hero() {
                       ease: [0.58, 0.28, 0.64, 0.75],
                       delay: 0.2,
                     }}
-                    className="flex items-center justify-center text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-purple-700"
+                    className="flex items-center justify-center text-white"
                   >
                     {item}
                   </motion.span>{" "}
                 </motion.span>
               );
             })}
+            <span className="text-transparent bg-clip-text bg-gradient-to-l from-blue-700 to-purple-700">
+              .
+            </span>
           </motion.div>
+        </div>
+        <div className="w-1/2 h-full a right-0 flex flex-col items-center r justify-center">
+          <div className="text-sm a bottom-[14.4vw] border-2 hidden border-blue-700 text-black font-Neue right-[17.9%] rounded-full p-1 px-2">
+            Script by Todd Fields
+          </div>
+          <div className="a font-Neue text-black text-center text-[6vw] leading-[1]">
+            <span className="font-Climate">"</span>
+            The Narcissim of the smallest differences leads to the most boring
+            conformities
+            <span className="font-Climate">"</span>
+          </div>
+
           <div className="a top-10 text-black font-Neue bg-white">
             A film by Todd Fields
           </div>
@@ -56,3 +62,5 @@ export default function Hero() {
     </>
   );
 }
+
+/* text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-purple-700 */

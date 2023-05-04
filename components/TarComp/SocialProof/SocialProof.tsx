@@ -1,5 +1,7 @@
 import ThreeButton from "../../3dButton";
+import { motion } from "framer-motion";
 import AwardsThreeComponent from "../ThreeComponents/AwardsThreeComponent";
+import { useState } from "react";
 
 export default function SocialProof() {
   const ObjAwards = [
@@ -165,14 +167,15 @@ export default function SocialProof() {
       award: "Venice Film Festival, Volpi Cup for Best Actress",
     },
   ];
+  const [startAnim, setStartAnim] = useState(false);
   return (
-    <div className=" w-full r h-screen py-[4%] bg-black  flex-wrap flex justify-center ">
-      <AwardsThreeComponent></AwardsThreeComponent>
+    <motion.div className=" w-full r h-screen py-[4%] bg-black  flex-wrap flex justify-center ">
+      <AwardsThreeComponent startAnim={startAnim}></AwardsThreeComponent>
       <div className="text-white  px-8 leading-[0.9]">
-        <div className="font-PvcI text-[8vw] ml-[4%]">it won</div>
+        <div className="font-PvcI text-[8vw] ml-[4.5%]">It won</div>
         <div className="font-PvcB text-[6vw]">Plenty</div>
         <ThreeButton text="Explore Awards"></ThreeButton>
       </div>
-    </div>
+    </motion.div>
   );
 }

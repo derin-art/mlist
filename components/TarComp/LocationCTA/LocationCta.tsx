@@ -47,7 +47,11 @@ export default function LocationCta() {
               style={{ display: "inline-block", overflow: "hidden" }}
               className="border-2 rounded-full px-[4%] p-3"
             >
-              <div className=" ">Dresden </div>
+              <Roll
+                text="Dresden"
+                triggerBool={triggerAnim}
+                additionalStyles=""
+              ></Roll>
             </div>
             <div className="font-PvcI">Philharmonic</div>
           </div>
@@ -57,7 +61,11 @@ export default function LocationCta() {
             style={{ display: "inline-block", overflow: "hidden" }}
             className="border-2 rounded-full px-[4%] backdrop-grayscale p-3 "
           >
-            Berlin,
+            <Roll
+              text="Berlin"
+              triggerBool={triggerAnim}
+              additionalStyles=""
+            ></Roll>
           </motion.div>
           <div className="font-PvcI  text-right ">Germany</div>
         </div>

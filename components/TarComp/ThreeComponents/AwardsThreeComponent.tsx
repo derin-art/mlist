@@ -1,11 +1,16 @@
 import { Suspense, useState, useRef, use, useEffect } from "react";
-import { Object3D, Scene } from "three";
+import { Object3D } from "three";
 import { Canvas, GroupProps, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
-import { Edges, OrbitControls, useHelper } from "@react-three/drei";
+import {
+  OrbitControls,
+  useHelper,
+  PerformanceMonitor,
+} from "@react-three/drei";
 import { motion } from "framer-motion-3d";
+import { motion as m } from "framer-motion";
 import { TargetAndTransition } from "framer-motion";
-import * as dat from "dat.gui";
+
 import "../../../node_modules/react-dat-gui/dist/index.css";
 import DatGui, { DatNumber, DatBoolean, DatFolder } from "react-dat-gui";
 
@@ -211,13 +216,18 @@ function SLight(props: {
   frameRotationY?: number;
   delay: number;
   speed: number;
+  startAnim: boolean;
 }) {
   const [startFrame, setStartFrame] = useState(false);
   const light: any = useRef<Object3D>();
   /*   useHelper(light, THREE.SpotLightHelper); */
   let posX = 0;
   let posY = 0;
-
+  const start = () => {
+    if (props.startAnim) {
+      return light.current && startFrame;
+    } else return false;
+  };
   useFrame(({ clock }) => {
     if (light.current && startFrame) {
       light.current.position.x = props.frameRotationX
@@ -398,7 +408,11 @@ const AwardsObjectGroup = (props: { groupProp: any }) => {
   );
 };
 
-export default function AwardsThreeComponent() {
+type AwardsThreeComponentProps = {
+  startAnim: boolean;
+};
+
+export default function AwardsThreeComponent(props: AwardsThreeComponentProps) {
   const [groupProp, setGroupProp] = useState({
     x: 0,
     y: 0,
@@ -415,6 +429,8 @@ export default function AwardsThreeComponent() {
     lightRZ: 0,
     lightIntensity: 3,
   });
+
+  const [dpr, setDpr] = useState(1.5);
 
   const {
     power,
@@ -442,9 +458,22 @@ export default function AwardsThreeComponent() {
         setGroupProps={handleOnChange}
         otherData={setGroupProp}
       ></DatControls>
-      <div className="w-[40vw] h-[30vw] gridBg rounded-3xl bg-black z-0 overflow-hidden border-2">
-        <Canvas>
+      <m.div
+        onViewportEnter={() => {
+          setGroupProp((prev) => {
+            return { ...prev, beginAnim: true };
+          });
+        }}
+        className="w-[40vw] h-[30vw] gridBg rounded-3xl bg-black z-0 overflow-hidden border-2"
+      >
+        <Canvas dpr={dpr}>
           <Suspense fallback={null}>
+            <PerformanceMonitor
+              onChange={({ factor }) => setDpr(Math.round(0.5 + 1.5 * factor))}
+              onIncline={() => setDpr(2)}
+              onDecline={() => setDpr(0.8)}
+            ></PerformanceMonitor>
+            <ambientLight></ambientLight>
             {/*   <directionalLight
               position={[0, 0, 4]}
               intensity={3}
@@ -459,6 +488,7 @@ export default function AwardsThreeComponent() {
               position={[lightX, lightY, lightZ]}
             ></DLights> */}
             <SLight
+              startAnim={props.startAnim}
               speed={-0.7}
               delay={640}
               frameRotationX={Math.PI * 15}
@@ -469,6 +499,7 @@ export default function AwardsThreeComponent() {
               color="white"
             ></SLight>
             <SLight
+              startAnim={props.startAnim}
               speed={1.7}
               delay={0}
               frameRotationX={Math.PI * 25}
@@ -479,6 +510,7 @@ export default function AwardsThreeComponent() {
               color="white"
             ></SLight>
             <SLight
+              startAnim={props.startAnim}
               speed={1.2}
               delay={1000}
               frameRotationX={Math.PI * 12}
@@ -491,7 +523,7 @@ export default function AwardsThreeComponent() {
             <AwardsObjectGroup groupProp={groupProp}></AwardsObjectGroup>
           </Suspense>
         </Canvas>
-      </div>
+      </m.div>
     </>
   );
 }

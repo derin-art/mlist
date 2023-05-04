@@ -38,64 +38,9 @@ export default function TarTrailer() {
           </motion.div>
         </div>
       </div>
-      <div className="w-full h-screen border-y bg-black border-white sm:flex space-x-2 will-change hidden ">
+      <div className="w-full h-screen border-y bg-black border-white sm:flex  will-change hidden ">
         <div className="w-[28%] h-full border-r flex flex-col">
-          <motion.div
-            whileInView={{ opacity: 1 }}
-            initial={{ opacity: 0 }}
-            transition={{ duration: 0.7 }}
-            className="w-full h-[57%] border-b r flex items-center justify-center bg-white"
-          >
-            <div className="font-Neue text-black top-4 a z-30 border-2 p-1 px-2 border-blue-700 rounded-full ">
-              It's all about her
-            </div>
-            <ThreeCurve beginAnimation={isGrayScale}></ThreeCurve>
-          </motion.div>
-          <div className="h-[5%] w-full border-b bg-white text-black flex font-Climate flex items-center justify-center space-x-6">
-            {[1, 2, 3, 4, 5, 6].map((item) => {
-              return <div key={item}>TÁR.</div>;
-            })}
-          </div>
-          <motion.div className="w-full h-[38%] flex items-center r will-change justify-center overflow-hidden items-center dirt font-PvcI text-[12vw] text-white">
-            <motion.div className="absolute will-change  h-fit mb-[12%] ">
-              {" "}
-              Maestro
-            </motion.div>
-          </motion.div>
-        </div>
-        <div className="w-[44%] h-full flex flex-col justify-center r">
-          <motion.div
-            onViewportEnter={() => {
-              setIsGrayScale(true);
-            }}
-            onViewportLeave={() => {
-              setIsGrayScale(false);
-            }}
-            className={`r w-full flex items-center justify-center align-center delay-500 duration-[900ms] ${
-              !isGrayScale ? "grayscale" : ""
-            }`}
-          >
-            <span className="text-white self-end  a top-0 right-2 font-Neue border-2 border-blue-700 p-1 px-2 text-sm rounded-full">
-              Trailer
-            </span>
-            <button className="btn a z-20">Play</button>
-            <ReactPlayer url={trailerUrl} width={"100%"}></ReactPlayer>
-          </motion.div>
-        </div>
-        <div className="w-[28%] h-full border-l flex flex-col">
-          <div className="w-full h-[55%] border-b flex items-center justify-center p-[3%]">
-            <div className="w-[40vh] rounded-full h-[40vh] border-2 r flex items-center justify-center r">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: [0.58, 0.28, 0.64, 0.75] }}
-                className="font-Climate text-white text-[4vw]"
-              >
-                7.10.22
-              </motion.div>
-            </div>
-          </div>
-          <div className="w-full flex items-center justify-center text-white h-[45%] r">
+          <div className="w-full flex items-center justify-center text-white h-[43%] r">
             <div className="a w-full h-full z-0 blur-[70px] -top-[10%]">
               <motion.img
                 initial={{ opacity: 0 }}
@@ -119,6 +64,66 @@ export default function TarTrailer() {
                 158 <span className="font-Neue"> min</span>
               </motion.div>
             </motion.div>
+          </div>
+          <div className="w-full h-[57%] border-t flex items-center justify-center p-[3%]">
+            <div className="w-[40vh] rounded-full h-[40vh] border-4 r flex items-center justify-center r">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: [0.58, 0.28, 0.64, 0.75] }}
+                className="font-Climate text-white text-[4vw]"
+              >
+                7.10.22
+              </motion.div>
+            </div>
+          </div>
+        </div>
+        <div className="w-[44%] h-full flex flex-col justify-center r ">
+          <motion.div
+            onViewportEnter={() => {
+              setIsGrayScale(true);
+            }}
+            onViewportLeave={() => {
+              setIsGrayScale(false);
+            }}
+            className={`r w-full flex items-center justify-center align-center delay-500 duration-[900ms] ${
+              !isGrayScale ? "grayscale" : ""
+            }`}
+          >
+            <span className="text-white self-end  a top-[24%] right-2 font-Neue border-2 border-blue-700 p-1 px-2 text-sm rounded-full">
+              Trailer
+            </span>
+            <button className="btn a z-20">Play</button>
+            <ReactPlayer
+              url={trailerUrl}
+              width={"100%"}
+              height={"100vh"}
+            ></ReactPlayer>
+          </motion.div>
+        </div>
+        <div className="w-[28%] h-full flex flex-col-reverse border-l z-10">
+          <motion.div className="w-full h-[40%] flex items-center r will-change justify-center overflow-hidden items-center dirt font-PvcI text-[12vw] text-white">
+            <motion.div className="absolute will-change  h-fit mb-[12%] ">
+              {" "}
+              Maestro
+            </motion.div>
+          </motion.div>
+
+          <motion.div
+            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            transition={{ duration: 0.7 }}
+            className="w-full h-[55%] border-b r flex items-center justify-center bg-white"
+          >
+            <div className="font-Neue text-black top-4 a z-30 border-2 p-1 px-2 border-blue-700 rounded-full ">
+              It's all about her
+            </div>
+            <ThreeCurve beginAnimation={isGrayScale}></ThreeCurve>
+          </motion.div>
+          <div className="h-[5%] w-full overflow-hidden border-b bg-white border-y border-black text-black flex font-Climate flex items-center justify-center space-x-6">
+            {[1, 2, 3, 4, 5, 6].map((item) => {
+              return <div key={item}>TÁR.</div>;
+            })}
           </div>
         </div>
       </div>

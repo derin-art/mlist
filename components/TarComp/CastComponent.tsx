@@ -11,6 +11,7 @@ type CastComp = {
 import dynamic from "next/dynamic";
 const Distortion = dynamic(() => import("../DistortText"));
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function CastComponent(props: CastComp) {
   const split = props.name.split(" ");
@@ -33,19 +34,22 @@ export default function CastComponent(props: CastComp) {
               "h-[60px] border-2 rounded-full border-white w-fit  top-[0%]  overflow-hidden left-[0%] z-20"
             } `}
           >
-            <div className="font-white text-[20px] sm:text-[35px] leading-[1] border-2 rounded-full px-3 p-2 ">
+            <div className="font-white text-[20px] sm:text-[35px] leading-[1] border-4 rounded-full px-3 p-2 ">
               {split[0]}
             </div>
             {!props.disableDistortText && (
               <Distortion id={props.id} text={split[0]}></Distortion>
             )}
           </span>
-          <span className="font-PvcI md:text-[1.4vw] text-sm">{split[1]}</span>
+          <span className="font-PvcI md:text-[2vw] text-sm">{split[1]}</span>
         </div>
-        <img
+        <Image
+          alt={props.name}
+          width={400}
+          height={600}
           className="lg:w-[120%] w-full duration-300 "
           src={props.img.src}
-        ></img>
+        ></Image>
 
         <div className="font-Neue mt-4 border-2 rounded-full border-blue-700 w-full text-white px-2 r overflow-hidden p-1 text-sm">
           {" "}

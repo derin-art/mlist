@@ -3,6 +3,7 @@ import NinaH from "../../../public/Data/Tar/Images/Cast/NinaH.jpg";
 import SophieK from "../../../public/Data/Tar/Images/Cast/SophieK.jpg";
 import NoemieM from "../../../public/Data/Tar/Images/Cast/NoemieM.jpg";
 import MarkS from "../../../public/Data/Tar/Images/Cast/MarkS.jpg";
+import JulianG from "../../../public/Data/Tar/Images/Cast/JulianG.jpg";
 
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
@@ -52,6 +53,14 @@ export default function TarCastList() {
         as: "Eliot Kaplan",
         name: "Mark Strong",
         img: MarkS,
+        style: "top-[70%] left-[20%]",
+        id: "sdmsd4",
+        no: 5,
+      },
+      {
+        as: "Andris Davis",
+        name: "Julian Glover",
+        img: JulianG,
         style: "top-[70%] left-[20%]",
         id: "sdmsd4",
         no: 5,

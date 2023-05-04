@@ -5,7 +5,7 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+
   scroll-behavior: smooth;
 }
 
@@ -155,4 +155,20 @@ html.lenis {
   background: -webkit-linear-gradient(#eee, #333);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.stic {
+  position: sticky;
+  top: 0;
+}
+
+.sticky-element {
+  position: sticky;
+  top: 0;
+}
+
+.gsap-box {
+}
+
+.roll {
 }
