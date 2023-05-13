@@ -64,7 +64,7 @@ html.lenis {
     @apply absolute;
   }
   .btn {
-    @apply font-Climate border-2 rounded-full text-sm w-fit p-3 text-white;
+    @apply font-Neue border-2 rounded-full text-xs w-fit px-2 p-1 text-white;
   }
 }
 
@@ -126,7 +126,7 @@ html.lenis {
       #00000000,
       #00000000
     ),
-    conic-gradient(from var(--border-angle), transparent 50%, #1d4ed8, #7e22ce);
+    conic-gradient(from var(--border-angle), transparent 50%, #1d4ed8, #ad62ee);
   background-size: calc(100% - (var(--border-size) * 2))
       calc(100% - (var(--border-size) * 2)),
     cover;
@@ -162,13 +162,16 @@ html.lenis {
   top: 0;
 }
 
-.sticky-element {
+/* .sticky-element {
   position: sticky;
   top: 0;
-}
+} */
 
 .gsap-box {
 }
 
 .roll {
+}
+
+.yet-another {
 }

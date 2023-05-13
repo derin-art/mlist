@@ -1,10 +1,23 @@
 import * as THREE from "three";
 
-import { Canvas, MeshProps, useFrame, useThree } from "@react-three/fiber";
+import matcap1 from "../../public/matcaps/1.png";
+import {
+  Canvas,
+  MeshProps,
+  useFrame,
+  useThree,
+  useLoader,
+} from "@react-three/fiber";
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { OrbitControls, PerformanceMonitor } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
-import { MeshPhongMaterial, SphereGeometry } from "three";
+
+import {
+  MeshMatcapMaterial,
+  MeshPhongMaterial,
+  SphereGeometry,
+  TextureLoader,
+} from "three";
 
 // r150
 THREE.ColorManagement.enabled = true;
@@ -19,7 +32,7 @@ const Controls = () => {
     camera.rotation.reorder("YXZ");
     camera.rotation.set((Math.PI / 180) * 10, 0, 0);
   });
-  return <OrbitControls></OrbitControls>;
+  return <OrbitControls enabled={false}></OrbitControls>;
 };
 
 const Globe = (props: {
@@ -180,16 +193,30 @@ const SpinningEllipseGroup = (props: {
 };
 
 export default function ThreeCurve(props: ThreeCurveProps) {
+  const textureLoader = new THREE.TextureLoader();
+  let Texture: THREE.Texture;
+  textureLoader.load(matcap1.src, (texture) => {
+    Texture = texture;
+  });
   const [dpr, setDpr] = useState(1.5);
-
-  const globeGeom = useMemo(() => new SphereGeometry(1.3, 17, 15), []);
-  const globeMat = useMemo(
-    () =>
-      new MeshPhongMaterial({
+  /*  new MeshPhongMaterial({
         shininess: 25,
         emissive: "#1d4ed8",
         emissiveIntensity: 1,
         color: "#7e22ce",
+      }), */
+
+  const matCap = useLoader(TextureLoader, matcap1.src);
+
+  matCap.minFilter = THREE.NearestFilter;
+  matCap.magFilter = THREE.NearestFilter;
+  matCap.generateMipmaps = false;
+
+  const globeGeom = useMemo(() => new SphereGeometry(1.3, 17, 15), []);
+  const globeMat = useMemo(
+    () =>
+      new MeshMatcapMaterial({
+        matcap: matCap,
       }),
     []
   );
@@ -208,7 +235,6 @@ export default function ThreeCurve(props: ThreeCurveProps) {
         ></PerformanceMonitor>
         <Suspense fallback={null}>
           <Controls></Controls>
-          <pointLight position={[0, 0, 15]} intensity={1}></pointLight>
 
           <SpinningEllipseGroup
             geom={globeGeom}

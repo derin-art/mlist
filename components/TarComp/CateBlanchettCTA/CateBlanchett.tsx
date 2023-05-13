@@ -18,9 +18,9 @@ const BorderAnimCont = (props: { text: string; styles: string }) => {
 
 export default function CateBlanchettCta() {
   return (
-    <div className="h-screen w-full flex items-center justify-center bg-black r overflow-hidden">
+    <div className="min-h-[100vh] w-full flex items-center justify-center bg-black r overflow-hidden sm:my-[8vw]  ">
       <motion.img
-        className="a blur-[90px] w-[40vw] h-[50vw]"
+        className="a blur-[120px] w-[30vw] h-[30vw]"
         src={WhiteBlob.src}
       ></motion.img>
       <div className="a w-full flex flex-col items-center will-change justify-center text-white md:text-[23px] text-[4vw] lS">

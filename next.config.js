@@ -6,7 +6,7 @@ const withTM = require("next-transpile-modules")([
 ]);
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ["@react-three/fiber", "three"],
+  transpilePackages: ["@react-three/fiber", "three", "@studio-freight/compono"],
 };
 
 module.exports = nextConfig;

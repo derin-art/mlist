@@ -1,5 +1,7 @@
 import Aud1 from "../../../public/Data/Tar/Images/Aud1.jpg";
 import Aud2 from "../../../public/Data/Tar/Images/Aud2.jpg";
+import Alt1 from "../../../public/Data/Tar/Images/Aud.png";
+import Alt2 from "../../../public/Data/Tar/Images/AltAud.png";
 import { ParallaxProvider, useParallax } from "react-scroll-parallax";
 import { motion } from "framer-motion";
 import Roll from "../MicroInteractions/Roll";
@@ -8,7 +10,7 @@ import { useState } from "react";
 export default function LocationCta() {
   const [triggerAnim, setTriggerAnim] = useState(false);
   return (
-    <motion.div className="w-full h-screen otherGrid  overflow-hidden ">
+    <motion.div className="w-full h-screen otherGrid  overflow-hidden my-[5vw] mb-[7vw]">
       <div className="w-full h-full r md:hidden">
         <div className="a font-PvcB text-white top-[5%] right-[5%] text-[7vw]">
           <div className="font-Neue text-[4vw] ml-[1%] mb-[4%] text-right">
@@ -33,7 +35,7 @@ export default function LocationCta() {
         </div>
       </div>
       <div className="w-full h-full r hidden md:block">
-        <div className="a font-PvcB text-white top-[10%] left-[5%] text-[3vw]">
+        <div className="a font-PvcB text-black top-[10%] left-[5%] text-[3vw]">
           <div className="font-Neue text-sm ml-[1%] mb-[6%] w-fit ">
             <Roll
               text="Shot at the Majestic"
@@ -42,10 +44,10 @@ export default function LocationCta() {
               additionalStyles="border-2 border-blue-700 p-1 px-2 rounded-full"
             ></Roll>
           </div>
-          <div className="leading-[1]">
+          <div className="leading-[1] text-black">
             <div
               style={{ display: "inline-block", overflow: "hidden" }}
-              className="border-2 rounded-full px-[4%] p-3"
+              className="border-2 border-black rounded-full px-[4%] p-3"
             >
               <Roll
                 text="Dresden"
@@ -53,7 +55,7 @@ export default function LocationCta() {
                 additionalStyles=""
               ></Roll>
             </div>
-            <div className="font-PvcI">Philharmonic</div>
+            <div className="font-Neue">Philharmonic</div>
           </div>
         </div>
         <div className="a font-PvcB text-white bottom-[40%] z-30 right-[10%] text-[3vw] leading-[0.9]">
@@ -70,7 +72,19 @@ export default function LocationCta() {
           <div className="font-PvcI  text-right ">Germany</div>
         </div>
         <div className="w-[26%] a right-[20%] top-[20%] ">
-          <motion.img src={Aud1.src} className={`w-full `}></motion.img>
+          <motion.img
+            src={Aud1.src}
+            className={`w-full border hidden`}
+          ></motion.img>
+        </div>
+        <div className="w-full h-full flex">
+          <div className="w-1/2 h-full flex flex-col">
+            <div className="h-full bg-white"></div>
+            <img className=" object-cover" src={Alt2.src}></img>
+          </div>
+          <div className="w-1/2 overflow-hidden h-full">
+            <img className="h-full object-cover" src={Alt1.src}></img>
+          </div>
         </div>
         <div className="w-[40%] a bottom-[10%] left-[5%] r">
           <motion.div
@@ -89,7 +103,10 @@ export default function LocationCta() {
               additionalStyles="border-2 z-30 p-1 px-2 rounded-full border-blue-700"
             ></Roll>
           </motion.div>
-          <motion.img src={Aud2.src} className={`h-full z-0 `}></motion.img>
+          <motion.img
+            src={Aud2.src}
+            className={`h-full z-0 border hidden`}
+          ></motion.img>
         </div>
       </div>
     </motion.div>

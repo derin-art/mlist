@@ -1,6 +1,6 @@
 import { Suspense, useState } from "react";
 import dynamic from "next/dynamic";
-const ThreeCanvas = dynamic(() => import("./ThreeCanvas"));
+/* const ThreeCanvas = dynamic(() => import("./ThreeCanvas")); */
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ThreeButtonProps {
@@ -26,7 +26,7 @@ export default function ThreeButton(props: ThreeButtonProps) {
 
   return (
     <div className="font-Climate  rounded-full text-sm w-fit p-3 text-white r flex items-center justify-center">
-      <Suspense fallback={null}>
+      {/*   <Suspense fallback={null}>
         <AnimatePresence>
           <motion.div
             initial={{ opacity: 0 }}
@@ -50,7 +50,7 @@ export default function ThreeButton(props: ThreeButtonProps) {
             )}
           </motion.div>
         </AnimatePresence>
-      </Suspense>
+      </Suspense> */}
       <motion.p
         onMouseLeave={() => {
           setIsHovered(false);
@@ -58,7 +58,7 @@ export default function ThreeButton(props: ThreeButtonProps) {
         onMouseOver={() => {
           setIsHovered(true);
         }}
-        className="z-30 border-2  hover:border-transparent duration-[400ms]  hover:cursor-pointer sm:p-2 btn rounded-full sm:w-[210px] flex items-center justify-center"
+        className="z-30 border-2  hover:border-transparent duration-[400ms]  hover:cursor-pointer px-2 p-2 uppercase btn rounded-full  flex items-center justify-center"
       >
         {" "}
         {props.text ? props.text : "Explore Something"}

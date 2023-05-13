@@ -36,6 +36,13 @@ module.exports = {
         PvcB: ["PvcB", "serif"],
         PvcI: ["PvcI", "serif"],
       },
+      colors: {
+        ultraGray: "#242424",
+        ultraBlack: "#1a1a1a",
+        spaceCadet: "#2E294E",
+        smoky: "#0C0809",
+        richB: "#071013",
+      },
     },
   },
   plugins: [],

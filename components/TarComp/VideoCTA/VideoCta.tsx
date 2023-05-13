@@ -14,7 +14,7 @@ export default function VideoCta() {
         ></ReactPlayer>
       </motion.div>
 
-      <button className="a btn">Play</button>
+      <button className="a btn uppercase">Play</button>
       <div className="text-sm a bottom-[4%] left-4 font-PvcB text-white sm:flex items-center gap-2 hidden">
         <div className="h-4 w-4 rounded-full bg-gradient-to-r from-blue-700 to-purple-700"></div>{" "}
         Dresden <span className="font-PvcI -ml-[3%]">Philharmonic</span>

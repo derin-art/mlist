@@ -11,8 +11,7 @@ export default function Roll(props: RollProps) {
   return (
     <div className="">
       <motion.div
-        className={`${props.additionalStyles} text-center`}
-        style={{ overflow: "hidden", display: "inline-block" }}
+        className={`${props.additionalStyles} text-center inline-block overflow-hidden`}
       >
         <motion.div className="roll">
           <motion.div>{props.text}</motion.div>

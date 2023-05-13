@@ -7,6 +7,8 @@ import CateBlanchettCta from "./TarComp/CateBlanchettCTA/CateBlanchett";
 import LocationCta from "./TarComp/LocationCTA/LocationCta";
 import SocialProof from "./TarComp/SocialProof/SocialProof";
 import VideoCta from "./TarComp/VideoCTA/VideoCta";
+import { useLenis } from "@studio-freight/react-lenis";
+import { Kinesis } from "@studio-freight/compono";
 
 import { Lenis as ReactLenis } from "@studio-freight/react-lenis";
 
@@ -22,13 +24,17 @@ import { useEffect, useLayoutEffect, useRef } from "react";
 const TarCastList = dynamic(() => import("./TarComp/TarCastList/TarCastList"));
 
 import React from "react";
+import { animate, animations } from "framer-motion";
 
 export default function Tar() {
   const el = useRef();
   const q = gsap.utils.selector(el);
   gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-  /* 
-  useLayoutEffect(() => {
+
+  const lenis = useLenis(ScrollTrigger.update);
+  useEffect(ScrollTrigger.refresh, [lenis]);
+
+  /*   useLayoutEffect(() => {
     let smoother = ScrollSmoother.create({
       smooth: 1, // how long (in seconds) it takes to "catch up" to the native scroll position
       effects: false,
@@ -65,7 +71,7 @@ export default function Tar() {
   /* 
   typeof window !== "undefined" && runLenis(); */
   let refS;
-  useEffect(() => {
+  /*   useEffect(() => {
     refS = useRef < HTMLDivElement > null;
     let parent = document.querySelector(".sticky-element").parentElement;
 
@@ -76,13 +82,7 @@ export default function Tar() {
       }
       parent = parent.parentElement;
     }
-  }, []);
-
-  const lenis = new Lenis({
-    duration: 1.2,
-    smooth: true,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  });
+  }, []); */
 
   function raf(time) {
     lenis.raf(time);
@@ -91,86 +91,80 @@ export default function Tar() {
 
   requestAnimationFrame(raf);
 
-  useEffect(() => {
-    const anim = gsap.to(q(".gsap-box"), {
-      x: 400,
-      rotation: 360,
-      duration: 3,
-    });
-    const rollAnim = gsap.to(q(".roll"), {
-      y: "-100%",
-      duration: 0.6,
-    });
-    ScrollTrigger.create({
-      trigger: q(".gsap-box"),
-      animation: anim,
-      // Uncomment these to see how they affect the ScrollTrigger
+  const boxBasic = useRef();
+  const boxCont = useRef();
+  const circle = useRef();
+  const tl = useRef();
 
-      start: "top center",
-      end: "top 50px",
-      toggleClass: "active",
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      tl.current = gsap
+        .timeline()
+        .to(circle.current, {
+          rotate: 360,
+          duration: 0.7,
+        })
+        .to(boxBasic.current, {
+          x: -100,
+          duration: 0.5,
+        });
 
-      scrub: 1,
-      onUpdate: (self) => {
-        //   console.log("progress:", self.progress.toFixed(3), "direction:", self.direction, "velocity", self.getVelocity());
-        // }
-      },
-    });
-    ScrollTrigger.create({
-      trigger: q(".roll"),
-      animation: rollAnim,
-      // Uncomment these to see how they affect the ScrollTrigger
-
-      start: "top center",
-      end: "top 50px",
-      toggleClass: "active",
-
-      scrub: 1,
-    });
-
-    /* gsap.to(q(".gsap-box"), {
-      x: 400,
-      scale: 2,
-
-      rotation: 360,
-      scrollTrigger: {
-        trigger: q(".gsap-box"),
+      const rollAnim = gsap.to(".roll", {
+        y: "-100%",
+        duration: 0.6,
+      });
+      ScrollTrigger.create({
+        trigger: q(".roll"),
+        animation: rollAnim,
         start: "top center",
-        end: "top 100px",
+        end: "top 50px",
         scrub: true,
-        markers: true,
-        id: "scrub",
-      },
-    }); */
+
+        toggleClass: "active",
+      });
+    });
+
+    return () => ctx.revert();
   }, []);
 
   return (
-    <ReactLenis root options={{ duration: 1.6, lerp: 0.1 }}>
-      <div ref={el} className="h-auto lenis" /* id="smooth-wrapper" */>
+    <div ref={el} className="h-auto " /* id="smooth-wrapper" */>
+      <div
+        /* id="smooth-content" */ className="w-full row bg-black r h-auto lenis"
+      >
         <div
-          /* id="smooth-content" */ className="w-full row bg-black r h-auto lenis"
+          ref={boxCont}
+          className="w-full h-screen flex items-center justify-center gap-x-[100px] hidden"
         >
-          <Hero></Hero>
-          <TarTrailer></TarTrailer>
-
-          <SynopsisCta></SynopsisCta>
-          <CateBlanchettCta></CateBlanchettCta>
-          <div className="h-screen w-full r hidden">
-            <div className="w-48 h-48 bg-red-500 gsap-box"></div>
-          </div>
-
-          <div ref={refS} className="sticky-element">
-            <div>
-              <LocationCta></LocationCta>
-            </div>
-          </div>
-          <div className="bg-black r">
-            <VideoCta></VideoCta>
-            <TarCastList></TarCastList>
-            <SocialProof></SocialProof>
-          </div>
+          <div
+            data-animate="rotate"
+            ref={boxBasic}
+            className="w-40 h-40 bg-red-500 yet-another"
+          ></div>
+          <div
+            data-animate="rotate"
+            ref={circle}
+            className="w-40 h-40 bg-green-500 rounded-2xl yet-another"
+          ></div>
+          <Kinesis>
+            <div className="w-40 h-40 bg-yellow-500"></div>
+          </Kinesis>
         </div>
+        <Hero></Hero>
+        <TarTrailer></TarTrailer>
+
+        <SynopsisCta></SynopsisCta>
+        <CateBlanchettCta></CateBlanchettCta>
+
+        <div ref={refS} className="hidden">
+          <div></div>
+        </div>
+        <LocationCta></LocationCta>
+        <TarCastList></TarCastList>
+        <SocialProof></SocialProof>
+
+        <div className=""></div>
       </div>
-    </ReactLenis>
+    </div>
   );
 }
