@@ -36,7 +36,7 @@ export default function LocationCta() {
       </div>
       <div className="w-full h-full r hidden md:block">
         <div className="a font-PvcB text-black top-[10%] left-[5%] text-[3vw]">
-          <div className="font-Neue text-sm ml-[1%] mb-[6%] w-fit ">
+          <div className="font-Neue hidden text-sm ml-[1%] mb-[6%] w-fit ">
             <Roll
               text="Shot at the Majestic"
               key={"2"}
@@ -44,7 +44,7 @@ export default function LocationCta() {
               additionalStyles="border-2 border-blue-700 p-1 px-2 rounded-full"
             ></Roll>
           </div>
-          <div className="leading-[1] text-black">
+          <div className="leading-[1] text-black hidden">
             <div
               style={{ display: "inline-block", overflow: "hidden" }}
               className="border-2 border-black rounded-full px-[4%] p-3"
@@ -58,7 +58,7 @@ export default function LocationCta() {
             <div className="font-Neue">Philharmonic</div>
           </div>
         </div>
-        <div className="a font-PvcB text-white bottom-[40%] z-30 right-[10%] text-[3vw] leading-[0.9]">
+        <div className="a font-PvcB text-white bottom-[40%] z-30 right-[10%] text-[3vw] leading-[0.9] hidden">
           <motion.div
             style={{ display: "inline-block", overflow: "hidden" }}
             className="border-2 rounded-full px-[4%] backdrop-grayscale p-3 "
@@ -94,13 +94,13 @@ export default function LocationCta() {
             onViewportEnter={() => {
               setTriggerAnim(true);
             }}
-            className="text-sm text-white text-right font-Neue  mb-3"
+            className="text-sm text-white text-right font-Neue  mb-3 hidden"
           >
             <Roll
               text="51.0504° N, 13.7373° E"
               key={"1"}
               triggerBool={triggerAnim}
-              additionalStyles="border-2 z-30 p-1 px-2 rounded-full border-blue-700"
+              additionalStyles="border-2 z-30 p-1 hidden px-2 rounded-full border-blue-700"
             ></Roll>
           </motion.div>
           <motion.img

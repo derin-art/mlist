@@ -2,11 +2,12 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import CateB1 from "../../../public/Data/Tar/Images/CateB.jpg";
 import WhiteBlob from "../../../public/Svg/White.svg";
+import Image from "next/image";
 
 const BorderAnimCont = (props: { text: string; styles: string }) => {
   return (
     <div
-      className={` box  text-white font-Neue   rounded-full text-sm pl-[1.5px] pr-[1.5px] pb-[0.9px] pt-[0.9px] ${props.styles}`}
+      className={`  text-white font-Neue   rounded-full text-sm pl-[1.5px] pr-[1.5px] pb-[0.9px] pt-[0.9px] ${props.styles}`}
     >
       {" "}
       <div className="rounded-full p-1 overflow-hidden bg-black px-2">
@@ -18,7 +19,7 @@ const BorderAnimCont = (props: { text: string; styles: string }) => {
 
 export default function CateBlanchettCta() {
   return (
-    <div className="min-h-[100vh] w-full flex items-center justify-center bg-black r overflow-hidden sm:my-[8vw]  ">
+    <div className="min-h-[100vh] w-full flex items-center justify-center r overflow-hidden sm:my-[8vw]  ">
       <motion.img
         className="a blur-[120px] w-[30vw] h-[30vw]"
         src={WhiteBlob.src}
@@ -27,29 +28,14 @@ export default function CateBlanchettCta() {
         <div className="text-white font-PvcI ">
           Cate <span className="font-PvcB">Blanchett</span> is
         </div>
+        <Image
+          alt="cate-profile-img"
+          width={420}
+          height={260}
+          src={CateB1.src}
+          className="h-[420px] w-[260px]"
+        ></Image>
 
-        <motion.div className="will-change h-[420px] w-[260px]">
-          <motion.div style={{ display: "inline-block", overflow: "hidden" }}>
-            {" "}
-            <motion.img
-              whileHover={{ scale: 1.1 }}
-              width={260}
-              initial={{
-                x: "100%",
-                width: 200,
-              }}
-              whileInView={{
-                x: 0,
-                width: 260,
-                transition: {
-                  duration: 0.6,
-                  ease: [0.58, 0.28, 0.64, 0.75],
-                },
-              }}
-              src={CateB1.src}
-            ></motion.img>
-          </motion.div>
-        </motion.div>
         <div className="text-white font-PvcB md:text-[1.5vw] text-[3vw]">
           Lydia<span className="font-PvcI"> Tar</span>
         </div>

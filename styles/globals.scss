@@ -139,10 +139,6 @@ html.lenis {
       --border-angle: 1turn;
     }
   }
-
-  &:hover {
-    animation-play-state: paused;
-  }
 }
 
 @property --border-angle {
