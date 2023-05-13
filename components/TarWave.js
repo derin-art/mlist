@@ -33,7 +33,7 @@ const WaveShaderMateria = shaderMaterial(
       vUv = uv;
 
       vec3 pos = position;
-      float noiseFreq = 0.8;
+      float noiseFreq = 0.5;
       float noiseAmp = 0.15;
       vec3 noisePos = vec3(pos.x * noiseFreq + uTime, pos.y, pos.z);
       pos.z += snoise3(noisePos) * noiseAmp;
@@ -73,7 +73,7 @@ const Plane = ({ image }) => {
 
   return (
     <mesh position={[0, 0, 0]}>
-      <planeBufferGeometry args={[2.0, 3.0, 40, 40]} />
+      <planeBufferGeometry args={[2.0, 3.0, 15, 15]} />
       {image ? (
         <waveShaderMateria
           toneMapped={false}

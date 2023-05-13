@@ -6,7 +6,7 @@ import SynopsisCta from "./TarComp/SynopisCTA/SynopsisCta";
 import CateBlanchettCta from "./TarComp/CateBlanchettCTA/CateBlanchett";
 import LocationCta from "./TarComp/LocationCTA/LocationCta";
 import SocialProof from "./TarComp/SocialProof/SocialProof";
-import VideoCta from "./TarComp/VideoCTA/VideoCta";
+
 import { useLenis } from "@studio-freight/react-lenis";
 import { Kinesis } from "@studio-freight/compono";
 
@@ -98,17 +98,6 @@ export default function Tar() {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
-      tl.current = gsap
-        .timeline()
-        .to(circle.current, {
-          rotate: 360,
-          duration: 0.7,
-        })
-        .to(boxBasic.current, {
-          x: -100,
-          duration: 0.5,
-        });
-
       const rollAnim = gsap.to(".roll", {
         y: "-100%",
         duration: 0.6,
@@ -130,9 +119,9 @@ export default function Tar() {
   return (
     <div ref={el} className="h-auto " /* id="smooth-wrapper" */>
       <div
-        /* id="smooth-content" */ className="w-full row bg-black r h-auto lenis"
+        /* id="smooth-content" */ className="w-full row bg-black  h-auto lenis"
       >
-        <div
+        {/*  <div
           ref={boxCont}
           className="w-full h-screen flex items-center justify-center gap-x-[100px] hidden"
         >
@@ -149,7 +138,7 @@ export default function Tar() {
           <Kinesis>
             <div className="w-40 h-40 bg-yellow-500"></div>
           </Kinesis>
-        </div>
+        </div> */}
         <Hero></Hero>
         <TarTrailer></TarTrailer>
 

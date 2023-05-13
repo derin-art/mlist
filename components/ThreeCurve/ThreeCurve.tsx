@@ -91,6 +91,36 @@ const Globe = (props: {
   );
 };
 
+const GlobeTwo = (props: {
+  position: [x: number, y: number, z: number];
+
+  geom: any;
+  mat: any;
+}) => {
+  const [current, setCurrent] = useState({ x: 0, y: 0 });
+
+  let currentX: number = 0;
+  let currentY: number = 0;
+  const ref: any = useRef<MeshProps>(null!);
+
+  return (
+    <motion.mesh
+      material={props.mat}
+      geometry={props.geom}
+      ref={ref}
+      position={props.position}
+    >
+      {/*    <sphereBufferGeometry args={[1, 20, 15]}></sphereBufferGeometry>
+      <meshPhongMaterial
+        transparent={true}
+        shininess={100}
+        emissive={"blue"}
+        color={"blue"}
+      ></meshPhongMaterial> */}
+    </motion.mesh>
+  );
+};
+
 const DistortOrb = () => {
   return (
     <mesh>
@@ -192,6 +222,56 @@ const SpinningEllipseGroup = (props: {
   );
 };
 
+const SpinningEllipseGroupTwo = (props: {
+  radius: number;
+  delay?: number;
+  startAnimation: boolean;
+  geom: any;
+  mat: any;
+}) => {
+  const positions = [];
+  const curveEllispe = new THREE.EllipseCurve(
+    0,
+    0, // ax, aY
+    props.radius,
+    props.radius, // xRadius, yRadius
+    0,
+    2 * Math.PI, // aStartAngle, aEndAngle
+    false, // aClockwise
+    0 // aRotation
+  );
+
+  for (let i = 0; i < 10; i++) {
+    positions.push(curveEllispe.getPoint(i / 10));
+  }
+  const ref = useRef<THREE.Group>(null);
+
+  if (ref.current) {
+    ref.current.rotation.x = (Math.PI / 2) * -0.3;
+  }
+
+  useFrame(() => {
+    if (ref.current) {
+      props.startAnimation ? (ref.current.rotation.z += 0.02) : null;
+    }
+  });
+
+  return (
+    <group ref={ref}>
+      {positions.map((item, index) => {
+        return (
+          <GlobeTwo
+            geom={props.geom}
+            mat={props.mat}
+            key={index}
+            position={[item.x, item.y, 0]}
+          ></GlobeTwo>
+        );
+      })}
+    </group>
+  );
+};
+
 export default function ThreeCurve(props: ThreeCurveProps) {
   const textureLoader = new THREE.TextureLoader();
   let Texture: THREE.Texture;
@@ -215,8 +295,11 @@ export default function ThreeCurve(props: ThreeCurveProps) {
   const globeGeom = useMemo(() => new SphereGeometry(1.3, 17, 15), []);
   const globeMat = useMemo(
     () =>
-      new MeshMatcapMaterial({
-        matcap: matCap,
+      new MeshPhongMaterial({
+        shininess: 25,
+        emissive: "#1d4ed8",
+        emissiveIntensity: 1,
+        color: "#7e22ce",
       }),
     []
   );
@@ -236,14 +319,21 @@ export default function ThreeCurve(props: ThreeCurveProps) {
         <Suspense fallback={null}>
           <Controls></Controls>
 
-          <SpinningEllipseGroup
+          {/* <SpinningEllipseGroup
             geom={globeGeom}
             mat={globeMat}
             startAnimation={props.beginAnimation}
             radius={10}
-          ></SpinningEllipseGroup>
+          ></SpinningEllipseGroup> */}
+          <SpinningEllipseGroupTwo
+            geom={globeGeom}
+            mat={globeMat}
+            startAnimation={props.beginAnimation}
+            radius={10}
+          ></SpinningEllipseGroupTwo>
+          <pointLight intensity={1} position={[0, 0, 17]}></pointLight>
           <DistortOrb></DistortOrb>
-          <EllipseGroup
+          {/*   <EllipseGroup
             geom={globeGeom}
             mat={globeMat}
             startAnimation={props.beginAnimation}
@@ -265,7 +355,7 @@ export default function ThreeCurve(props: ThreeCurveProps) {
             startAnimation={props.beginAnimation}
             delay={0.6}
             radius={16}
-          ></EllipseGroup>
+          ></EllipseGroup> */}
         </Suspense>
       </Canvas>
     </div>

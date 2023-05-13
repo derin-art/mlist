@@ -135,15 +135,7 @@ export default function TarTrailer() {
         </div>
         <div className="w-[44%] h-full flex flex-col justify-center r ">
           <motion.div
-            onViewportEnter={() => {
-              setIsGrayScale(true);
-            }}
-            onViewportLeave={() => {
-              setIsGrayScale(false);
-            }}
-            className={`r w-full flex items-center justify-center align-center delay-500 duration-[900ms] ${
-              !isGrayScale ? "grayscale" : ""
-            }`}
+            className={`r w-full flex items-center justify-center align-center delay-500 duration-[900ms] `}
           >
             <span className="text-white self-end  a top-[24%] right-2 font-Neue border-2 border-blue-700 p-1 px-2 text-sm rounded-full">
               Trailer
@@ -174,16 +166,11 @@ export default function TarTrailer() {
             </motion.div>
           </motion.div>
 
-          <motion.div
-            whileInView={{ opacity: 1 }}
-            initial={{ opacity: 0 }}
-            transition={{ duration: 0.7 }}
-            className="w-full h-[55%] border-t r flex items-center justify-center bg-white border-ultraGray"
-          >
+          <motion.div className="w-full h-[55%] border-t r flex items-center justify-center bg-white border-ultraGray">
             <div className="font-Neue text-black top-4 a z-30 border-2 p-1 px-2 border-blue-700 rounded-full capitalize">
               It's all about her
             </div>
-            <ThreeCurve beginAnimation={isGrayScale}></ThreeCurve>
+            {/*   <ThreeCurve beginAnimation={isGrayScale}></ThreeCurve> */}
           </motion.div>
           <div className="h-[5%]  w-full overflow-hidden  bg-white border-y text-black flex font-Neue font-bold flex items-center justify-center space-x-6">
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((item) => {

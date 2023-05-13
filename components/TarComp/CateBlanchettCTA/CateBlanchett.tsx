@@ -7,12 +7,21 @@ import Image from "next/image";
 const BorderAnimCont = (props: { text: string; styles: string }) => {
   return (
     <div
-      className={`  text-white font-Neue   rounded-full text-sm pl-[1.5px] pr-[1.5px] pb-[0.9px] pt-[0.9px] ${props.styles}`}
+      className={`  text-white font-Neue  box  rounded-full text-sm pl-[1.5px] pr-[1.5px] pb-[0.9px] pt-[0.9px] ${props.styles}`}
     >
       {" "}
       <div className="rounded-full p-1 overflow-hidden bg-black px-2">
         {props.text}
       </div>
+    </div>
+  );
+};
+const BorderAnimContTwo = (props: { text: string; styles: string }) => {
+  return (
+    <div
+      className={`rounded-full p-1 px-2 text-sm overflow-hidden border-2 px-2 text-white ${props.styles} font-Neue`}
+    >
+      {props.text}
     </div>
   );
 };
@@ -40,24 +49,24 @@ export default function CateBlanchettCta() {
           Lydia<span className="font-PvcI"> Tar</span>
         </div>
       </div>
-      <BorderAnimCont
+      <BorderAnimContTwo
         text="   Cinematography by Florian Hoffmeister"
         styles="a top-[20%] left-[20%]"
-      ></BorderAnimCont>
-      <BorderAnimCont
+      ></BorderAnimContTwo>
+      <BorderAnimContTwo
         text="Edited by Monika Willi"
         styles="a bottom-[30%] left-[15%]"
-      ></BorderAnimCont>
-      <BorderAnimCont
+      ></BorderAnimContTwo>
+      <BorderAnimContTwo
         text="Produced by Alexandra Milchan, Scott Lambert"
         styles="a  right-[20%] bottom-[20%]"
-      ></BorderAnimCont>
+      ></BorderAnimContTwo>
 
-      <BorderAnimCont
+      <BorderAnimContTwo
         text="Music by 	
 Hildur Guðnadóttir"
         styles="a  right-[20%]"
-      ></BorderAnimCont>
+      ></BorderAnimContTwo>
     </div>
   );
 }
