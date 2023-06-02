@@ -7,7 +7,6 @@ import {
   useFrame,
   useThree,
 } from "@react-three/fiber";
-import PlayButtonHoverObject from "./TarComp/ThreeComponents/PlayButtonHoverObjects";
 
 import { Suspense, useEffect, useRef, useState } from "react";
 import { Edges, OrbitControls, useHelper } from "@react-three/drei";
@@ -451,7 +450,7 @@ export default function ThreeCanvas(props: ObjectProps) {
                   }}
                   color="blue"
                 ></DLights>
-                {/*     <DLights
+                <DLights
                   animation={{
                     x: [-5, 0, 4, -4],
                     y: [-2, 0, 2, -2],
@@ -474,18 +473,18 @@ export default function ThreeCanvas(props: ObjectProps) {
                   }}
                   color="red"
                   position={[-2.5, 1.5, 1]}
-                ></DLights> */}
+                ></DLights>
               </motion.group>
               {props.isHovered && (
                 <BubblesGroup x={mousePos.x} y={mousePos.y}></BubblesGroup>
               )}
-              {/*       <PillPlane
+              <PillPlane
                 width={props.textProps.wrd1Length + props.textProps.wrd2Length}
                 wrd2={props.textProps.wrd2Length}
                 ExploreAwards={props.ExploreAwards}
                 ExploreSynopsis={props.ExploreSynopisis}
                 pillRef={pillRef}
-              ></PillPlane> */}
+              ></PillPlane>
             </Suspense>
           </Canvas>
         </div>

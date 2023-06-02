@@ -5,6 +5,7 @@ import NoemieM from "../../../public/Data/Tar/Images/Cast/NoemieM.jpg";
 import MarkS from "../../../public/Data/Tar/Images/Cast/MarkS.jpg";
 import JulianG from "../../../public/Data/Tar/Images/Cast/JulianG.jpg";
 import Image from "next/image";
+import allCast from "../../../public/Data/Tar/Images/allCast-1.jpg";
 
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
@@ -121,63 +122,40 @@ export default function TarCastList() {
     ],
   ];
   return (
-    <div className="flex items-center justify-center  mt-[14vw] ">
-      <motion.div className="w-full  h-fit r pb-[5%] flex-col flex items-center  text-white">
-        <div className="font-Neue text-[7vw] sm:text-[4vw]  mt-[0%] leading-[0.9]  r w-full flex items-center justify-center">
-          <motion.div className="a sm:left-[7%]  tracking-[0.05em] ">
-            <motion.div className="">FILM CAST</motion.div>
-          </motion.div>
-        </div>
-        <div className="sm:mb-[4%] mb-[10%]"></div>
-        <div className="flex  w-full overflow-hidden">
-          {Alternate.map((item, index) => {
-            return (
-              <motion.div key={index} className={" w-[16.7%]  overflow-hidden"}>
-                <div className=" w-[20vw]  h-[30vw] overflow-hidden">
-                  <Image
-                    unoptimized={true}
-                    className="w-full  object-cover h-full hover:scale-[1.12] duration-300"
-                    alt={item.name + "cast image"}
-                    src={item.img.src}
-                    width={300}
-                    height={500}
-                  ></Image>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-        <div className="w-full hidden">
-          {" "}
-          {cast.map((castArr, index) => {
-            return (
-              <div
-                key={index}
-                className="w-full flex flex-col justify-center items-center sm:items-start sm:justify-between sm:flex-row sm:p-12 "
-              >
-                {castArr.map((item, indexA) => {
-                  return (
-                    <div
-                      key={indexA}
-                      className="border-white sm:w-[40%] md:w-[30%] flex items-center justify-center "
-                    >
-                      <CastComponent
-                        as={item.as}
-                        no={item.no}
-                        id={item.id}
-                        key={indexA}
-                        disableDistortText={true}
-                        img={item.img}
-                        number={indexA}
-                        name={item.name}
-                        syle={item.style}
-                      ></CastComponent>
-                    </div>
-                  );
-                })}
-              </div>
-            );
-          })}
+    <div className="flex flex-col items-center justify-center r   bg-white pt-[11.1vw] pb-[9.4vw]">
+      <div className="text-[2.6vw] font-Neue a  top-[7vw] left-[4%]">CAST</div>
+      <motion.div className="w-full  h-fit r  flex-col flex items-center  text-white">
+        <div className="w-full flex justify-center ">
+          <div className="flex  w-full  overflow-hidden  r flex-wrap justify-center gap-x-[5px]  p-2 ">
+            {Alternate.slice(0, 6).map((item, index) => {
+              return (
+                <motion.div
+                  key={index}
+                  className={" w-[15vw] h-[26.5vw] overflow-hidden r  "}
+                >
+                  <div className="a lg:text-xs text-[0.8vw] z-20 font-Neue uppercase noneShade border border-ultraGray rounded-full px-2 p-1 right-2 top-2 bg-black bg-opacity-[0.5]">
+                    {item.name}
+                  </div>
+                  <div className="a lg:text-xs text-[0.8vw] z-20 font-Neue uppercase border-ultraGray noneShade border rounded-full px-2 p-1 right-2 bottom-2 bg-black bg-opacity-[0.5]">
+                    is {item.as}
+                  </div>
+
+                  <motion.div
+                    transition={{ duration: 0.6 }}
+                    className=" w-[18vw]   overflow-hidden r "
+                  >
+                    <motion.img
+                      className="w-full  object-cover h-full hover:scale-[1.2] duration-300 "
+                      alt={item.name + "cast image"}
+                      src={item.img.src}
+                      width={300}
+                      height={500}
+                    ></motion.img>
+                  </motion.div>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </motion.div>
     </div>

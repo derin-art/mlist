@@ -26,31 +26,7 @@ export default function ThreeButton(props: ThreeButtonProps) {
 
   return (
     <div className="font-Climate  rounded-full text-sm w-fit p-3 text-white r flex items-center justify-center">
-      {/*   <Suspense fallback={null}>
-        <AnimatePresence>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{
-              duration: 0.2,
-              delay: 0.2,
-              ease: [0.58, 0.28, 0.64, 0.75],
-            }}
-            key={isHovered.toString()}
-            className="hidden sm:block"
-          >
-            {isHovered && (
-              <ThreeCanvas
-                ExploreAwards={props.ExploreAwards}
-                ExploreSynopisis={props.ExploreSynopsis}
-                textProps={textProps}
-                isHovered={isHovered}
-              ></ThreeCanvas>
-            )}
-          </motion.div>
-        </AnimatePresence>
-      </Suspense> */}
+      
       <motion.p
         onMouseLeave={() => {
           setIsHovered(false);

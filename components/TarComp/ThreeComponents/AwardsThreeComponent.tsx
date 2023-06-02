@@ -90,7 +90,7 @@ function SLight(props: {
   let posY = 0;
 
   useFrame(({ clock }) => {
-    if (light.current) {
+    if (light.current && props.startAnim) {
       light.current.position.x = props.frameRotationX
         ? Math.sin(clock.elapsedTime * props.speed) * props.frameRotationX
         : (Math.sin(clock.elapsedTime * props.speed) * Math.PI) / 2;
@@ -117,8 +117,6 @@ function SLight(props: {
       penumbra={0.2}
       /*  shadow-mapSize-width={24}
       shadow-mapSize-height={24} */
-      castShadow
-      shadow-bias={-0.001}
     />
   );
 }
@@ -251,7 +249,7 @@ export default function AwardsThreeComponent(props: AwardsThreeComponentProps) {
     lightIntensity: 2.5,
   });
 
-  const [dpr, setDpr] = useState(1);
+  const [dpr, setDpr] = useState(0.7);
 
   const globeMat = useMemo(
     () =>

@@ -10,7 +10,7 @@ import { useState } from "react";
 export default function LocationCta() {
   const [triggerAnim, setTriggerAnim] = useState(false);
   return (
-    <motion.div className="w-full h-screen otherGrid  overflow-hidden my-[5vw] mb-[7vw]">
+    <motion.div className="w-full h-screen otherGrid  overflow-hidden border-b border-black ">
       <div className="w-full h-full r md:hidden">
         <div className="a font-PvcB text-white top-[5%] right-[5%] text-[7vw]">
           <div className="font-Neue text-[4vw] ml-[1%] mb-[4%] text-right">
@@ -35,42 +35,8 @@ export default function LocationCta() {
         </div>
       </div>
       <div className="w-full h-full r hidden md:block">
-        <div className="a font-PvcB text-black top-[10%] left-[5%] text-[3vw]">
-          <div className="font-Neue hidden text-sm ml-[1%] mb-[6%] w-fit ">
-            <Roll
-              text="Shot at the Majestic"
-              key={"2"}
-              triggerBool={triggerAnim}
-              additionalStyles="border-2 border-blue-700 p-1 px-2 rounded-full"
-            ></Roll>
-          </div>
-          <div className="leading-[1] text-black hidden">
-            <div
-              style={{ display: "inline-block", overflow: "hidden" }}
-              className="border-2 border-black rounded-full px-[4%] p-3"
-            >
-              <Roll
-                text="Dresden"
-                triggerBool={triggerAnim}
-                additionalStyles=""
-              ></Roll>
-            </div>
-            <div className="font-Neue">Philharmonic</div>
-          </div>
-        </div>
-        <div className="a font-PvcB text-white bottom-[40%] z-30 right-[10%] text-[3vw] leading-[0.9] hidden">
-          <motion.div
-            style={{ display: "inline-block", overflow: "hidden" }}
-            className="border-2 rounded-full px-[4%] backdrop-grayscale p-3 "
-          >
-            <Roll
-              text="Berlin"
-              triggerBool={triggerAnim}
-              additionalStyles=""
-            ></Roll>
-          </motion.div>
-          <div className="font-PvcI  text-right ">Germany</div>
-        </div>
+        <div className="a font-PvcB text-black top-[10%] left-[5%] text-[3vw]"></div>
+
         <div className="w-[26%] a right-[20%] top-[20%] ">
           <motion.img
             src={Aud1.src}
@@ -78,12 +44,44 @@ export default function LocationCta() {
           ></motion.img>
         </div>
         <div className="w-full h-full flex">
-          <div className="w-1/2 h-full flex flex-col">
-            <div className="h-full bg-white"></div>
-            <img className=" object-cover" src={Alt2.src}></img>
+          <div className="w-1/2 h-full flex flex-col r">
+            <div className="overflow-hidden h-[62vw] w-full r">
+              <motion.img
+                whileInView={{
+                  width: "100%",
+                  scale: 1,
+                  objectPosition: "right",
+                }}
+                initial={{ scale: 1.6 }}
+                transition={{ duration: 0.6 }}
+                className=" object-cover h-full "
+                src={Alt2.src}
+              ></motion.img>
+            </div>
+            <div className="h-[28vw] flex items-center  bg-white font-Neue text-[2.6vw] r leading-[1.1] uppercase pl-[72px] ">
+              <div>
+                {" "}
+                Shot at the Dresden
+                <div> Phiharmonic, </div>
+                <div>Berlin, Germany.</div>
+              </div>
+              <div className="a bottom-2 text-base font-mono left-2 hidden ">
+                51.0504° N, 13.7373° E
+              </div>{" "}
+            </div>
           </div>
           <div className="w-1/2 overflow-hidden h-full">
-            <img className="h-full object-cover" src={Alt1.src}></img>
+            <motion.img
+              whileInView={{
+                width: "100%",
+                scale: 1,
+                objectPosition: "center",
+              }}
+              initial={{ scale: 1.6 }}
+              transition={{ duration: 0.6 }}
+              className="h-full object-cover"
+              src={Alt1.src}
+            ></motion.img>
           </div>
         </div>
         <div className="w-[40%] a bottom-[10%] left-[5%] r">
