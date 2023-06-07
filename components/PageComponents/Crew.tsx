@@ -7,12 +7,13 @@ import WhiteBlob1 from "../../../public/Svg/White1.svg";
 import Image from "next/image";
 import { Kinesis } from "@studio-freight/compono";
 import { BsCursorFill, BsHandIndex } from "react-icons/bs";
-import Alexandra from "../../../public/Data/Tar/Images/Crew/Alexandra.jpg";
-import Florian from "../../../public/Data/Tar/Images/Crew/Florian.jpg";
-import Hildur from "../../../public/Data/Tar/Images/Crew/Hildur.jpg";
-import Monika from "../../../public/Data/Tar/Images/Crew/Monika.jpg";
-import Scott from "../../../public/Data/Tar/Images/Crew/Scott.jpg";
-import Todd from "../../../public/Data/Tar/Images/Crew/Todd.jpg";
+
+import Alexandra from "../../public/Data/Tar/Images/Crew/Alexandra.jpg";
+import Florian from "../../public/Data/Tar/Images/Crew/Florian.jpg";
+import Hildur from "../../public/Data/Tar/Images/Crew/Hildur.jpg";
+import Monika from "../../public/Data/Tar/Images/Crew/Monika.jpg";
+import Scott from "../../public/Data/Tar/Images/Crew/Scott.jpg";
+import Todd from "../../public/Data/Tar/Images/Crew/Todd.jpg";
 
 const Name = (props: {
   name: string;
@@ -332,7 +333,7 @@ const NameThree = (props: {
   );
 };
 
-export default function CateBlanchettCta() {
+export default function Crew() {
   const Crew = [
     {
       name: "Florian.Hoffmeister",

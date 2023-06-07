@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 import WhiteBlob from "../../../public/Svg/White.svg";
 import WhiteBlob1 from "../../../public/Svg/White1.svg";
 import dynamic from "next/dynamic";
-import Lead from "../../../public/Data/Tar/Images/Title23.jpg";
+import Lead from "../../public/Data/Tar/Images/Title23.jpg";
 import Image from "next/image";
 
-const ThreeButton = dynamic(() => import("../../../components/3dButton"));
+const ThreeButton = dynamic(() => import("../Globals/3dButton"));
 
 export default function SynopsisCta() {
   return (

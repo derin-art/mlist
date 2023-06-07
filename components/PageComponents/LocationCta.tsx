@@ -1,16 +1,16 @@
-import Aud1 from "../../../public/Data/Tar/Images/Aud1.jpg";
-import Aud2 from "../../../public/Data/Tar/Images/Aud2.jpg";
-import Alt1 from "../../../public/Data/Tar/Images/Aud.png";
-import Alt2 from "../../../public/Data/Tar/Images/AltAud.png";
-import { ParallaxProvider, useParallax } from "react-scroll-parallax";
+import Aud1 from "../../public/Data/Tar/Images/Aud1.jpg";
+import Aud2 from "../../public/Data/Tar/Images/Aud2.jpg";
+import Alt1 from "../../public/Data/Tar/Images/Aud.png";
+import Alt2 from "../../public/Data/Tar/Images/AltAud.png";
+
 import { motion } from "framer-motion";
-import Roll from "../MicroInteractions/Roll";
+
 import { useState } from "react";
 
 export default function LocationCta() {
   const [triggerAnim, setTriggerAnim] = useState(false);
   return (
-    <motion.div className="w-full h-screen otherGrid  overflow-hidden border-b border-black ">
+    <motion.div className="w-full h-screen  overflow-hidden r bg-[#DFDFDF]">
       <div className="w-full h-full r md:hidden">
         <div className="a font-PvcB text-white top-[5%] right-[5%] text-[7vw]">
           <div className="font-Neue text-[4vw] ml-[1%] mb-[4%] text-right">
@@ -35,14 +35,6 @@ export default function LocationCta() {
         </div>
       </div>
       <div className="w-full h-full r hidden md:block">
-        <div className="a font-PvcB text-black top-[10%] left-[5%] text-[3vw]"></div>
-
-        <div className="w-[26%] a right-[20%] top-[20%] ">
-          <motion.img
-            src={Aud1.src}
-            className={`w-full border hidden`}
-          ></motion.img>
-        </div>
         <div className="w-full h-full flex">
           <div className="w-1/2 h-full flex flex-col r">
             <div className="overflow-hidden h-[62vw] w-full r">
@@ -58,16 +50,13 @@ export default function LocationCta() {
                 src={Alt2.src}
               ></motion.img>
             </div>
-            <div className="h-[28vw] flex items-center  bg-white font-Neue text-[2.6vw] r leading-[1.1] uppercase pl-[72px] ">
+            <div className="h-[28vw] flex items-center bg-[#DFDFDF] font-Neue text-[2.6vw] leading-[1.1] uppercase pl-[72px] ">
               <div>
                 {" "}
                 Shot at the Dresden
                 <div> Phiharmonic, </div>
                 <div>Berlin, Germany.</div>
               </div>
-              <div className="a bottom-2 text-base font-mono left-2 hidden ">
-                51.0504° N, 13.7373° E
-              </div>{" "}
             </div>
           </div>
           <div className="w-1/2 overflow-hidden h-full">
@@ -83,28 +72,6 @@ export default function LocationCta() {
               src={Alt1.src}
             ></motion.img>
           </div>
-        </div>
-        <div className="w-[40%] a bottom-[10%] left-[5%] r">
-          <motion.div
-            onViewportLeave={() => {
-              setTriggerAnim(false);
-            }}
-            onViewportEnter={() => {
-              setTriggerAnim(true);
-            }}
-            className="text-sm text-white text-right font-Neue  mb-3 hidden"
-          >
-            <Roll
-              text="51.0504° N, 13.7373° E"
-              key={"1"}
-              triggerBool={triggerAnim}
-              additionalStyles="border-2 z-30 p-1 hidden px-2 rounded-full border-blue-700"
-            ></Roll>
-          </motion.div>
-          <motion.img
-            src={Aud2.src}
-            className={`h-full z-0 border hidden`}
-          ></motion.img>
         </div>
       </div>
     </motion.div>

@@ -1,13 +1,9 @@
-import ThreeButton from "../../3dButton";
+import ThreeButton from "../Globals/3dButton";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import Bafta from "../../../public/Data/Tar/Images/Bafta.jpg";
-import Award from "../../../public/Data/Tar/Images/Awards-2.jpg";
-import Oscar from "../../../public/Data/Tar/Images/Oscar.webp";
-
-const AwardsThreeComponent = dynamic(
-  () => import("../ThreeComponents/AwardsThreeComponent")
-);
+import Bafta from "../../public/Data/Tar/Images/Bafta.jpg";
+import Award from "../../public/Data/Tar/Images/Awards-2.jpg";
+import Oscar from "../../public/Data/Tar/Images/Oscar.webp";
 
 import WhiteBlob from "../../../public/Svg/White.svg";
 import WhiteBlob1 from "../../../public/Svg/White1.svg";

@@ -2,7 +2,7 @@ import { Canvas, extend, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls, shaderMaterial } from "@react-three/drei";
 import React, { useRef, Suspense, useState } from "react";
 import glsl from "babel-plugin-glsl/macro";
-import Tar from "../public/Data/Tar/Images/TarPiano.jpg";
+import Tar from "../../public/Data/Tar/Images/TarPiano.jpg";
 
 import * as THREE from "three";
 import { motion } from "framer-motion";

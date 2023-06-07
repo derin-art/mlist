@@ -1,16 +1,14 @@
-import CateB from "../../../public/Data/Tar/Images/Cast/CateB.jpg";
-import NinaH from "../../../public/Data/Tar/Images/Cast/NinaH.jpg";
-import SophieK from "../../../public/Data/Tar/Images/Cast/SophieK.jpg";
-import NoemieM from "../../../public/Data/Tar/Images/Cast/NoemieM.jpg";
-import MarkS from "../../../public/Data/Tar/Images/Cast/MarkS.jpg";
-import JulianG from "../../../public/Data/Tar/Images/Cast/JulianG.jpg";
+import CateB from "../../public/Data/Tar/Images/Cast/CateB.jpg";
+import NinaH from "../../public/Data/Tar/Images/Cast/NinaH.jpg";
+import SophieK from "../../public/Data/Tar/Images/Cast/SophieK.jpg";
+import NoemieM from "../../public/Data/Tar/Images/Cast/NoemieM.jpg";
+import MarkS from "../../public/Data/Tar/Images/Cast/MarkS.jpg";
+import JulianG from "../../public/Data/Tar/Images/Cast/JulianG.jpg";
+
 import Image from "next/image";
-import allCast from "../../../public/Data/Tar/Images/allCast-1.jpg";
 
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
-
-const CastComponent = dynamic(() => import("../CastComponent"));
 
 export default function TarCastList() {
   const Alternate = [
@@ -122,7 +120,7 @@ export default function TarCastList() {
     ],
   ];
   return (
-    <div className="flex flex-col items-center justify-center r   bg-white pt-[11.1vw] pb-[9.4vw]">
+    <div className="flex flex-col items-center justify-center r overflow-hidden  bg-white pt-[11.1vw] pb-[9.4vw]">
       <div className="text-[2.6vw] font-Neue a  top-[7vw] left-[4%]">CAST</div>
       <motion.div className="w-full  h-fit r  flex-col flex items-center  text-white">
         <div className="w-full flex justify-center ">

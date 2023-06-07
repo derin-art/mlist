@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
-const TarWave = dynamic(() => import("../../TarWave"));
+const TarWave = dynamic(() => import("../3dComponents/TarWave"));
 import { motion } from "framer-motion";
-import MobileHero from "../MobileOnlyComponent/MobileHero";
+import MobileHero from "./MobilePageComponents/MobileHero";
 
 export default function Hero() {
   return (
