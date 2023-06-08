@@ -249,7 +249,7 @@ export default function AwardsThreeComponent(props: AwardsThreeComponentProps) {
     lightIntensity: 2.5,
   });
 
-  const [dpr, setDpr] = useState(0.7);
+  const [dpr, setDpr] = useState(1);
 
   const globeMat = useMemo(
     () =>
@@ -335,12 +335,3 @@ export default function AwardsThreeComponent(props: AwardsThreeComponentProps) {
     </>
   );
 }
-
-/*  animate={
-        props.animation
-          ? props.animation
-          : {
-              x: [-4, 5, -4],
-              transition: { duration: 10, repeat: Infinity, delay: 4 },
-            }
-      } */

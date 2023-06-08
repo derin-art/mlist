@@ -1,33 +1,53 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import WhiteBlob from "../../../public/Svg/White.svg";
 import WhiteBlob1 from "../../../public/Svg/White1.svg";
+import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import Lead from "../../public/Data/Tar/Images/Title23.jpg";
 import Image from "next/image";
+import Link from "next/link";
 
 const ThreeButton = dynamic(() => import("../Globals/3dButton"));
 
 export default function SynopsisCta() {
+  const router = useRouter();
+
   return (
-    <div className="min-h-screen  overflow-hidden border-ultraBlack border-b w-full flex items-center justify-center font-Climate text-3xl r ">
+    <motion.div className="min-h-screen  overflow-hidden border-ultraBlack border-b w-full flex items-center justify-center font-Climate text-3xl r ">
       <div className="flex items-center justify-center a r bottom-[40.8%]">
-        <motion.button style={{ display: "inline-block" }} className=" a">
+        <Link
+          href={"/synopsis"}
+          style={{ display: "inline-block" }}
+          className=" a"
+        >
           {" "}
           <ThreeButton
             ExploreSynopsis={true}
             text={"Explore Synopsis"}
           ></ThreeButton>
-        </motion.button>
-        <div className="w-[391px] h-[222px] overflow-hidden ">
-          <motion.img
-            initial={{ scale: 1.7 }}
-            whileInView={{ scale: 1 }}
+        </Link>
+
+        <AnimatePresence>
+          <motion.div
+            key={"df"}
+            animate={{ scale: 1 }}
+            initial={{ scale: 1 }}
+            exit={{ scale: 2 }}
+            layout
+            layoutId="image"
             transition={{ duration: 0.6 }}
-            src={Lead.src}
-            className={" w-full object-cover"}
-          ></motion.img>
-        </div>
+            className="w-[391px] h-[222px] overflow-hidden "
+          >
+            <motion.img
+              initial={{ scale: 1.7 }}
+              whileInView={{ scale: 1 }}
+              transition={{ duration: 0.6 }}
+              src={Lead.src}
+              className={" w-full object-cover"}
+            ></motion.img>
+          </motion.div>
+        </AnimatePresence>
       </div>
       <div className="a text-white text-[2.4vw] font-Neue top-[6.9vw]">
         <span className="font-Climate  md:text-[3.6vw] sm:text-[8.4vw] text-[10vw]">
@@ -75,6 +95,6 @@ export default function SynopsisCta() {
           <span className="">Lydia</span> Tar-
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

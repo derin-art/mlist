@@ -9,6 +9,7 @@ import WhiteBlob from "../../../public/Svg/White.svg";
 import WhiteBlob1 from "../../../public/Svg/White1.svg";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function SocialProof() {
   const [startAnim, setStartAnim] = useState(false);
@@ -68,9 +69,11 @@ export default function SocialProof() {
         </motion.div>
       </div>
 
-      <button className="uppercase text-xs mb-8 border-2 rounded-full px-2 p-2 text-white font-Neue">
-        Explore Awards
-      </button>
+      <Link href={"/awards"}>
+        <button className="uppercase text-xs mb-8 border-2 rounded-full px-2 p-2 text-white font-Neue">
+          Explore Awards
+        </button>
+      </Link>
 
       <div className="text-white  px-8  absolute z-30 flex flex-col items-center justify-center ">
         <div className="leading-[5.5vw] hidden ">
