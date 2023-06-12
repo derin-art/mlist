@@ -111,7 +111,7 @@ function SLight(props: {
     <motion.spotLight
       rotation={[props.rotation[0], props.rotation[1], props.rotation[2]]}
       ref={light}
-      intensity={3}
+      intensity={2}
       position={[0, 0, 27.5]}
       angle={Math.PI / 10}
       penumbra={0.2}
@@ -254,13 +254,11 @@ export default function AwardsThreeComponent(props: AwardsThreeComponentProps) {
   const globeMat = useMemo(
     () =>
       new THREE.MeshPhongMaterial({
-        shininess: 6,
-        emissive: "black",
+        shininess: 10,
 
-        emissiveIntensity: 2,
-        specular: "white",
+        emissiveIntensity: 1,
 
-        color: "blue",
+        color: "#0C0809",
       }),
     []
   );
@@ -301,6 +299,7 @@ export default function AwardsThreeComponent(props: AwardsThreeComponentProps) {
       >
         <Canvas dpr={dpr}>
           <OrbitControls></OrbitControls>
+
           <Suspense fallback={null}>
             <PerformanceMonitor
               onChange={({ factor }) => setDpr(Math.round(0.5 + 1.5 * factor))}
