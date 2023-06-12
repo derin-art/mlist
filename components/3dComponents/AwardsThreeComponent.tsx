@@ -111,7 +111,7 @@ function SLight(props: {
     <motion.spotLight
       rotation={[props.rotation[0], props.rotation[1], props.rotation[2]]}
       ref={light}
-      intensity={2.5}
+      intensity={3}
       position={[0, 0, 27.5]}
       angle={Math.PI / 10}
       penumbra={0.2}
@@ -249,11 +249,23 @@ export default function AwardsThreeComponent(props: AwardsThreeComponentProps) {
     lightIntensity: 2.5,
   });
 
-  const [dpr, setDpr] = useState(1);
+  const [dpr, setDpr] = useState(1.5);
 
   const globeMat = useMemo(
     () =>
       new THREE.MeshPhongMaterial({
+        shininess: 6,
+        emissive: "black",
+
+        emissiveIntensity: 2,
+        specular: "white",
+
+        color: "blue",
+      }),
+    []
+  );
+
+  /*   new THREE.MeshPhongMaterial({
         shininess: 3,
         emissive: "black",
 
@@ -261,9 +273,7 @@ export default function AwardsThreeComponent(props: AwardsThreeComponentProps) {
         specular: "blue",
 
         color: "blue",
-      }),
-    []
-  );
+      }), */
 
   /*  <meshPhongMaterial
       transparent={true}
@@ -274,6 +284,11 @@ export default function AwardsThreeComponent(props: AwardsThreeComponentProps) {
       specular={"blue"}
     ></meshPhongMaterial>; */
 
+  /*  <mesh position={[0, 0, -40]}>
+            <planeBufferGeometry args={[200, 100]}></planeBufferGeometry>
+            <meshPhysicalMaterial color={"black"}></meshPhysicalMaterial>
+          </mesh> */
+
   return (
     <>
       <m.div
@@ -282,9 +297,10 @@ export default function AwardsThreeComponent(props: AwardsThreeComponentProps) {
             return { ...prev, beginAnim: true };
           });
         }}
-        className="w-1/2  h-[40vw] bg-black z-0 overflow-hidden "
+        className="w-full h-screen bg-black z-0 overflow-hidden "
       >
         <Canvas dpr={dpr}>
+          <OrbitControls></OrbitControls>
           <Suspense fallback={null}>
             <PerformanceMonitor
               onChange={({ factor }) => setDpr(Math.round(0.5 + 1.5 * factor))}

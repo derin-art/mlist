@@ -1,6 +1,5 @@
-import { Suspense, useState } from "react";
-import dynamic from "next/dynamic";
-/* const ThreeCanvas = dynamic(() => import("./ThreeCanvas")); */
+import { useState } from "react";
+
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ThreeButtonProps {
