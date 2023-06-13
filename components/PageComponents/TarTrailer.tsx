@@ -102,7 +102,11 @@ function TarTrailer() {
           className=" w-screen "
           url={trailerUrl}
         ></ReactPlayer>
-        <div className="w-[85%]  a bottom-[10vw] z-30 ">
+
+        <div className="w-[85%]  a bottom-[10vw] z-30 r">
+          <div className="a text-white">
+            {Math.round(videoStates.played * 165)}secs
+          </div>
           <InputRange
             maxValue={100}
             classNames={{
@@ -112,11 +116,11 @@ function TarTrailer() {
               disabledInputRange: "",
               inputRange: "",
               labelContainer: "",
-              maxLabel: "",
-              minLabel: "",
+              maxLabel: "text-white hidden",
+              minLabel: "text-white hidden",
               sliderContainer: "",
               track: "bg-[#636363] h-[5px] rounded-full border-[#5C5858]",
-              valueLabel: "text-white hidden",
+              valueLabel: "text-white  a hidden",
             }}
             draggableTrack
             minValue={0}
