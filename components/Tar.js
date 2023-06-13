@@ -6,7 +6,7 @@ import SynopsisCta from "./PageComponents/SynopsisCta";
 import Crew from "./PageComponents/Crew";
 import LocationCta from "./PageComponents/LocationCta";
 import SocialProof from "./PageComponents/SocialProof";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useLenis } from "@studio-freight/react-lenis";
 
 import { Lenis as ReactLenis } from "@studio-freight/react-lenis";
@@ -16,7 +16,7 @@ import Lenis from "@studio-freight/lenis";
 import gsap from "gsap-trial";
 import { ScrollTrigger } from "gsap-trial/dist/ScrollTrigger";
 import { ScrollSmoother } from "gsap-trial/dist/ScrollSmoother";
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 /* import ThreeSpring from "./ThreeSpring"; */
 
@@ -26,6 +26,7 @@ import React from "react";
 import { animate, animations } from "framer-motion";
 
 export default function Tar() {
+  const [renderMain, setRenderMain] = useState(false);
   const el = useRef();
   const q = gsap.utils.selector(el);
   gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
@@ -77,7 +78,13 @@ export default function Tar() {
 
   return (
     <div ref={el} className="h-auto " id="smooth-wrapper">
-      <div id="smooth-content" className="w-full  bg-black  h-auto lenis">
+      <motion.div
+        initial={{ opacity: 0, y: 100 }}
+        transition={{ duration: 0.7, delay: 0.3 }}
+        animate={renderMain ? { opacity: 1, y: 0 } : { opacity: 0 }}
+        id="smooth-content"
+        className={`w-full  bg-black  h-auto lenis`}
+      >
         <Hero></Hero>
         <TarTrailer></TarTrailer>
 
@@ -87,7 +94,30 @@ export default function Tar() {
         <LocationCta></LocationCta>
         <TarCastList></TarCastList>
         <SocialProof></SocialProof>
-      </div>
+      </motion.div>
+      <AnimatePresence>
+        <motion.div className="a top-0 w-full" key={renderMain.toString()}>
+          {!renderMain && (
+            <motion.div
+              id="smooth-content"
+              className="h-[99.9vh] w-full bg-ultraBlack  r z-40 "
+            >
+              <motion.div
+                initial={{ opacity: 0 }}
+                transition={{ duration: 0.7, delay: 1 }}
+                exit={{ opacity: 0 }}
+                onAnimationComplete={() => {
+                  setRenderMain(true);
+                }}
+                animate={{ opacity: 1 }}
+                className="a left-0 bottom-0 text-white text-7xl"
+              >
+                ANIMATE
+              </motion.div>
+            </motion.div>
+          )}
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }
