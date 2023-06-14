@@ -8,10 +8,9 @@ import JulianG from "../../public/Data/Tar/Images/Cast/JulianG.jpg";
 import Image from "next/image";
 
 import { motion } from "framer-motion";
-import dynamic from "next/dynamic";
 
 export default function TarCastList() {
-  const Alternate = [
+  const CastAltList = [
     {
       as: "Lydia Tár",
       name: "Cate Blanchett",
@@ -63,69 +62,15 @@ export default function TarCastList() {
       no: 5,
     },
   ];
-  const cast = [
-    [
-      {
-        as: "Lydia Tár",
-        name: "Cate Blanchett",
-        img: CateB,
-        style: "top-[10%] left-[20%] ",
-        id: "sdmsd",
-        no: 1,
-      },
-      {
-        as: "Sharon Goodnow",
-        name: "Nina Hoss",
-        img: NinaH,
-        style: "top-[25%] right-[20%]",
-        id: "sdmsd1",
-        no: 2,
-      },
-    ],
-    [
-      {
-        as: "Olga Metkina",
-        name: "Sophie Kauer",
-        img: SophieK,
-        style: "top-[40%] left-[20%]",
-        id: "sdmsd2",
-        no: 3,
-      },
-      {
-        as: "Francesca Lentini",
-        name: "Noémie Merlant",
-        img: NoemieM,
-        style: "top-[60%] right-[20%]",
-        id: "sdmsd3",
-        no: 4,
-      },
-    ],
-    [
-      {
-        as: "Eliot Kaplan",
-        name: "Mark Strong",
-        img: MarkS,
-        style: "top-[70%] left-[20%]",
-        id: "sdmsd4",
-        no: 5,
-      },
-      {
-        as: "Andris Davis",
-        name: "Julian Glover",
-        img: JulianG,
-        style: "top-[70%] left-[20%]",
-        id: "sdmsd4",
-        no: 5,
-      },
-    ],
-  ];
+
   return (
     <div className="flex flex-col items-center justify-center r overflow-hidden  bg-white pt-[11.1vw] pb-[9.4vw]">
       <div className="text-[2.6vw] font-Neue a  top-[7vw] left-[4%]">CAST</div>
+
       <motion.div className="w-full  h-fit r  flex-col flex items-center  text-white">
         <div className="w-full flex justify-center ">
           <div className="flex  w-full  overflow-hidden  r flex-wrap justify-center gap-x-[5px]  p-2 ">
-            {Alternate.slice(0, 6).map((item, index) => {
+            {CastAltList.slice(0, 6).map((item, index) => {
               return (
                 <motion.div
                   key={index}

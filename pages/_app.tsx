@@ -3,7 +3,6 @@ import type { AppProps } from "next/app";
 import Script from "next/script";
 import { Lenis } from "@studio-freight/react-lenis";
 import { useRouter } from "next/router";
-import { AnimateSharedLayout, AnimatePresence, motion } from "framer-motion";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();

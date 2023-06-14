@@ -1,7 +1,5 @@
-import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import WhiteBlob from "../../../public/Svg/White.svg";
-import WhiteBlob1 from "../../../public/Svg/White1.svg";
+
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 import Lead from "../../public/Data/Tar/Images/Title23.jpg";
@@ -9,6 +7,40 @@ import Image from "next/image";
 import Link from "next/link";
 
 const ThreeButton = dynamic(() => import("../Globals/3dButton"));
+
+const ConformityAnim = () => {
+  return (
+    <>
+      {" "}
+      {["C", "o", "n", "f", "o", "r", "m", "i", "t", "y"].map((item, index) => {
+        return (
+          <motion.div
+            key={index}
+            style={{
+              display: "inline-block",
+              overflow: "hidden",
+            }}
+            className=" flex items-center justify-center flex-col   "
+          >
+            <motion.div
+              initial={{ opacity: 1, x: "100%" }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false }}
+              transition={{
+                duration: 0.6,
+                ease: [0.58, 0.28, 0.64, 0.75],
+                delay: index * 0.01,
+              }}
+              className="flex items-center justify-center "
+            >
+              {item}
+            </motion.div>{" "}
+          </motion.div>
+        );
+      })}
+    </>
+  );
+};
 
 export default function SynopsisCta() {
   const router = useRouter();
@@ -22,10 +54,7 @@ export default function SynopsisCta() {
           className=" a"
         >
           {" "}
-          <ThreeButton
-            ExploreSynopsis={true}
-            text={"Explore Synopsis"}
-          ></ThreeButton>
+          <ThreeButton ExploreSynopsis={true} text={"Explore Synopsis"} />
         </Link>
 
         <AnimatePresence>
@@ -57,43 +86,11 @@ export default function SynopsisCta() {
       </div>
       <div className=" text-white a text-center will-change bottom-[3.5vw] md:text-[2vw] sm:text-[8.4vw] text-[10vw] leading-[1] w-full flex flex-col justify-center items-center">
         <motion.div className="  rounded-full h-fit uppercase   r  text-[14.4vw] flex items-center justify-center w-fit text-white font-Neue mt-1 ">
-          {["C", "o", "n", "f", "o", "r", "m", "i", "t", "y"].map(
-            (item, index) => {
-              return (
-                <motion.div
-                  key={index}
-                  style={{
-                    display: "inline-block",
-                    overflow: "hidden",
-                  }}
-                  className=" flex items-center justify-center flex-col   "
-                >
-                  <motion.div
-                    initial={{ opacity: 1, x: "100%" }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: false }}
-                    transition={{
-                      duration: 0.6,
-                      ease: [0.58, 0.28, 0.64, 0.75],
-                      delay: index * 0.01,
-                    }}
-                    className="flex items-center justify-center "
-                  >
-                    {item}
-                  </motion.div>{" "}
-                </motion.div>
-              );
-            }
-          )}
+          <ConformityAnim />
           <span className="font-Climate a right-[0%] top-0 md:text-[3.6vw] sm:text-[8.4vw] text-[10vw]">
             "
           </span>
         </motion.div>
-      </div>
-      <div className="gridF1 font-Neue  p-2 text-white flex h-screen r w-full  justify-center items-center ">
-        <div className="md:text-[1vw] sm:text-[8.4vw] hidden text-[10vw] text-white font-Neue mb-4 sm:mb-[10vw] uppercase">
-          <span className="">Lydia</span> Tar-
-        </div>
       </div>
     </motion.div>
   );

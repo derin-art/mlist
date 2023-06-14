@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface ThreeButtonProps {
   text?: string;
@@ -24,20 +24,32 @@ export default function ThreeButton(props: ThreeButtonProps) {
   }
 
   return (
-    <div className="font-Climate  rounded-full text-sm w-fit p-3 text-white r flex items-center justify-center">
-      
-      <motion.p
-        onMouseLeave={() => {
-          setIsHovered(false);
-        }}
-        onMouseOver={() => {
-          setIsHovered(true);
-        }}
-        className="z-30 border-2  hover:border-transparent duration-[400ms]  hover:cursor-pointer px-2 p-2 uppercase btn rounded-full  flex items-center justify-center"
+    <motion.div
+      onMouseLeave={() => {
+        setIsHovered(false);
+      }}
+      onMouseOver={() => {
+        setIsHovered(true);
+      }}
+      style={{ display: "inline-block", overflow: "hidden" }}
+      className="font-Neue z-30 border-2 rounded-full r btn hover:cursor"
+    >
+      <motion.div
+        animate={isHovered ? { y: "-100%" } : { y: 0 }}
+        transition={{ duration: 0.4 }}
+        className=""
       >
-        {" "}
-        {props.text ? props.text : "Explore Something"}
-      </motion.p>
-    </div>
+        <motion.p className="uppercase flex items-center justify-center p-1">
+          {" "}
+          {props.text ? props.text : "Explore Something"}
+        </motion.p>
+
+        {/* Duplicate Text for roll Animation */}
+        <motion.p className="a uppercase flex items-center justify-center p-1">
+          {" "}
+          {props.text ? props.text : "Explore Something"}
+        </motion.p>
+      </motion.div>
+    </motion.div>
   );
 }
