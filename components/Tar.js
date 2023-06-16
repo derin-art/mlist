@@ -99,10 +99,14 @@ export default function Tar() {
       </motion.div>
       <AnimatePresence>
         <motion.div
-          exit={{ opacity: 0 }}
           initial={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 3 }}
-          className="a top-0 w-full"
+          transition={{ duration: 0.7, delay: 2 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, transitionDuration: 0.6 }}
+          className="a top-0 w-full z-40"
+          onAnimationComplete={() => {
+            setRenderMain(true);
+          }}
           key={renderMain.toString()}
         >
           {!renderMain && (
@@ -114,10 +118,9 @@ export default function Tar() {
                 {CirclePattern("fill-white", "100%", "100%")}
               </div>
               <motion.div
-                onAnimationComplete={() => {
-                  setRenderMain(true);
-                }}
                 animate={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
+                transition={{ duration: 0.6, delay: 1 }}
                 className="a left-[3.15vw] font-Neue bottom-[6.3vw] text-white text-[13.5vw]"
               >
                 <div className="text-[1vw] ">A FILM BY TODD FIELDS</div>
