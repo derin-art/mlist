@@ -1,5 +1,7 @@
 import dynamic from "next/dynamic";
 
+import CirclePattern from "@/public/Icons/CirclePattern";
+
 import Hero from "./PageComponents/Hero";
 import TarTrailer from "./PageComponents/TarTrailer";
 import SynopsisCta from "./PageComponents/SynopsisCta";
@@ -96,23 +98,30 @@ export default function Tar() {
         <SocialProof></SocialProof>
       </motion.div>
       <AnimatePresence>
-        <motion.div className="a top-0 w-full" key={renderMain.toString()}>
+        <motion.div
+          exit={{ opacity: 0 }}
+          initial={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 3 }}
+          className="a top-0 w-full"
+          key={renderMain.toString()}
+        >
           {!renderMain && (
             <motion.div
               id="smooth-content"
-              className="h-[99.9vh] w-full bg-ultraBlack  r z-40 "
+              className="h-[99.9vh] w-full bg-black  r z-40 "
             >
+              <div className="a  right-[-8%] rotate-[25.6deg] top-[-10%] w-[30vw] h-[30.5vw]">
+                {CirclePattern("fill-white", "100%", "100%")}
+              </div>
               <motion.div
-                initial={{ opacity: 0 }}
-                transition={{ duration: 0.7, delay: 1 }}
-                exit={{ opacity: 0 }}
                 onAnimationComplete={() => {
                   setRenderMain(true);
                 }}
                 animate={{ opacity: 1 }}
-                className="a left-0 bottom-0 text-white text-7xl"
+                className="a left-[3.15vw] font-Neue bottom-[6.3vw] text-white text-[13.5vw]"
               >
-                ANIMATE
+                <div className="text-[1vw] ">A FILM BY TODD FIELDS</div>
+                TÁR
               </motion.div>
             </motion.div>
           )}

@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 const TarWave = dynamic(() => import("../3dComponents/TarWave"));
 import { motion } from "framer-motion";
+import CirclePattern from "@/public/Icons/CirclePattern";
 import MobileHero from "./MobilePageComponents/MobileHero";
 
 export default function Hero() {
@@ -14,6 +15,9 @@ export default function Hero() {
           </div>
         </div>
         <div className="w-[50%]  bg-[#DFDFDF] h-full  a right-0 flex flex-col items-center r px-[120px] ">
+          <div className="a  right-[-8%] rotate-[25.6deg] bottom-[-10%] w-[30vw] h-[30.5vw]">
+            {CirclePattern("fill-[#C8C8C8]", "100%", "100%")}
+          </div>
           <div className="font-Neue text-black  mt-[87px]  uppercase    text-left text-[1.9vw] leading-[1.1]">
             <span className="">"</span>
             The match of larger-than-life actress to larger-than-life role is
