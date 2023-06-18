@@ -49,7 +49,7 @@ function TarTrailer() {
 
         {/* Video Seek controls */}
         <div className="w-[85%]  a bottom-[10vw] z-30 r">
-          <div className="a text-white">
+          <div className="a text-white font-Neue text-xs mt-4">
             {Math.floor((videoStates.played * 165) / 60)}:{" "}
             {Math.round((videoStates.played * 165) % 60)}
           </div>
