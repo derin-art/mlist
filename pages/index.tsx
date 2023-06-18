@@ -6,7 +6,7 @@ const Tar = dynamic(() => import("../components/Tar"), { ssr: false });
 
 export default function Home() {
   return (
-    <div className="h-fit w-full ">
+    <div className=" w-full ">
       <Tar></Tar>
       {/*  <script src="https://unpkg.com/blotterjs-fork@0.1.0/build/blotter.min.js"></script> */}
     </div>

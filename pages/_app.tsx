@@ -28,10 +28,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Lenis root>
-        {" "}
-        <Component {...pageProps} />
-      </Lenis>
+      <Component {...pageProps} />
     </>
   );
 }

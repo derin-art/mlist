@@ -39,7 +39,7 @@ export default function Tar() {
   useLayoutEffect(() => {
     let smoother = ScrollSmoother.create({
       smooth: 1, // how long (in seconds) it takes to "catch up" to the native scroll position
-      effects: false,
+      effects: true,
 
       // looks for data-speed and data-lag attributes on elements
     });
@@ -48,14 +48,14 @@ export default function Tar() {
     };
   }, []);
 
-  function raf(time) {
+  /*   function raf(time) {
     lenis.raf(time);
     requestAnimationFrame(raf);
   }
 
-  requestAnimationFrame(raf);
+  requestAnimationFrame(raf); */
 
-  useLayoutEffect(() => {
+  /*  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const rollAnim = gsap.to(".roll", {
         y: "-100%",
@@ -73,19 +73,19 @@ export default function Tar() {
     });
 
     return () => ctx.revert();
-  }, []);
+  }, []); */
 
   typeof window !== "undefined" &&
     console.log(window.screen.width, window.screen.height);
 
   return (
-    <div ref={el} className="h-auto " id="smooth-wrapper">
+    <div className=" w-screen overflow-hidden" ref={el} id="smooth-wrapper">
       <motion.div
         initial={{ opacity: 0, y: 100 }}
         transition={{ duration: 0.7, delay: 0.3 }}
         animate={renderMain ? { opacity: 1, y: 0 } : { opacity: 0 }}
         id="smooth-content"
-        className={`w-full  bg-black  h-auto lenis`}
+        className={`w-full  bg-black   h-auto`}
       >
         <Hero></Hero>
         <TarTrailer></TarTrailer>
