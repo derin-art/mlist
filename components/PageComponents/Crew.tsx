@@ -5,6 +5,7 @@ import CateB12 from "../../../public/Data/Tar/Images/CateB1.jpg";
 import WhiteBlob from "../../../public/Svg/White.svg";
 import WhiteBlob1 from "../../../public/Svg/White1.svg";
 import Image from "next/image";
+import SlantedBoxes from "@/public/Icons/SlantedBoxes";
 import { Kinesis } from "@studio-freight/compono";
 import { BsCursorFill, BsHandIndex } from "react-icons/bs";
 
@@ -456,8 +457,9 @@ export default function Crew() {
   ];
 
   return (
-    <div className=" r w-full   bg-white  h-screen flex flex-col items-center justify-center r">
-      <div className="border w-[80%] bg-[#DFDFDF]">
+    <div className=" r w-full overflow-hidden  bg-white  h-screen flex flex-col items-center justify-center r">
+      <div className="a z-0">{SlantedBoxes("", "100vw", "100vw")}</div>
+      <div className="border w-[80%] bg-[#DFDFDF] z-20">
         {" "}
         {CrewTwo.map((item, index) => {
           return (
