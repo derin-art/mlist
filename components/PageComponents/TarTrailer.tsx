@@ -57,7 +57,7 @@ function TarTrailer() {
             maxValue={100}
             classNames={{
               slider:
-                "bg-[#EFEFEF] w-[14px] h-[14px] rounded-full cursor-pointer mt-[-0.6rem] ",
+                "bg-[#EFEFEF] w-[14px] h-[6px] rounded-full cursor-pointer mt-[-0.35rem] ",
               activeTrack: ` bg-blue-400 h-[5px] rounded-full  `,
               disabledInputRange: "",
               inputRange: "",
